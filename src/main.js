@@ -45,6 +45,11 @@ document.querySelector('#app').innerHTML = `
   <!-- HERO -->
   <section class="hero" id="hero" data-testid="hero-section">
     <div class="hero-grid"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="hero-orb hero-orb-4"></div>
+    <div class="hero-orb hero-orb-5"></div>
     <div class="hero-content">
       <div class="badge">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
@@ -281,6 +286,7 @@ document.querySelector('#app').innerHTML = `
 
   <!-- CTA -->
   <section class="cta-section" id="contact" data-testid="cta-section">
+    <div class="cta-glow"></div>
     <div class="container">
       <h2>Ready to <span class="text-gradient">Automate</span>?</h2>
       <p>Book a free consultation. Discover how we eliminate bottlenecks and unlock growth.</p>
