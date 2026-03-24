@@ -1,0 +1,121 @@
+{
+  "theme": "dark",
+  "archetype": "ELECTRIC & NEON / SWISS & HIGH-CONTRAST",
+  "concept": "A high-end, cyberpunk-inspired, tech-savvy AI automation marketing site. Relies heavily on deep contrasts, neon accents, 3D particles, and ultra-smooth momentum scrolling.",
+  "typography": {
+    "fonts_to_import": [
+      "https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap"
+    ],
+    "headings": {
+      "fontFamily": "'Unbounded', sans-serif",
+      "weights": [400, 700, 900],
+      "letterSpacing": "-0.03em",
+      "lineHeight": "1.1",
+      "usage": "Hero titles, section headers, massive typography moments."
+    },
+    "body": {
+      "fontFamily": "'IBM Plex Sans', sans-serif",
+      "weights": [300, 400, 500, 600],
+      "lineHeight": "1.6",
+      "usage": "Paragraphs, cards, descriptions. Minimize text content, keep it precise."
+    },
+    "labels_mono": {
+      "fontFamily": "'JetBrains Mono', monospace",
+      "weights": [400],
+      "textTransform": "uppercase",
+      "letterSpacing": "0.2em",
+      "usage": "Overlines, metrics, stats, small UI text."
+    }
+  },
+  "colors": {
+    "css_variables": {
+      "--bg-base": "#030305",
+      "--bg-surface": "rgba(255, 255, 255, 0.02)",
+      "--bg-surface-hover": "rgba(255, 255, 255, 0.05)",
+      "--bg-glass": "rgba(10, 10, 15, 0.6)",
+      "--accent-cyan": "#00F0FF",
+      "--accent-violet": "#8A2BE2",
+      "--text-primary": "#FFFFFF",
+      "--text-secondary": "#A0A0AB",
+      "--text-muted": "#60606B",
+      "--border-subtle": "rgba(255, 255, 255, 0.08)",
+      "--border-glow": "rgba(0, 240, 255, 0.3)"
+    }
+  },
+  "visual_enhancers": {
+    "glassmorphism": {
+      "css": "background: var(--bg-glass); backdrop-filter: blur(20px) saturate(150%); border: 1px solid var(--border-subtle);",
+      "usage": "Fixed Navbar, Booking Modal, Testimonial Cards."
+    },
+    "gradients": {
+      "radial_glow": "Use massive blurred radial gradients (e.g., width: 600px, height: 600px, background: radial-gradient(circle, var(--accent-violet) 0%, transparent 70%); filter: blur(100px); opacity: 0.15;) positioned absolutely in the background of sections for depth."
+    },
+    "tracing_beam": "For high-conversion cards (Solutions/Pricing), use CSS conic-gradient rotating via keyframes as a border to create an 'alive' laser tracing effect.",
+    "particles": "Implement a futuristic node/network connection particle background using tsParticles (vanilla js).",
+    "tilt_effect": "Apply vanilla-tilt.js on solution and why-us cards for premium 3D interaction on hover without heavy WebGL."
+  },
+  "libraries": {
+    "animations": {
+      "name": "GSAP + ScrollTrigger",
+      "cdn": "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js, https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js",
+      "usage": "Staggered text reveals, parallax backgrounds, fading in sections as user scrolls."
+    },
+    "scrolling": {
+      "name": "Lenis",
+      "cdn": "https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js",
+      "usage": "MANDATORY. Add smooth momentum scrolling to the entire window for a premium feel."
+    },
+    "particles": {
+      "name": "tsParticles",
+      "cdn": "https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js",
+      "usage": "Full viewport canvas in the Hero and CTA sections with subtle connecting dots/lines (preset: 'links' or 'triangles')."
+    },
+    "interactions": {
+      "name": "Vanilla-Tilt",
+      "cdn": "https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js",
+      "usage": "Add data-tilt attributes to grid cards for 3D depth on mouse hover."
+    }
+  },
+  "layouts": {
+    "spacing_system": "Use generous CSS padding. Sections should have at least padding: 8rem 2rem (128px 32px) for breathing room.",
+    "grids": {
+      "solutions_bento": "Use CSS Grid (grid-template-columns: repeat(12, 1fr)). Make cards span asymmetrically (e.g., card 1 spans 8 cols, card 2 spans 4 cols).",
+      "why_us": "Staggered layout. Left aligned text block, right aligned overlapping images or stats cards."
+    },
+    "hero": "min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center (exception to the rule for massive impact); with particle canvas behind it."
+  },
+  "image_urls": [
+    {
+      "category": "Hero Background / Abstract Texture",
+      "url": "https://images.unsplash.com/photo-1669479412055-103edfb64cc4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzB8MHwxfHNlYXJjaHw0fHxhYnN0cmFjdCUyMGRhcmslMjBuZW9uJTIwZ2xvd2luZyUyMHRlY2glMjBwYXJ0aWNsZSUyMGJhY2tncm91bmR8ZW58MHx8fHwxNzc0Mzc4MjQxfDA&ixlib=rb-4.1.0&q=85",
+      "description": "Abstract blue and green glowing neon lines, excellent for section transitions."
+    },
+    {
+      "category": "Solutions / Tech Imagery",
+      "url": "https://images.pexels.com/photos/5480781/pexels-photo-5480781.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Dark futuristic server room with network racks."
+    },
+    {
+      "category": "Testimonials / Portraits",
+      "url": "https://images.unsplash.com/photo-1764545973653-94c40d993495?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwzfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMHBvcnRyYWl0JTIwZGFyayUyMGJhY2tncm91bmR8ZW58MHx8fHwxNzc0Mzc4MjQzfDA&ixlib=rb-4.1.0&q=85",
+      "description": "Professional smiling man against dark background for testimonial avatar."
+    }
+  ],
+  "accessibility": {
+    "contrast": "Ensure white text over dark backgrounds. Never use pure black #000; use #030305.",
+    "motion": "Respect prefers-reduced-motion for GSAP animations.",
+    "focus": "Add a crisp 2px solid var(--accent-cyan) outline on focus states for interactive elements."
+  },
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "CRITICAL: The tech stack is ONLY Vanilla JS, Vite, and CSS. NO REACT, NO TAILWIND.",
+    "DO NOT use React components, JSX, Shadcn, or Tailwind utility classes (like p-4, flex, etc.). Write standard CSS in .css files using CSS Variables.",
+    "DO NOT apply 'transition: all' globally. Target specific properties.",
+    "DO NOT center align entire app containers. Use explicit grid/flexbox layouts.",
+    "Embed Google Fonts directly in HTML <head> or via CSS @import.",
+    "For interactive and informational elements, strictly add a 'data-testid' attribute (e.g., data-testid='booking-submit-btn').",
+    "Keep text minimal, punchy, and precise. Avoid massive walls of text.",
+    "Ensure the layout has a premium, 'Godly' aesthetic: lots of negative space, sharp typography, glass panels, and subtle glowing elements.",
+    "Create immersive depth: use z-index wisely. Background particles -> Glowing Orbs -> Content -> Glass UI components -> Fixed Nav.",
+    "All scripts should be loaded via CDNs in the HTML file, and custom JS logic should be separated cleanly, instantiating Lenis, GSAP, and tsParticles on DOMContentLoaded."
+  ]
+}
