@@ -2,130 +2,119 @@ import './style.css';
 
 const blogPosts = {
   "manual-operations": {
-    title: "Boring manual operations are killing SMB/SMEs in modern AI world",
+    title: "Manual Ops Are Killing SMBs in the AI Era",
     date: "Mar 24, 2026",
     tag: "Operations",
     content: `
-      <p>Small and Medium Enterprises (SMEs) are the backbone of any economy. They employ the majority, drive local innovation, and fuel GDP growth. Yet, in 2026, a shocking number of these businesses still run critical operations on spreadsheets, paper registers, and fragmented legacy systems.</p>
+      <p>SMEs are the backbone of every economy. Yet in 2026, many still run on spreadsheets, paper registers, and legacy systems.</p>
 
       <h2>The Hidden Cost of "It Works Fine"</h2>
-      <p>The most dangerous phrase in business is "it works fine." Manual data entry, hand-tracked inventory, and email-based sales pipelines might seem adequate when a business is small. But the moment you try to scale, these systems collapse under their own weight.</p>
-      <p>Consider: every time a human manually enters an invoice, there is a 1-4% error rate. At 100 invoices per day, that is potentially 4 errors daily, compounding into thousands of dollars of reconciliation nightmares per quarter.</p>
+      <p>Manual data entry has 1-4% error rate. At 100 invoices daily, that's thousands in reconciliation nightmares quarterly.</p>
 
-      <blockquote>The businesses that survive the next decade will not be the biggest. They will be the most automated.</blockquote>
+      <blockquote>The businesses that survive won't be the biggest. They'll be the most automated.</blockquote>
 
-      <h2>AI is Not the Future, It is the Present</h2>
-      <p>MNCs already use AI agents to handle support tickets, predictive models to forecast demand, and automated pipelines to process contracts. This is not experimental technology anymore, it is proven, battle-tested, and available.</p>
-      <p>The question is not whether SMBs can afford to automate. The question is: can they afford not to?</p>
+      <h2>AI is Not the Future — It's Now</h2>
+      <p>MNCs use AI agents for support, predictive models for demand, automated pipelines for contracts. This tech is proven and available.</p>
+      <p>The question: can SMBs afford NOT to automate?</p>
 
       <h2>What Can Be Automated Today</h2>
-      <p>Almost everything that involves a human copying data from one system to another, generating a report, or checking for discrepancies can be automated. Inventory management, lead qualification, compliance auditing, contract analysis, and customer support are all prime candidates.</p>
-      <p>The ROI is not theoretical. Businesses that adopt automation consistently report 30-60% cost reductions in operational overhead within the first year.</p>
+      <p>Inventory management, lead qualification, compliance auditing, contract analysis, customer support — all prime candidates. ROI: 30-60% cost reduction in year one.</p>
     `
   },
   "tech-divide": {
-    title: "MNCs are killing it in tech, while small businesses are dying due to same old boring tech",
+    title: "The Tech Divide: MNCs vs Small Business",
     date: "Mar 18, 2026",
     tag: "Industry",
     content: `
-      <p>Walk into any Fortune 500 company and you will see dashboards powered by real-time data, AI assistants handling scheduling, and automated compliance systems running 24/7. Now walk into any typical SME and you will see Excel sheets, WhatsApp groups for task management, and manual bank reconciliation.</p>
+      <p>Fortune 500: real-time dashboards, AI assistants, 24/7 compliance systems. Typical SME: Excel sheets, WhatsApp for tasks, manual reconciliation.</p>
 
-      <h2>The Tech Chasm is Widening</h2>
-      <p>While MNCs invest billions in digital transformation, small businesses are left behind. Not because they do not want to innovate, but because enterprise software has historically been too expensive, too complex, and too rigid for their needs.</p>
-      <p>This creates a vicious cycle: MNCs become more efficient, capture more market share, reduce costs further, and push out the smaller competitors who cannot keep up.</p>
+      <h2>The Chasm is Widening</h2>
+      <p>MNCs invest billions in digital transformation. SMEs can't keep up — not from lack of will, but lack of affordable, simple solutions.</p>
 
-      <blockquote>The tech divide is not just about access to tools. It is about access to operational excellence.</blockquote>
+      <blockquote>The tech divide is about access to operational excellence, not just tools.</blockquote>
 
       <h2>The Solution: Enterprise-Grade, SME-Priced</h2>
-      <p>The next wave of business software must be enterprise-grade in capability but built for the budget, scale, and simplicity needs of small businesses. This means AI-first designs, instant deployment, and pay-as-you-grow pricing.</p>
-      <p>At AK Automations, this is exactly what we are building: powerful tools that give the local manufacturer the same operational edge as a global conglomerate.</p>
+      <p>Next-gen software must be enterprise-capable but built for SME budgets. AI-first design, instant deployment, pay-as-you-grow pricing.</p>
     `
   },
   "automation-necessity": {
-    title: "Automation is not a choice, but a need for businesses dependent on operations and management",
+    title: "Automation: No Longer Optional",
     date: "Mar 12, 2026",
     tag: "Automation",
     content: `
-      <p>If your business relies heavily on operations like logistics, retail, and manufacturing, manual management creates compounding errors that can quietly destroy profitability.</p>
+      <p>If your business relies on operations — logistics, retail, manufacturing — manual management creates compounding errors that destroy profitability.</p>
 
       <h2>Operations Are the Heartbeat</h2>
-      <p>For operations-heavy businesses, every minute of downtime, every inventory miscounts, and every missed delivery window directly hits the bottom line. Manual management is simply not capable of handling the complexity of modern supply chains.</p>
+      <p>Every minute of downtime, every miscount, every missed delivery directly hits the bottom line.</p>
 
-      <h2>Automation Equals Survival</h2>
-      <p>Automation ensures data integrity, enables predictive insights, and unlocks immediate execution. It is no longer a luxury for the top 5% of companies. It is a fundamental need for survival in a competitive market.</p>
+      <h2>Automation = Survival</h2>
+      <p>Automation ensures data integrity, enables predictive insights, unlocks instant execution.</p>
 
-      <blockquote>In the age of AI, manual operations are not just inefficient. They are a competitive liability.</blockquote>
-
-      <p>The businesses that will thrive in the next decade are those that treat automation as infrastructure, not an optional upgrade.</p>
+      <blockquote>In the AI age, manual operations aren't just inefficient — they're a competitive liability.</blockquote>
     `
   },
   "industrial-revolution": {
-    title: "Tech revolution / Industrial Revolution 4.0 needs to reach at the ground level of businesses",
+    title: "Industrial Revolution 4.0 at Ground Level",
     date: "Mar 05, 2026",
     tag: "Vision",
     content: `
-      <p>The Fourth Industrial Revolution, characterized by AI, IoT, and cognitive computing, is reshaping how the world works. But its benefits remain consolidated at the very top of the economic pyramid.</p>
+      <p>The Fourth Industrial Revolution — AI, IoT, cognitive computing — is reshaping work. But benefits remain consolidated at the top.</p>
 
-      <h2>The Ground Level is Being Ignored</h2>
-      <p>While tech giants build self-driving factories and AI-powered research labs, the local manufacturer still tracks orders on paper. The regional logistics company still dispatches drivers via phone calls. The small retailer still counts inventory by hand.</p>
-      <p>This is not a technology problem. It is a distribution problem. The tech exists. It just has not reached the businesses that need it most.</p>
+      <h2>The Ground Level is Ignored</h2>
+      <p>Tech giants build self-driving factories while local manufacturers track orders on paper. This isn't a tech problem — it's a distribution problem.</p>
 
       <h2>Democratizing Industry 4.0</h2>
-      <p>We must bring this revolution to the ground level, to the local manufacturers, the mid-sized logistics companies, and the regional service providers. Only then will the Fourth Industrial Revolution fulfill its true promise of widespread economic growth.</p>
+      <p>We must bring this revolution to local manufacturers, mid-sized logistics, regional service providers.</p>
 
-      <blockquote>True industrial revolution is not for the few. It must empower every business, regardless of size.</blockquote>
+      <blockquote>True industrial revolution must empower every business, regardless of size.</blockquote>
     `
   },
   "prevent-monopoly": {
-    title: "Only Tech automation can prevent the monopoly of MNCs / killing of SMBs/SMEs",
+    title: "Tech Automation vs MNC Monopoly",
     date: "Feb 28, 2026",
     tag: "Strategy",
     content: `
-      <p>MNCs use economies of scale and advanced software to undercut local businesses. Without equivalent operational efficiency, SMBs are fighting a losing battle.</p>
+      <p>MNCs use economies of scale and advanced software to undercut local businesses. Without equivalent efficiency, SMBs fight a losing battle.</p>
 
       <h2>The Monopoly Playbook</h2>
-      <p>Large corporations follow a predictable pattern: automate operations, reduce costs, scale rapidly, and squeeze out smaller competitors. They do not win because of better products alone. They win because of better efficiency.</p>
+      <p>Automate → reduce costs → scale → squeeze competitors. They win through efficiency, not just better products.</p>
 
-      <h2>Leveling the Playing Field</h2>
-      <p>Through robust AI agents, automated sales pipelines, and intelligent CRM systems, SMEs can operate with the agility of a startup and the efficiency of a conglomerate. This is not about matching MNC budgets. It is about matching their operational output.</p>
+      <h2>Level the Playing Field</h2>
+      <p>Through AI agents, automated pipelines, and intelligent CRM, SMEs can match operational output without matching budgets.</p>
 
-      <blockquote>You do not need a billion-dollar tech budget to compete. You need smart automation.</blockquote>
-
-      <p>The only sustainable defense against monopolistic consolidation is operational excellence through technology.</p>
+      <blockquote>You don't need a billion-dollar tech budget. You need smart automation.</blockquote>
     `
   },
   "manufacturing-automation": {
-    title: "India needs its own tech automation in manufacturing to compete with China and West",
+    title: "India's Manufacturing Automation Future",
     date: "Feb 21, 2026",
     tag: "Manufacturing",
     content: `
-      <p>To establish true manufacturing dominance, India needs localized tech automation that understands the specific nuances of Indian infrastructure, supply chains, and business culture.</p>
+      <p>India needs localized tech automation that understands Indian infrastructure, supply chains, and business culture.</p>
 
-      <h2>One Size Does Not Fit All</h2>
-      <p>Off-the-shelf Western software often fails to adapt to Indian conditions: multi-language workforces, fragmented supply chains, cash-heavy economies, and unique regulatory requirements. We need homegrown solutions.</p>
+      <h2>One Size Doesn't Fit</h2>
+      <p>Western software fails with multi-language workforces, fragmented supply chains, cash-heavy economies, unique regulations.</p>
 
-      <h2>Building for India, by India</h2>
-      <p>Deeply integrated automation engines built natively for Indian businesses can address the unique challenges of our manufacturing sector. From smart inventory management for multi-location warehouses to compliance automation for GST and regulatory frameworks.</p>
+      <h2>Built for India, by India</h2>
+      <p>From smart inventory for multi-location warehouses to GST compliance automation — homegrown solutions for homegrown challenges.</p>
 
-      <blockquote>India will not become a manufacturing superpower by importing Western software. We need our own automation revolution.</blockquote>
+      <blockquote>India won't become a manufacturing superpower by importing Western software.</blockquote>
     `
   },
   "scaling-business": {
-    title: "Manual labour and old boring tech is cheap, but modern automation is the only answer for scaling",
+    title: "Why Cheap Labor Caps Growth",
     date: "Feb 14, 2026",
     tag: "Growth",
     content: `
-      <p>Many business owners hesitate to invest in technology because throwing cheap manual labor at a problem seems more cost-effective on paper. But this calculation is fundamentally flawed.</p>
+      <p>Cheap manual labor seems cost-effective on paper. This calculation is fundamentally flawed.</p>
 
-      <h2>The Hidden Costs of Manual Labor</h2>
-      <p>Humans do not scale linearly. As you add more people, you add more coordination overhead, more communication gaps, more errors, and more management layers. A team of 5 doing manual data entry is 5x the cost for maybe 3x the output.</p>
+      <h2>Hidden Costs of Manual Labor</h2>
+      <p>Humans don't scale linearly. More people = more coordination, communication gaps, errors, management layers. 5 people doing data entry costs 5x for maybe 3x output.</p>
 
       <h2>Automation Scales Infinitely</h2>
-      <p>An automated system processes 100 invoices the same way it processes 100,000. There is no fatigue, no human error, no sick days. The marginal cost of scaling automation is near zero.</p>
+      <p>An automated system processes 100 invoices the same as 100,000. No fatigue, no errors, no sick days. Marginal cost of scaling: near zero.</p>
 
-      <blockquote>Manual labor is not cheap. It is a growth ceiling disguised as a cost saving.</blockquote>
-
-      <p>If you are serious about scaling your business beyond its current capacity, modern automation is not optional. It is the only path forward.</p>
+      <blockquote>Manual labor isn't cheap. It's a growth ceiling disguised as cost saving.</blockquote>
     `
   }
 };
@@ -140,9 +129,9 @@ if (post) {
 
 document.querySelector('#app').innerHTML = `
   <!-- NAVBAR -->
-  <nav class="navbar" id="navbar">
+  <nav class="navbar" id="navbar" data-testid="navbar">
     <div class="nav-inner">
-      <a href="/" class="nav-brand">
+      <a href="/" class="nav-brand" data-testid="nav-brand">
         <div class="logo-icon">AK</div>
         AK Automations
       </a>
@@ -151,7 +140,7 @@ document.querySelector('#app').innerHTML = `
         <a href="/#solutions">Solutions</a>
         <a href="/#why">Why Us</a>
         <a href="/blog.html">Blog</a>
-        <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()">Book a Meeting</a>
+        <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()" data-testid="nav-book-btn">Get Started</a>
       </div>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -161,9 +150,9 @@ document.querySelector('#app').innerHTML = `
 
   ${post ? `
     <!-- POST HERO -->
-    <section class="post-hero">
+    <section class="post-hero" data-testid="post-hero">
       <div class="container">
-        <a href="/blog.html" class="post-back">← Back to Journal</a>
+        <a href="/blog.html" class="post-back" data-testid="post-back">← Back to Journal</a>
         <h1>${post.title}</h1>
         <div class="post-meta">
           <span>${post.date}</span>
@@ -173,30 +162,30 @@ document.querySelector('#app').innerHTML = `
     </section>
 
     <!-- POST BODY -->
-    <div class="post-body">
+    <div class="post-body" data-testid="post-body">
       ${post.content}
     </div>
   ` : `
     <section class="blog-page-hero" style="min-height: 60vh; display: flex; align-items: center;">
       <div class="container">
         <h1>Post Not Found</h1>
-        <p>The article you are looking for does not exist.</p>
+        <p>The article you're looking for doesn't exist.</p>
         <a href="/blog.html" class="btn btn-primary" style="margin-top: 24px;">Back to Blog</a>
       </div>
     </section>
   `}
 
   <!-- CTA -->
-  <section class="cta-section" id="contact">
+  <section class="cta-section" id="contact" data-testid="cta-section">
     <div class="container">
-      <h2>Want to Automate Your Business?</h2>
-      <p>Book a free consultation and discover the right solution for your needs.</p>
-      <a href="#" class="btn btn-book" onclick="event.preventDefault()">Book a Free Meeting →</a>
+      <h2>Ready to <span class="text-gradient">Automate</span>?</h2>
+      <p>Book a free consultation. Discover the right solution for your needs.</p>
+      <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()" data-testid="cta-book-btn">Book Free Meeting</a>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
+  <footer class="footer" data-testid="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-about">
@@ -204,7 +193,7 @@ document.querySelector('#app').innerHTML = `
             <div class="logo-icon">AK</div>
             AK Automations
           </div>
-          <p>Automating the boring stuff so businesses can focus on what matters.</p>
+          <p>Automating the boring stuff so you can focus on growth.</p>
           <div class="footer-socials">
             <a href="#" aria-label="Twitter">𝕏</a>
             <a href="#" aria-label="LinkedIn">in</a>
@@ -214,7 +203,7 @@ document.querySelector('#app').innerHTML = `
         <div class="footer-col">
           <h4>Solutions</h4>
           <ul>
-            <li><a href="/#solutions">Inventory Management</a></li>
+            <li><a href="/#solutions">Inventory</a></li>
             <li><a href="/#solutions">AI Agents</a></li>
             <li><a href="/#solutions">Sales Optimization</a></li>
             <li><a href="/#solutions">CRM Intelligence</a></li>
@@ -223,7 +212,7 @@ document.querySelector('#app').innerHTML = `
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
-            <li><a href="/#about">About Us</a></li>
+            <li><a href="/#about">About</a></li>
             <li><a href="/blog.html">Blog</a></li>
             <li><a href="/#contact">Contact</a></li>
             <li><a href="#">Careers</a></li>
@@ -232,44 +221,36 @@ document.querySelector('#app').innerHTML = `
         <div class="footer-col">
           <h4>Resources</h4>
           <ul>
-            <li><a href="/blog.html">The Automation Journal</a></li>
+            <li><a href="/blog.html">Journal</a></li>
             <li><a href="#">Case Studies</a></li>
-            <li><a href="#">Documentation</a></li>
-            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Docs</a></li>
+            <li><a href="#">Privacy</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <div class="footer-copyright">
-          <span>© 2026 AK Automations. All rights reserved.</span>
-          <span class="powered-by">Powered by <strong>Tephily</strong></span>
-        </div>
-        <span>Built with <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--rose-500)" stroke="none" style="display:inline;vertical-align:middle;"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg> for businesses everywhere</span>
+        <span>© 2026 AK Automations. All rights reserved.</span>
+        <span class="powered-by">Powered by <strong>Tephily</strong></span>
       </div>
     </div>
   </footer>
 
-  <!-- ═══ BOOKING MODAL ═══ -->
-  <div class="modal-overlay" id="bookingModal">
+  <!-- BOOKING MODAL -->
+  <div class="modal-overlay" id="bookingModal" data-testid="booking-modal">
     <div class="modal-content">
-      <button class="modal-close" id="closeModal">&times;</button>
+      <button class="modal-close" id="closeModal" data-testid="modal-close-btn">&times;</button>
       <div class="modal-icon-wrapper">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       </div>
       <h3>Let's Talk Automation</h3>
-      <p>Give us a call to discuss how we can help your business eliminate manual bottlenecks and unlock growth.</p>
-      <a href="tel:+917977713281" class="modal-phone-btn">
+      <p>Call us to discuss how we eliminate bottlenecks and unlock growth.</p>
+      <a href="tel:+917977713281" class="modal-phone-btn" data-testid="modal-phone-btn">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         +91 79777 13281
       </a>
     </div>
   </div>
 `;
-
-// Navbar scroll
-window.addEventListener('scroll', () => {
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
-});
 
 // Mobile toggle
 const navToggle = document.getElementById('navToggle');
@@ -279,19 +260,32 @@ if (navToggle) {
 }
 
 // Booking Modal Logic
-setTimeout(() => {
-  const bookingModal = document.getElementById('bookingModal');
-  const closeModalBtn = document.getElementById('closeModal');
-  const bookBtns = document.querySelectorAll('.btn-book');
+const bookingModal = document.getElementById('bookingModal');
+const closeModalBtn = document.getElementById('closeModal');
+const bookBtns = document.querySelectorAll('.btn-book');
 
-  if (bookingModal && closeModalBtn) {
-    const openModal = () => bookingModal.classList.add('active');
-    const hideModal = () => bookingModal.classList.remove('active');
+if (bookingModal && closeModalBtn) {
+  const openModal = () => bookingModal.classList.add('active');
+  const hideModal = () => bookingModal.classList.remove('active');
 
-    bookBtns.forEach(btn => btn.addEventListener('click', openModal));
-    closeModalBtn.addEventListener('click', hideModal);
-    bookingModal.addEventListener('click', (e) => {
-      if (e.target === bookingModal) hideModal();
-    });
+  bookBtns.forEach(btn => btn.addEventListener('click', openModal));
+  closeModalBtn.addEventListener('click', hideModal);
+  bookingModal.addEventListener('click', (e) => {
+    if (e.target === bookingModal) hideModal();
+  });
+}
+
+// Lenis smooth scroll
+function initLenis() {
+  if (typeof Lenis !== 'undefined') {
+    const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
   }
-}, 100);
+}
+
+document.addEventListener('DOMContentLoaded', initLenis);
+setTimeout(initLenis, 500);
