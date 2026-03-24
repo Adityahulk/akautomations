@@ -44,6 +44,7 @@ document.querySelector('#app').innerHTML = `
 
   <!-- HERO -->
   <section class="hero" id="hero" data-testid="hero-section">
+    <div class="hero-blob"></div>
     <div class="hero-grid"></div>
     <div class="hero-orb hero-orb-1"></div>
     <div class="hero-orb hero-orb-2"></div>
@@ -55,11 +56,14 @@ document.querySelector('#app').innerHTML = `
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         Next-Gen Automation
       </div>
-      <h1>Automate Chaos.<br/><span class="text-gradient">Scale Without Limits.</span></h1>
+      <h1>
+        <span class="text-reveal"><span class="text-reveal-inner">Automate Chaos.</span></span><br/>
+        <span class="text-gradient" id="typewriter-text"></span><span class="typewriter-cursor"></span>
+      </h1>
       <p>Enterprise-grade AI that eliminates bottlenecks, stops revenue leakage, and helps you outperform.</p>
       <div class="hero-actions">
-        <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()" data-testid="hero-cta">Book Free Consultation</a>
-        <a href="#solutions" class="btn btn-secondary" data-testid="hero-solutions">Explore Solutions</a>
+        <a href="#" class="btn btn-primary btn-magnetic btn-book" onclick="event.preventDefault()" data-testid="hero-cta">Book Free Consultation</a>
+        <a href="#solutions" class="btn btn-secondary btn-magnetic" data-testid="hero-solutions">Explore Solutions</a>
       </div>
     </div>
   </section>
@@ -67,21 +71,21 @@ document.querySelector('#app').innerHTML = `
   <!-- STATS -->
   <section class="stats-bar" data-testid="stats-section">
     <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item reveal">
-          <h3><span>500+</span></h3>
+      <div class="stats-grid stagger-reveal">
+        <div class="stat-item">
+          <h3><span class="stat-number" data-target="500">0</span>+</h3>
           <p>Businesses Automated</p>
         </div>
-        <div class="stat-item reveal reveal-delay-1">
-          <h3><span>8+</span></h3>
+        <div class="stat-item">
+          <h3><span class="stat-number" data-target="8">0</span>+</h3>
           <p>Software Products</p>
         </div>
-        <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-item">
           <h3><span>AI</span>-First</h3>
           <p>Engineering</p>
         </div>
-        <div class="stat-item reveal reveal-delay-3">
-          <h3><span>100%</span></h3>
+        <div class="stat-item">
+          <h3><span class="stat-number" data-target="100">0</span>%</h3>
           <p>Enterprise-Grade</p>
         </div>
       </div>
@@ -140,41 +144,49 @@ document.querySelector('#app').innerHTML = `
       </div>
       <div class="solutions-grid">
         <div class="solution-card reveal">
+          <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div>
           <h3>Inventory Management</h3>
           <p>Real-time stock control & warehouse automation.</p>
         </div>
         <div class="solution-card reveal reveal-delay-1">
+          <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/></svg></div>
           <h3>Private SLMs</h3>
           <p>On-premise AI models. Your data never leaves.</p>
         </div>
         <div class="solution-card reveal reveal-delay-2">
+          <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="10" x="3" y="11" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/></svg></div>
           <h3>AI Agents</h3>
           <p>24/7 intelligent support & query automation.</p>
         </div>
         <div class="solution-card reveal reveal-delay-3">
+          <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
           <h3>Sales Optimization</h3>
           <p>AI insights that forecast & accelerate deals.</p>
         </div>
         <div class="solution-card reveal">
+          <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
           <h3>Lead Management</h3>
           <p>Qualify, score & route leads with AI.</p>
         </div>
         <div class="solution-card reveal reveal-delay-1">
+          <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg></div>
           <h3>CRM Intelligence</h3>
           <p>Contract reconciliation. Stop revenue leakage.</p>
         </div>
         <div class="solution-card reveal reveal-delay-2">
+          <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div>
           <h3>Compliance & Risk</h3>
           <p>Automated auditing & regulatory monitoring.</p>
         </div>
         <div class="solution-card reveal reveal-delay-3">
+          <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></div>
           <h3>Custom Solutions</h3>
           <p>Bespoke software for your unique needs.</p>
@@ -403,6 +415,116 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Stagger reveal for stats
+const staggerObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      // Animate counters
+      entry.target.querySelectorAll('.stat-number[data-target]').forEach(counter => {
+        animateCounter(counter);
+      });
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.stagger-reveal').forEach(el => staggerObserver.observe(el));
+
+// Animated counter function
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const duration = 2000;
+  const start = performance.now();
+  
+  function update(currentTime) {
+    const elapsed = currentTime - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const easeOut = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(target * easeOut);
+    
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    }
+  }
+  requestAnimationFrame(update);
+}
+
+// Typewriter effect
+const typewriterPhrases = ['Scale Without Limits.', 'Dominate Your Market.', 'Outperform Competition.', 'Unlock Growth.'];
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typewriterEl = document.getElementById('typewriter-text');
+
+function typewriter() {
+  const currentPhrase = typewriterPhrases[phraseIndex];
+  
+  if (isDeleting) {
+    typewriterEl.textContent = currentPhrase.substring(0, charIndex - 1);
+    charIndex--;
+  } else {
+    typewriterEl.textContent = currentPhrase.substring(0, charIndex + 1);
+    charIndex++;
+  }
+  
+  let delay = isDeleting ? 50 : 100;
+  
+  if (!isDeleting && charIndex === currentPhrase.length) {
+    delay = 2000;
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    phraseIndex = (phraseIndex + 1) % typewriterPhrases.length;
+    delay = 500;
+  }
+  
+  setTimeout(typewriter, delay);
+}
+
+// Start typewriter after initial reveal
+setTimeout(typewriter, 1200);
+
+// Cursor glow effect
+const cursorGlow = document.createElement('div');
+cursorGlow.className = 'cursor-glow';
+document.body.appendChild(cursorGlow);
+
+let mouseX = 0, mouseY = 0;
+let glowX = 0, glowY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursorGlow.classList.add('active');
+});
+
+document.addEventListener('mouseleave', () => {
+  cursorGlow.classList.remove('active');
+});
+
+function updateCursorGlow() {
+  glowX += (mouseX - glowX) * 0.1;
+  glowY += (mouseY - glowY) * 0.1;
+  cursorGlow.style.left = glowX + 'px';
+  cursorGlow.style.top = glowY + 'px';
+  requestAnimationFrame(updateCursorGlow);
+}
+updateCursorGlow();
+
+// Magnetic button effect
+document.querySelectorAll('.btn-magnetic').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+  });
+  
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = 'translate(0, 0)';
+  });
+});
 
 // Mobile nav
 const navToggle = document.getElementById('navToggle');
