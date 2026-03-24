@@ -758,6 +758,99 @@ img { max-width: 100%; display: block; }
   justify-content: space-between;
   align-items: center;
   font-size: 0.85rem;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-copyright {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.powered-by {
+  color: rgba(255,255,255,0.5);
+}
+.powered-by strong {
+  color: white;
+  font-weight: 600;
+}
+
+/* ── Booking Modal ── */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-content {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  transform: translateY(20px) scale(0.95);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-xl);
+}
+.modal-overlay.active .modal-content {
+  transform: translateY(0) scale(1);
+}
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--bg-alt);
+  border: none;
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s;
+}
+.modal-close:hover {
+  background: #E2E8F0;
+  color: var(--text-heading);
+}
+.modal-icon-wrapper {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: var(--blue-100);
+  color: var(--blue-600);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+}
+.modal-content h3 { font-size: 1.4rem; margin-bottom: 12px; }
+.modal-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 28px; line-height: 1.6; }
+.modal-phone-btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--gradient-brand);
+  color: white;
+  padding: 16px 24px;
+  border-radius: var(--radius-sm);
+  font-size: 1.1rem; font-weight: 700;
+  box-shadow: var(--shadow-brand);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.modal-phone-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(37, 99, 235, 0.35);
+  color: white;
 }
 
 /* ── Animations ── */

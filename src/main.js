@@ -40,7 +40,7 @@ document.querySelector('#app').innerHTML = `
         <a href="#solutions">Solutions</a>
         <a href="#why">Why Us</a>
         <a href="/blog.html">Blog</a>
-        <a href="#contact" class="btn btn-primary">Book a Meeting</a>
+        <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()">Book a Meeting</a>
       </div>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -56,7 +56,7 @@ document.querySelector('#app').innerHTML = `
         <h1>Your Business Runs on Chaos <span class="text-gradient">We Automate the Fix</span></h1>
         <p>We build enterprise-grade AI software that automates operations, sales, and management for businesses. Stop revenue leakage. Scale efficiently. Outperform the competition.</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Book a Free Consultation →</a>
+          <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()">Book a Free Consultation →</a>
           <a href="#solutions" class="btn btn-secondary">See Our Solutions</a>
         </div>
       </div>
@@ -300,7 +300,7 @@ document.querySelector('#app').innerHTML = `
     <div class="container">
       <h2>Ready to Automate Your Business?</h2>
       <p>Book a free consultation and discover how we can eliminate your manual bottlenecks and unlock growth.</p>
-      <a href="mailto:hello@akautomations.com" class="btn">Book a Free Meeting →</a>
+      <a href="#" class="btn btn-book" onclick="event.preventDefault()">Book a Free Meeting →</a>
     </div>
   </section>
 
@@ -376,11 +376,29 @@ document.querySelector('#app').innerHTML = `
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 AK Automations. All rights reserved.</span>
-        <span>Built with <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--rose-500)" stroke="none" style="display:inline;vertical-align:middle;"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg> for businesses everywhere</span>
-      </div>
+        <div class="footer-copyright">
+          <span>© 2026 AK Automations. All rights reserved.</span>
+        </div>
+          <span class="powered-by">Powered by <strong>Tephily</strong></span>
+        </div>
     </div>
   </footer>
+
+  <!-- ═══ BOOKING MODAL ═══ -->
+  <div class="modal-overlay" id="bookingModal">
+    <div class="modal-content">
+      <button class="modal-close" id="closeModal">&times;</button>
+      <div class="modal-icon-wrapper">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <h3>Let's Talk Automation</h3>
+      <p>Give us a call to discuss how we can help your business eliminate manual bottlenecks and unlock growth.</p>
+      <a href="tel:+917977713281" class="modal-phone-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +91 79777 13281
+      </a>
+    </div>
+  </div>
 `;
 
 // ── Scroll Reveal Animation ──
@@ -410,5 +428,21 @@ const navLinks = document.getElementById('navLinks');
 if (navToggle) {
   navToggle.addEventListener('click', () => {
     navLinks.classList.toggle('active');
+  });
+}
+
+// ── Booking Modal Logic ──
+const bookingModal = document.getElementById('bookingModal');
+const closeModalBtn = document.getElementById('closeModal');
+const bookBtns = document.querySelectorAll('.btn-book');
+
+if (bookingModal && closeModalBtn) {
+  const openModal = () => bookingModal.classList.add('active');
+  const hideModal = () => bookingModal.classList.remove('active');
+
+  bookBtns.forEach(btn => btn.addEventListener('click', openModal));
+  closeModalBtn.addEventListener('click', hideModal);
+  bookingModal.addEventListener('click', (e) => {
+    if (e.target === bookingModal) hideModal();
   });
 }
