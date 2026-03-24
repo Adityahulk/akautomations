@@ -882,12 +882,18 @@ img { max-width: 100%; display: block; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; gap: 12px; }
   .about-pillars { grid-template-columns: 1fr; }
-  .hero-visual { min-height: auto; margin-top: 16px; }
+  .hero-visual {
+    min-height: auto;
+    margin-top: 16px;
+    flex-direction: column;
+    align-items: stretch;
+  }
   .hero-float-card {
     position: static;
     animation: none;
     margin-bottom: 12px;
     box-shadow: var(--shadow-md);
+    width: 100%;
   }
   .hero-blob { display: none; }
   .cta-section h2 { font-size: 2rem; }
