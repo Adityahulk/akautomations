@@ -1,19 +1,10 @@
 import './style.css';
-
-const blogPosts = [
-  { title: "Manual Ops Are Killing SMBs", excerpt: "Why legacy workflows drain revenue.", date: "Mar 24, 2026", id: "manual-operations" },
-  { title: "The Tech Divide", excerpt: "How to level the playing field.", date: "Mar 18, 2026", id: "tech-divide" },
-  { title: "Automation: No Longer Optional", excerpt: "Survival demands systemic automation.", date: "Mar 12, 2026", id: "automation-necessity" },
-  { title: "Industry 4.0 at Ground Level", excerpt: "True growth empowers every business.", date: "Mar 05, 2026", id: "industrial-revolution" },
-  { title: "Tech vs MNC Monopoly", excerpt: "Match efficiency without the budget.", date: "Feb 28, 2026", id: "prevent-monopoly" },
-  { title: "India's Manufacturing Future", excerpt: "Localized software for India.", date: "Feb 21, 2026", id: "manufacturing-automation" },
-  { title: "Why Cheap Labor Caps Growth", excerpt: "Manual doesn't scale.", date: "Feb 14, 2026", id: "scaling-business" }
-];
+import { blogPosts } from './blogPosts.js';
 
 document.querySelector('#app').innerHTML = `
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
-      <a href="/" class="nav-brand"><div class="logo-icon">AK</div>AK Automations</a>
+      <a href="/" class="nav-brand"><div class="logo-icon"><img src="/kalman-mark.svg" alt="Kalman Labs logo" /></div>Kalman Labs</a>
       <div class="nav-links" id="navLinks">
         <a href="/#about">About</a>
         <a href="/#solutions">Solutions</a>
@@ -29,7 +20,7 @@ document.querySelector('#app').innerHTML = `
     <div class="container">
       <div class="badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></svg> Insights</div>
       <h1>The Automation <span class="text-gradient">Journal</span></h1>
-      <p>Perspectives on modern business automation.</p>
+      <p>Four focused reads on automation, analytics, and practical business systems.</p>
     </div>
   </section>
 
@@ -63,15 +54,15 @@ document.querySelector('#app').innerHTML = `
     <div class="container">
       <div class="footer-grid">
         <div class="footer-about">
-          <div class="footer-brand"><div class="logo-icon">AK</div>AK Automations</div>
+          <div class="footer-brand"><div class="logo-icon"><img src="/kalman-mark.svg" alt="Kalman Labs logo" /></div>Kalman Labs</div>
           <p>Automating the boring stuff so you can focus on growth.</p>
           <div class="footer-socials"><a href="#">𝕏</a><a href="#">in</a><a href="#">⌘</a></div>
         </div>
-        <div class="footer-col"><h4>Solutions</h4><ul><li><a href="/#solutions">Inventory</a></li><li><a href="/#solutions">AI Agents</a></li><li><a href="/#solutions">Sales</a></li><li><a href="/#solutions">CRM</a></li></ul></div>
+        <div class="footer-col"><h4>Solutions</h4><ul><li><a href="/#solutions">Inventory</a></li><li><a href="/#solutions">Sales & Leads</a></li><li><a href="/#solutions">Financial Management</a></li><li><a href="/#solutions">Reporting</a></li></ul></div>
         <div class="footer-col"><h4>Company</h4><ul><li><a href="/#about">About</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/#contact">Contact</a></li><li><a href="#">Careers</a></li></ul></div>
         <div class="footer-col"><h4>Resources</h4><ul><li><a href="/blog.html">Journal</a></li><li><a href="#">Case Studies</a></li><li><a href="#">Docs</a></li><li><a href="#">Privacy</a></li></ul></div>
       </div>
-      <div class="footer-bottom"><span>© 2026 AK Automations</span><span class="powered-by">Powered by <strong>Tephily</strong></span></div>
+      <div class="footer-bottom"><span>© 2026 Kalman Labs</span><span class="powered-by">Powered by <strong>Tephily</strong></span></div>
     </div>
   </footer>
 

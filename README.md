@@ -1,6 +1,6 @@
-# AK Automations
+# Kalman Labs
 
-**The Automation Engine for Modern Businesses.**
+**Simple, accessible technology for modern businesses.**
 
 We build enterprise-grade AI software that automates operations, sales, and management — so businesses can stop revenue leakage, scale efficiently, and outperform the competition.
 
@@ -36,8 +36,8 @@ We build enterprise-grade AI software that automates operations, sales, and mana
 ### Installation
 
 ```bash
-git clone https://github.com/your-org/akautomations.git
-cd akautomations
+git clone https://github.com/your-org/kalman-labs.git
+cd kalman-labs
 npm install
 ```
 
@@ -59,7 +59,7 @@ npm run preview
 ## Project Structure
 
 ```
-akautomations/
+kalman-labs/
 ├── index.html          # Landing page entry
 ├── blog.html           # Blog archive entry
 ├── post.html           # Individual blog post entry
@@ -74,4 +74,4 @@ akautomations/
 
 ## License
 
-© 2026 AK Automations. All rights reserved.
+© 2026 Kalman Labs. All rights reserved.

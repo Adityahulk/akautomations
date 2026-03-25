@@ -1,4 +1,4 @@
-# AK Automations Website - PRD
+# Kalman Labs Website - PRD
 
 ## Original Problem Statement
 Transform an old boring plain, text heavy website into a very tech-savvy, futuristic, classy, premium and advanced feel website. Conversion covers background color, template, content precision, structure and everything.

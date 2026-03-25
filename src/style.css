@@ -1,5 +1,5 @@
 /* ============================================
-   AK AUTOMATIONS — Premium Dark Theme
+   KALMAN LABS — Premium Dark Theme
    Clean, Smooth, Classy, Futuristic
    ============================================ */
 
@@ -248,13 +248,14 @@ img { max-width: 100%; display: block; }
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 700;
-  font-size: 0.8rem;
+  display: block;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+.nav-brand .logo-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .nav-links {
@@ -1128,13 +1129,14 @@ img { max-width: 100%; display: block; }
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 700;
-  font-size: 0.7rem;
+  display: block;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+}
+.footer-brand .logo-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 .footer-about p { font-size: 0.9rem; line-height: 1.7; margin-bottom: 20px; }
 .footer-socials { display: flex; gap: 10px; }

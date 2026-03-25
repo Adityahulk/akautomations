@@ -1,33 +1,15 @@
 import './style.css';
+import { blogPosts } from './blogPosts.js';
 
-const blogPostsPreview = [
-  {
-    title: "Manual Ops Are Killing SMBs in the AI Era",
-    excerpt: "Why legacy workflows drain revenue from modern businesses.",
-    date: "Mar 24, 2026",
-    id: "manual-operations"
-  },
-  {
-    title: "The Tech Divide: MNCs vs Small Business",
-    excerpt: "How local businesses can level the playing field.",
-    date: "Mar 18, 2026",
-    id: "tech-divide"
-  },
-  {
-    title: "Automation: No Longer Optional",
-    excerpt: "Survival demands systemic automation.",
-    date: "Mar 12, 2026",
-    id: "automation-necessity"
-  }
-];
+const blogPostsPreview = blogPosts;
 
 document.querySelector('#app').innerHTML = `
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar" data-testid="navbar">
     <div class="nav-inner">
       <a href="/" class="nav-brand" data-testid="nav-brand">
-        <div class="logo-icon">AK</div>
-        AK Automations
+        <div class="logo-icon"><img src="/kalman-mark.svg" alt="Kalman Labs logo" /></div>
+        Kalman Labs
       </a>
       <div class="nav-links" id="navLinks">
         <a href="#about">About</a>
@@ -54,13 +36,13 @@ document.querySelector('#app').innerHTML = `
     <div class="hero-content">
       <div class="badge">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        Next-Gen Automation
+        Simple Business Technology
       </div>
       <h1>
-        <span class="text-reveal"><span class="text-reveal-inner">Automate Chaos.</span></span><br/>
+        <span class="text-reveal"><span class="text-reveal-inner">Tech Made Simple.</span></span><br/>
         <span class="text-gradient" id="typewriter-text"></span><span class="typewriter-cursor"></span>
       </h1>
-      <p>Enterprise-grade AI that eliminates bottlenecks, stops revenue leakage, and helps you outperform.</p>
+      <p>We build simple, handy business technology with analytics, mobile-first tools, custom systems, and practical AI.</p>
       <div class="hero-actions">
         <a href="#" class="btn btn-primary btn-magnetic btn-book" onclick="event.preventDefault()" data-testid="hero-cta">Book Free Consultation</a>
         <a href="#solutions" class="btn btn-secondary btn-magnetic" data-testid="hero-solutions">Explore Solutions</a>
@@ -77,7 +59,7 @@ document.querySelector('#app').innerHTML = `
           <p>Businesses Automated</p>
         </div>
         <div class="stat-item">
-          <h3><span class="stat-number" data-target="8">0</span>+</h3>
+          <h3><span class="stat-number" data-target="4">0</span>+</h3>
           <p>Software Products</p>
         </div>
         <div class="stat-item">
@@ -101,30 +83,30 @@ document.querySelector('#app').innerHTML = `
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
             Our Mission
           </div>
-          <h2>Industrial Revolution 4.0 for <span class="text-gradient">Every Business</span></h2>
-          <p>While the market moves at AI speed, most businesses are stuck in the past. We deliver the automation toolkit that levels the playing field.</p>
-          <p>Building the most trusted automation engines using cutting-edge AI, frameworks, and models.</p>
+          <h2>Making Tech <span class="text-gradient">Simple, Accessible & Handy</span></h2>
+          <p>Our mission is to make technology easy for businesses to adopt, use, and scale.</p>
+          <p>We do that through analytics, customized solutions, mobile-first applications, and AI integration.</p>
         </div>
         <div class="about-pillars reveal reveal-delay-1">
           <div class="pillar-card">
             <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-            <h4>Automate Everything</h4>
-            <p>Eliminate manual processes in ops, sales & management.</p>
+            <h4>Analytics & Visualization</h4>
+            <p>Clear dashboards and reports for smarter decisions.</p>
           </div>
           <div class="pillar-card">
             <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
-            <h4>Enterprise-Grade</h4>
-            <p>User-friendly yet powerful. Built for real scale.</p>
+            <h4>Customized Solutions</h4>
+            <p>Systems built around your workflows and goals.</p>
           </div>
           <div class="pillar-card">
             <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg></div>
-            <h4>Trusted Brand</h4>
-            <p>Becoming the name in business automation.</p>
+            <h4>Mobile-Based Applications</h4>
+            <p>Handy tools your team can use on the go.</p>
           </div>
           <div class="pillar-card">
             <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="7" x="14" y="3" rx="1"/><path d="M10 21V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H3"/></svg></div>
-            <h4>Infinite Scale</h4>
-            <p>Built to grow with you from day one.</p>
+            <h4>AI Integration</h4>
+            <p>Smarter control across core business systems.</p>
           </div>
         </div>
       </div>
@@ -139,57 +121,33 @@ document.querySelector('#app').innerHTML = `
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
           What We Build
         </div>
-        <h2>Powerful Software for <span class="text-gradient">Modern Business</span></h2>
-        <p>From inventory to AI agents — full spectrum automation.</p>
+        <h2>Essential Systems for <span class="text-gradient">Modern Businesses</span></h2>
+        <p>Four focused platforms for core business operations.</p>
       </div>
       <div class="solutions-grid">
         <div class="solution-card reveal">
           <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div>
-          <h3>Inventory Management</h3>
-          <p>Real-time stock control & warehouse automation.</p>
+          <h3>Inventory Management Platform</h3>
+          <p>Track stock and operations across locations.</p>
         </div>
         <div class="solution-card reveal reveal-delay-1">
           <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/></svg></div>
-          <h3>Private SLMs</h3>
-          <p>On-premise AI models. Your data never leaves.</p>
+          <h3>Sales & Lead Optimization Platform</h3>
+          <p>Organize pipelines and improve lead conversions.</p>
         </div>
         <div class="solution-card reveal reveal-delay-2">
           <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="10" x="3" y="11" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/></svg></div>
-          <h3>AI Agents</h3>
-          <p>24/7 intelligent support & query automation.</p>
+          <h3>Financial Management Platform</h3>
+          <p>Manage finances with better visibility and control.</p>
         </div>
         <div class="solution-card reveal reveal-delay-3">
           <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
-          <h3>Sales Optimization</h3>
-          <p>AI insights that forecast & accelerate deals.</p>
-        </div>
-        <div class="solution-card reveal">
-          <div class="shine"></div>
-          <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
-          <h3>Lead Management</h3>
-          <p>Qualify, score & route leads with AI.</p>
-        </div>
-        <div class="solution-card reveal reveal-delay-1">
-          <div class="shine"></div>
-          <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg></div>
-          <h3>CRM Intelligence</h3>
-          <p>Contract reconciliation. Stop revenue leakage.</p>
-        </div>
-        <div class="solution-card reveal reveal-delay-2">
-          <div class="shine"></div>
-          <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div>
-          <h3>Compliance & Risk</h3>
-          <p>Automated auditing & regulatory monitoring.</p>
-        </div>
-        <div class="solution-card reveal reveal-delay-3">
-          <div class="shine"></div>
-          <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></div>
-          <h3>Custom Solutions</h3>
-          <p>Bespoke software for your unique needs.</p>
+          <h3>Reporting Optimization Systems</h3>
+          <p>Turn business data into clear reports and insights.</p>
         </div>
       </div>
     </div>
@@ -201,7 +159,7 @@ document.querySelector('#app').innerHTML = `
       <div class="section-header">
         <div class="badge">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          Why AK Automations
+          Why Kalman Labs
         </div>
         <h2>Built Different. <span class="text-gradient">Built Better.</span></h2>
         <p>Not just software. Your automation partner.</p>
@@ -274,7 +232,7 @@ document.querySelector('#app').innerHTML = `
           <div class="testimonial-stars">★★★★★</div>
           <p class="testimonial-text">"Identified revenue leakage we'd missed for years. Absolute game changer."</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">AK</div>
+            <div class="testimonial-avatar">KL</div>
             <div>
               <div class="testimonial-name">Amit Kapoor</div>
               <div class="testimonial-role">CFO, TradeBridge India</div>
@@ -342,8 +300,8 @@ document.querySelector('#app').innerHTML = `
       <div class="footer-grid">
         <div class="footer-about">
           <div class="footer-brand">
-            <div class="logo-icon">AK</div>
-            AK Automations
+            <div class="logo-icon"><img src="/kalman-mark.svg" alt="Kalman Labs logo" /></div>
+            Kalman Labs
           </div>
           <p>Automating the boring stuff so you can focus on growth.</p>
           <div class="footer-socials">
@@ -356,9 +314,9 @@ document.querySelector('#app').innerHTML = `
           <h4>Solutions</h4>
           <ul>
             <li><a href="#solutions">Inventory</a></li>
-            <li><a href="#solutions">AI Agents</a></li>
-            <li><a href="#solutions">Sales</a></li>
-            <li><a href="#solutions">CRM</a></li>
+            <li><a href="#solutions">Sales & Leads</a></li>
+            <li><a href="#solutions">Financial Management</a></li>
+            <li><a href="#solutions">Reporting</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -381,8 +339,8 @@ document.querySelector('#app').innerHTML = `
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 AK Automations</span>
-        <span class="powered-by">Powered by <strong>Tephily</strong></span>
+        <span>© 2026 Kalman Labs</span>
+        <span class="powered-by">Powered by <strong>Tephily Pvt Ltd</strong></span>
       </div>
     </div>
   </footer>
@@ -436,13 +394,13 @@ function animateCounter(el) {
   const target = parseInt(el.dataset.target);
   const duration = 2000;
   const start = performance.now();
-  
+
   function update(currentTime) {
     const elapsed = currentTime - start;
     const progress = Math.min(elapsed / duration, 1);
     const easeOut = 1 - Math.pow(1 - progress, 3);
     el.textContent = Math.floor(target * easeOut);
-    
+
     if (progress < 1) {
       requestAnimationFrame(update);
     }
@@ -451,7 +409,7 @@ function animateCounter(el) {
 }
 
 // Typewriter effect
-const typewriterPhrases = ['Scale Without Limits.', 'Dominate Your Market.', 'Outperform Competition.', 'Unlock Growth.'];
+const typewriterPhrases = ['Accessible for Every Business.', 'Data-Backed Decisions.', 'Mobile Tools Teams Use.', 'AI Control Made Practical.'];
 let phraseIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -459,7 +417,7 @@ const typewriterEl = document.getElementById('typewriter-text');
 
 function typewriter() {
   const currentPhrase = typewriterPhrases[phraseIndex];
-  
+
   if (isDeleting) {
     typewriterEl.textContent = currentPhrase.substring(0, charIndex - 1);
     charIndex--;
@@ -467,9 +425,9 @@ function typewriter() {
     typewriterEl.textContent = currentPhrase.substring(0, charIndex + 1);
     charIndex++;
   }
-  
+
   let delay = isDeleting ? 50 : 100;
-  
+
   if (!isDeleting && charIndex === currentPhrase.length) {
     delay = 2000;
     isDeleting = true;
@@ -478,7 +436,7 @@ function typewriter() {
     phraseIndex = (phraseIndex + 1) % typewriterPhrases.length;
     delay = 500;
   }
-  
+
   setTimeout(typewriter, delay);
 }
 
@@ -520,7 +478,7 @@ document.querySelectorAll('.btn-magnetic').forEach(btn => {
     const y = e.clientY - rect.top - rect.height / 2;
     btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
   });
-  
+
   btn.addEventListener('mouseleave', () => {
     btn.style.transform = 'translate(0, 0)';
   });
