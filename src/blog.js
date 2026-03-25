@@ -56,7 +56,6 @@ document.querySelector('#app').innerHTML = `
         <div class="footer-about">
           <div class="footer-brand"><div class="logo-icon"><img src="/kalman-mark.svg" alt="Kalman Labs logo" /></div>Kalman Labs</div>
           <p>Automating the boring stuff so you can focus on growth.</p>
-          <div class="footer-socials"><a href="#">𝕏</a><a href="#">in</a><a href="#">⌘</a></div>
         </div>
         <div class="footer-col"><h4>Solutions</h4><ul><li><a href="/#solutions">Inventory</a></li><li><a href="/#solutions">Sales & Leads</a></li><li><a href="/#solutions">Financial Management</a></li><li><a href="/#solutions">Reporting</a></li></ul></div>
         <div class="footer-col"><h4>Company</h4><ul><li><a href="/#about">About</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/#contact">Contact</a></li><li><a href="#">Careers</a></li></ul></div>

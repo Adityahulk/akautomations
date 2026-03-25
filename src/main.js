@@ -39,10 +39,10 @@ document.querySelector('#app').innerHTML = `
         Automation Engine
       </div>
       <h1>
-        <span class="text-reveal"><span class="text-reveal-inner">Tech Made Simple.</span></span><br/>
-        <span class="text-gradient" id="typewriter-text"></span><span class="typewriter-cursor"></span>
+        <span class="text-reveal"><span class="text-reveal-inner">Automate your business with</span></span><br/>
+        <span class="text-gradient">mobile friendly solutions</span>
       </h1>
-      <p>We build simple, handy business technology with analytics, mobile-first tools, custom systems, and practical AI.</p>
+      <p>Modern systems designed to simplify operations, improve visibility, and help businesses scale with confidence.</p>
       <div class="hero-actions">
         <a href="#" class="btn btn-primary btn-magnetic btn-book" onclick="event.preventDefault()" data-testid="hero-cta">Book Free Consultation</a>
         <a href="#solutions" class="btn btn-secondary btn-magnetic" data-testid="hero-solutions">Explore Solutions</a>
@@ -77,16 +77,14 @@ document.querySelector('#app').innerHTML = `
   <!-- ABOUT -->
   <section class="section about-section" id="about" data-testid="about-section">
     <div class="container">
-      <div class="about-grid">
-        <div class="about-text reveal">
-          <div class="badge" style="margin-bottom: 20px;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
-            Our Mission
-          </div>
-          <h2>Making Tech <span class="text-gradient">Simple, Accessible & Handy</span></h2>
-          <p>Our mission is to make technology easy for businesses to adopt, use, and scale.</p>
-          <p>We do that through analytics, customized solutions, mobile-first applications, and AI integration.</p>
+      <div class="section-header reveal">
+        <div class="badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+          What We Focus On
         </div>
+        <h2>Built Around Four <span class="text-gradient">Core Capabilities</span></h2>
+      </div>
+      <div class="about-grid">
         <div class="about-pillars reveal reveal-delay-1">
           <div class="pillar-card">
             <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
@@ -101,7 +99,7 @@ document.querySelector('#app').innerHTML = `
           <div class="pillar-card">
             <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg></div>
             <h4>Mobile-Based Applications</h4>
-            <p>Handy tools your team can use on the go.</p>
+            <p>Fast, responsive tools built for everyday business use.</p>
           </div>
           <div class="pillar-card">
             <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="7" x="14" y="3" rx="1"/><path d="M10 21V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H3"/></svg></div>
@@ -304,11 +302,6 @@ document.querySelector('#app').innerHTML = `
             Kalman Labs
           </div>
           <p>Automating the boring stuff so you can focus on growth.</p>
-          <div class="footer-socials">
-            <a href="#" aria-label="Twitter">𝕏</a>
-            <a href="#" aria-label="LinkedIn">in</a>
-            <a href="#" aria-label="GitHub">⌘</a>
-          </div>
         </div>
         <div class="footer-col">
           <h4>Solutions</h4>
@@ -407,41 +400,6 @@ function animateCounter(el) {
   }
   requestAnimationFrame(update);
 }
-
-// Typewriter effect
-const typewriterPhrases = ['Accessible for Every Business.', 'Data-Backed Decisions.', 'Mobile Tools Teams Use.', 'AI Control Made Practical.'];
-let phraseIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-const typewriterEl = document.getElementById('typewriter-text');
-
-function typewriter() {
-  const currentPhrase = typewriterPhrases[phraseIndex];
-
-  if (isDeleting) {
-    typewriterEl.textContent = currentPhrase.substring(0, charIndex - 1);
-    charIndex--;
-  } else {
-    typewriterEl.textContent = currentPhrase.substring(0, charIndex + 1);
-    charIndex++;
-  }
-
-  let delay = isDeleting ? 50 : 100;
-
-  if (!isDeleting && charIndex === currentPhrase.length) {
-    delay = 2000;
-    isDeleting = true;
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    phraseIndex = (phraseIndex + 1) % typewriterPhrases.length;
-    delay = 500;
-  }
-
-  setTimeout(typewriter, delay);
-}
-
-// Start typewriter after initial reveal
-setTimeout(typewriter, 1200);
 
 // Cursor glow effect
 const cursorGlow = document.createElement('div');

@@ -606,8 +606,8 @@ img { max-width: 100%; display: block; }
 .about-section { background: var(--bg-primary); }
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  grid-template-columns: 1fr;
+  gap: 0;
   align-items: center;
 }
 .about-text h2 { 
