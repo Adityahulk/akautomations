@@ -40,7 +40,7 @@ document.querySelector('#app').innerHTML = `
       </div>
       <h1>
         <span class="text-reveal"><span class="text-reveal-inner">Automate your business with</span></span><br/>
-        <span class="text-gradient">user friendly solutions</span>
+        <span class="text-gradient">easy to use solutions</span>
       </h1>
       <p>Modern systems designed to simplify operations, improve visibility, and help businesses scale with confidence.</p>
       <div class="hero-actions">
