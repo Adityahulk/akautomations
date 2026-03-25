@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Automating the shit out of boring unefficient processes in any Business",
   "main": "index.js",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
