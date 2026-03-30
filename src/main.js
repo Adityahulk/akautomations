@@ -77,39 +77,6 @@ document.querySelector('#app').innerHTML = `
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section class="section about-section" id="about" data-testid="about-section">
-    <div class="container">
-      <div class="section-header reveal">
-        <h2>Built Around Four <span class="text-gradient">Core Capabilities</span></h2>
-      </div>
-      <div class="about-grid">
-        <div class="about-pillars reveal reveal-delay-1">
-          <div class="pillar-card">
-            <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-            <h4>Analytics & Visualization</h4>
-            <p>Clear dashboards and reports for smarter decisions.</p>
-          </div>
-          <div class="pillar-card">
-            <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
-            <h4>Customized Solutions</h4>
-            <p>Systems built around your workflows and goals.</p>
-          </div>
-          <div class="pillar-card">
-            <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg></div>
-            <h4>Mobile-Based Applications</h4>
-            <p>Fast, responsive tools built for everyday business use.</p>
-          </div>
-          <div class="pillar-card">
-            <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="7" x="14" y="3" rx="1"/><path d="M10 21V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H3"/></svg></div>
-            <h4>AI Integration</h4>
-            <p>Smarter control across core business systems.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- SOLUTIONS -->
   <section class="section solutions-section" id="solutions" data-testid="solutions-section">
     <div class="container">
@@ -155,29 +122,29 @@ document.querySelector('#app').innerHTML = `
       </div>
       <div class="why-grid why-grid-5">
         <div class="why-card reveal">
-          <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg></div>
-          <h3>AI-First Engineering</h3>
-          <p>AI at the core, not bolted on. Latest models & frameworks.</p>
+          <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/><path d="M8 6h8"/><path d="M8 10h8"/><path d="M8 14h4"/></svg></div>
+          <h3>Mobile Friendly Solutions</h3>
+          <p>Mobile-first interfaces your team can use, no desktop required.</p>
         </div>
         <div class="why-card reveal reveal-delay-1">
-          <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
-          <h3>Zero Training UX</h3>
-          <p>Intuitive interfaces. Team adopts day one.</p>
+          <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/><path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/><path d="m4.9 19.1 2.9-2.9"/><path d="M2 12h4"/><path d="m4.9 4.9 2.9 2.9"/></svg></div>
+          <h3>Every Repetitive Task, Automated</h3>
+          <p>Follow-ups, reports, data entry, approvals, we automate it all.</p>
         </div>
         <div class="why-card reveal reveal-delay-2">
-          <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg></div>
-          <h3>Revenue Impact</h3>
-          <p>Measurable outcomes: cost savings & growth.</p>
+          <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" y1="22" x2="12" y2="12"/></svg></div>
+          <h3>No New Software to Learn</h3>
+          <p>We build on top of what you already use. Zero migration, zero disruption.</p>
         </div>
         <div class="why-card reveal reveal-delay-3">
-          <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-          <h3>Instant Support</h3>
-          <p>Rapid fixes & enhancements. One call away.</p>
+          <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg></div>
+          <h3>AI at the Core</h3>
+          <p>Intelligence embedded in every workflow, decision, and output.</p>
         </div>
         <div class="why-card reveal">
-          <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div>
-          <h3>Enterprise Security</h3>
-          <p>Private deployments. Full data sovereignty.</p>
+          <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <h3>One Call Away, Always</h3>
+          <p>Dedicated support - not a ticket queue. We move as fast as you do.</p>
         </div>
       </div>
     </div>
@@ -257,17 +224,99 @@ document.querySelector('#app').innerHTML = `
         <p>Perspectives on modern business automation.</p>
       </div>
       <div class="blog-grid">
-        ${blogPostsPreview.map((post, i) => `
+        ${blogPostsPreview.map((post, i) => {
+  const illustrations = [
+    // Operations — clock + manual work
+    `<svg viewBox="0 0 280 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+              <rect width="280" height="160" fill="#0a0a0a"/>
+              <circle cx="80" cy="80" r="40" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+              <circle cx="80" cy="80" r="32" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <line x1="80" y1="80" x2="80" y2="52" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round"/>
+              <line x1="80" y1="80" x2="98" y2="88" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="80" y1="44" x2="80" y2="48" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+              <line x1="80" y1="110" x2="80" y2="114" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+              <line x1="44" y1="80" x2="48" y2="80" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+              <line x1="110" y1="80" x2="114" y2="80" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+              <rect x="150" y="40" width="90" height="12" rx="3" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <rect x="150" y="60" width="70" height="12" rx="3" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <rect x="150" y="80" width="80" height="12" rx="3" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <rect x="150" y="100" width="60" height="12" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+              <text x="156" y="50" font-size="7" fill="rgba(255,255,255,0.3)" font-family="monospace">manually update stock</text>
+              <text x="156" y="70" font-size="7" fill="rgba(255,255,255,0.3)" font-family="monospace">send follow-up email</text>
+              <text x="156" y="90" font-size="7" fill="rgba(255,255,255,0.3)" font-family="monospace">prepare weekly report</text>
+              <text x="156" y="110" font-size="7" fill="rgba(255,255,255,0.2)" font-family="monospace">reconcile entries...</text>
+            </svg>`,
+    // Strategy — bar chart rising
+    `<svg viewBox="0 0 280 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+              <rect width="280" height="160" fill="#0a0a0a"/>
+              <line x1="40" y1="20" x2="40" y2="130" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+              <line x1="40" y1="130" x2="240" y2="130" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+              <rect x="60" y="90" width="28" height="40" rx="2" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+              <rect x="100" y="70" width="28" height="60" rx="2" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+              <rect x="140" y="50" width="28" height="80" rx="2" fill="rgba(255,255,255,0.13)" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
+              <rect x="180" y="28" width="28" height="102" rx="2" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+              <polyline points="74,90 114,70 154,50 194,28" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+              <circle cx="74" cy="90" r="3" fill="rgba(255,255,255,0.5)"/>
+              <circle cx="114" cy="70" r="3" fill="rgba(255,255,255,0.5)"/>
+              <circle cx="154" cy="50" r="3" fill="rgba(255,255,255,0.5)"/>
+              <circle cx="194" cy="28" r="4" fill="rgba(255,255,255,0.75)"/>
+              <text x="46" y="145" font-size="7" fill="rgba(255,255,255,0.2)" font-family="monospace">Q1</text>
+              <text x="106" y="145" font-size="7" fill="rgba(255,255,255,0.2)" font-family="monospace">Q2</text>
+              <text x="146" y="145" font-size="7" fill="rgba(255,255,255,0.2)" font-family="monospace">Q3</text>
+              <text x="186" y="145" font-size="7" fill="rgba(255,255,255,0.2)" font-family="monospace">Q4</text>
+            </svg>`,
+    // Automation — loop/cycle diagram
+    `<svg viewBox="0 0 280 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+              <rect width="280" height="160" fill="#0a0a0a"/>
+              <circle cx="140" cy="80" r="48" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="3 3"/>
+              <rect x="54" y="66" width="40" height="28" rx="4" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+              <text x="74" y="84" font-size="8" fill="rgba(255,255,255,0.5)" font-family="monospace" text-anchor="middle">Input</text>
+              <rect x="120" y="54" width="40" height="28" rx="4" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
+              <text x="140" y="72" font-size="8" fill="rgba(255,255,255,0.6)" font-family="monospace" text-anchor="middle">AI</text>
+              <rect x="186" y="66" width="40" height="28" rx="4" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+              <text x="206" y="84" font-size="8" fill="rgba(255,255,255,0.5)" font-family="monospace" text-anchor="middle">Done ✓</text>
+              <path d="M94 80 Q107 54 120 68" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+              <path d="M160 68 Q173 54 186 80" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+              <path d="M186 94 Q140 130 94 94" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" fill="none" stroke-dasharray="3 3"/>
+              <circle cx="74" cy="113" r="2" fill="rgba(255,255,255,0.2)"/>
+              <circle cx="106" cy="126" r="2" fill="rgba(255,255,255,0.2)"/>
+              <circle cx="140" cy="130" r="2" fill="rgba(255,255,255,0.2)"/>
+              <circle cx="174" cy="126" r="2" fill="rgba(255,255,255,0.2)"/>
+              <circle cx="206" cy="113" r="2" fill="rgba(255,255,255,0.2)"/>
+            </svg>`,
+    // Analytics — data/dashboard
+    `<svg viewBox="0 0 280 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+              <rect width="280" height="160" fill="#0a0a0a"/>
+              <rect x="30" y="20" width="220" height="120" rx="6" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.02)"/>
+              <line x1="30" y1="44" x2="250" y2="44" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <circle cx="46" cy="32" r="4" fill="rgba(255,255,255,0.2)"/>
+              <circle cx="60" cy="32" r="4" fill="rgba(255,255,255,0.1)"/>
+              <circle cx="74" cy="32" r="4" fill="rgba(255,255,255,0.06)"/>
+              <rect x="44" y="58" width="65" height="32" rx="3" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <text x="76" y="71" font-size="14" fill="rgba(255,255,255,0.7)" font-family="monospace" text-anchor="middle" font-weight="bold">98%</text>
+              <text x="76" y="83" font-size="6" fill="rgba(255,255,255,0.25)" font-family="monospace" text-anchor="middle">satisfaction</text>
+              <rect x="117" y="58" width="65" height="32" rx="3" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <text x="149" y="71" font-size="14" fill="rgba(255,255,255,0.7)" font-family="monospace" text-anchor="middle" font-weight="bold">6h</text>
+              <text x="149" y="83" font-size="6" fill="rgba(255,255,255,0.25)" font-family="monospace" text-anchor="middle">saved/day</text>
+              <rect x="190" y="58" width="52" height="32" rx="3" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <text x="216" y="71" font-size="11" fill="rgba(255,255,255,0.6)" font-family="monospace" text-anchor="middle" font-weight="bold">↑32%</text>
+              <text x="216" y="83" font-size="6" fill="rgba(255,255,255,0.25)" font-family="monospace" text-anchor="middle">revenue</text>
+              <polyline points="44,130 74,118 104,122 134,104 164,108 194,94 224,82 244,78" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" fill="none"/>
+              <polyline points="44,130 74,118 104,122 134,104 164,108 194,94 224,82 244,78 244,140 44,140" fill="rgba(255,255,255,0.03)"/>
+            </svg>`,
+  ];
+  const img = illustrations[i % illustrations.length];
+  return `
           <a href="/post.html?id=${post.id}" class="blog-card reveal ${i > 0 ? 'reveal-delay-' + i : ''}" data-testid="blog-${post.id}">
-            <div class="blog-card-img"></div>
+            <div class="blog-card-img">${img}</div>
             <div class="blog-card-body">
               <div class="blog-card-date">${post.date}</div>
               <h3>${post.title}</h3>
               <p>${post.excerpt}</p>
               <span class="blog-card-link">Read More →</span>
             </div>
-          </a>
-        `).join('')}
+          </a>`;
+}).join('')}
       </div>
       <div class="blog-view-all">
         <a href="/blog.html" class="btn btn-secondary" data-testid="view-all">View All Articles</a>
@@ -330,9 +379,9 @@ document.querySelector('#app').innerHTML = `
       </div>
       <h3>Let's Talk</h3>
       <p>Call us to discuss how we can help automate your business.</p>
-      <a href="tel:+917977713281" class="modal-phone-btn" data-testid="modal-phone">
+      <a href="tel:+918000012306" class="modal-phone-btn" data-testid="modal-phone">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        +91 79777 13281
+        +91 80000 12306
       </a>
     </div>
   </div>
@@ -519,9 +568,9 @@ class StickFigureAnimation {
     const S = Math.min(this.W, this.H) * 0.115;
 
     // ── Chair (drawn first, behind figure) ───────────────────────
-    const seatY  = hipY + S * 0.07;
-    const seatL  = hipX - S * 0.26;
-    const seatR  = hipX + S * 0.26;
+    const seatY = hipY + S * 0.07;
+    const seatL = hipX - S * 0.26;
+    const seatR = hipX + S * 0.26;
     const legBot = seatY + S * 0.44;
     this.stroke(ctx => {
       // Seat surface
@@ -538,26 +587,26 @@ class StickFigureAnimation {
 
     // ── Figure anatomy ───────────────────────────────────────────
     const spineLen = S * 0.7;
-    const spineX   = hipX + Math.sin(lean) * spineLen;
-    const spineY   = hipY - Math.cos(lean) * spineLen;
-    const shX      = hipX + Math.sin(lean) * spineLen * 0.58;
-    const shY      = hipY - Math.cos(lean) * spineLen * 0.58;
-    const headX    = spineX;
-    const headY    = spineY - S * 0.22;
-    const headR    = S * 0.155;
+    const spineX = hipX + Math.sin(lean) * spineLen;
+    const spineY = hipY - Math.cos(lean) * spineLen;
+    const shX = hipX + Math.sin(lean) * spineLen * 0.58;
+    const shY = hipY - Math.cos(lean) * spineLen * 0.58;
+    const headX = spineX;
+    const headY = spineY - S * 0.22;
+    const headR = S * 0.155;
 
     // Seated legs — thigh forward, lower leg hanging
     const thighLen = S * 0.50;
-    const kneeRX   = hipX + thighLen * 0.92;
-    const kneeRY   = hipY + thighLen * 0.22;
+    const kneeRX = hipX + thighLen * 0.92;
+    const kneeRY = hipY + thighLen * 0.22;
     // Relaxed: feet lifted; working: feet flat on floor
-    const footRX   = relaxed ? kneeRX + S * 0.30 : kneeRX + S * 0.03;
-    const footRY   = relaxed ? kneeRY - S * 0.40 : kneeRY + thighLen * 0.62;
+    const footRX = relaxed ? kneeRX + S * 0.30 : kneeRX + S * 0.03;
+    const footRY = relaxed ? kneeRY - S * 0.40 : kneeRY + thighLen * 0.62;
     // Left leg slightly behind
-    const kneeLX   = hipX + thighLen * 0.74;
-    const kneeLY   = hipY + thighLen * 0.30;
-    const footLX   = relaxed ? kneeLX + S * 0.22 : kneeLX - S * 0.02;
-    const footLY   = relaxed ? kneeLY - S * 0.30 : kneeLY + thighLen * 0.55;
+    const kneeLX = hipX + thighLen * 0.74;
+    const kneeLY = hipY + thighLen * 0.30;
+    const footLX = relaxed ? kneeLX + S * 0.22 : kneeLX - S * 0.02;
+    const footLY = relaxed ? kneeLY - S * 0.30 : kneeLY + thighLen * 0.55;
 
     this.stroke(ctx => {
       // Spine
@@ -761,9 +810,9 @@ class StickFigureAnimation {
     // arm angles: laAngle = lean - armL, raAngle = lean + armR
     // Toward keyboard: laAngle ≈ 0.28, raAngle ≈ 0.58
     // Arms overhead:   laAngle ≈ -1.9,  raAngle ≈ -1.0
-    let lean    = 0;
-    let armL    = 0;
-    let armR    = 0;
+    let lean = 0;
+    let armL = 0;
+    let armR = 0;
     let relaxed = false;
     let aiAlpha = 0;
 
@@ -779,7 +828,7 @@ class StickFigureAnimation {
       const e = this.easeInOut(p);
       lean = 0.08 - e * 0.08;
       armL = (lean - 0.28) * (1 - e);      // arms ease toward neutral
-      armR = (0.58 - lean)  * (1 - e) + 0.45 * e;
+      armR = (0.58 - lean) * (1 - e) + 0.45 * e;
       aiAlpha = e;
     } else {
       // Relaxed — leaned back, arms raised overhead (hands-behind-head stretch)
