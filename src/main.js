@@ -24,7 +24,7 @@ document.querySelector('#app').innerHTML = `
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO — 2-column: text left, stick figure right -->
   <section class="hero" id="hero" data-testid="hero-section">
     <div class="hero-blob"></div>
     <div class="hero-grid"></div>
@@ -33,20 +33,22 @@ document.querySelector('#app').innerHTML = `
     <div class="hero-orb hero-orb-3"></div>
     <div class="hero-orb hero-orb-4"></div>
     <div class="hero-orb hero-orb-5"></div>
+
+    <!-- Left: headline + CTAs -->
     <div class="hero-content">
-      <div class="badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        Automation Engine
-      </div>
       <h1>
         <span class="text-reveal"><span class="text-reveal-inner">Automate your business with</span></span><br/>
-        <span class="text-gradient">easy to use solutions</span>
+        <span class="text-reveal"><span class="text-reveal-inner" style="animation-delay:0.35s">easy to use solutions</span></span>
       </h1>
-      <p>Modern systems designed to simplify operations, improve visibility, and help businesses scale with confidence.</p>
       <div class="hero-actions">
-        <a href="#" class="btn btn-primary btn-magnetic btn-book" onclick="event.preventDefault()" data-testid="hero-cta">Book Free Consultation</a>
-        <a href="#solutions" class="btn btn-secondary btn-magnetic" data-testid="hero-solutions">Explore Solutions</a>
+        <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()" data-testid="hero-cta">Book Free Consultation</a>
+        <a href="#solutions" class="btn btn-secondary" data-testid="hero-solutions">Explore Solutions</a>
       </div>
+    </div>
+
+    <!-- Right: stick figure animation -->
+    <div class="hero-canvas-col">
+      <canvas id="stickCanvas"></canvas>
     </div>
   </section>
 
@@ -78,10 +80,6 @@ document.querySelector('#app').innerHTML = `
   <section class="section about-section" id="about" data-testid="about-section">
     <div class="container">
       <div class="section-header reveal">
-        <div class="badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
-          What We Focus On
-        </div>
         <h2>Built Around Four <span class="text-gradient">Core Capabilities</span></h2>
       </div>
       <div class="about-grid">
@@ -115,12 +113,7 @@ document.querySelector('#app').innerHTML = `
   <section class="section solutions-section" id="solutions" data-testid="solutions-section">
     <div class="container">
       <div class="section-header">
-        <div class="badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-          What We Build
-        </div>
         <h2>Essential Systems for <span class="text-gradient">Modern Businesses</span></h2>
-        <p>Four focused platforms for core business operations.</p>
       </div>
       <div class="solutions-grid">
         <div class="solution-card reveal">
@@ -155,12 +148,7 @@ document.querySelector('#app').innerHTML = `
   <section class="section why-section" id="why" data-testid="why-section">
     <div class="container">
       <div class="section-header">
-        <div class="badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          Why Kalman Labs
-        </div>
         <h2>Built Different. <span class="text-gradient">Built Better.</span></h2>
-        <p>Not just software. Your automation partner.</p>
       </div>
       <div class="why-grid why-grid-5">
         <div class="why-card reveal">
@@ -470,3 +458,300 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// ═══════════════════════════════════════════════════════════════
+// STICK FIGURE ANIMATION — right column of hero
+//
+// Scene: A figure at a desk doing manual work (stressed, frantic),
+// tasks pile up. Then an AI circle appears, tasks flow into it,
+// figure leans back relaxed while automation handles everything.
+//
+// Pure white lines on black. Loops every 6 seconds.
+// ═══════════════════════════════════════════════════════════════
+class StickFigureAnimation {
+  constructor(canvasId) {
+    this.canvas = document.getElementById(canvasId);
+    if (!this.canvas) return;
+    this.ctx = this.canvas.getContext('2d');
+    this.isActive = false;
+    this.animFrame = null;
+    this.startTime = 0;
+    this.CYCLE = 6000; // ms per loop
+    this.tasks  = [];
+    this.checks = [];
+    this.resize();
+    window.addEventListener('resize', () => this.resize());
+  }
+
+  resize() {
+    const p = this.canvas.parentElement;
+    this.W = p.clientWidth;
+    this.H = p.clientHeight;
+    this.canvas.width  = this.W * devicePixelRatio;
+    this.canvas.height = this.H * devicePixelRatio;
+    this.ctx.scale(devicePixelRatio, devicePixelRatio);
+  }
+
+  line(x1, y1, x2, y2, w = 2) {
+    const ctx = this.ctx;
+    ctx.beginPath();
+    ctx.lineWidth = w;
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.stroke();
+  }
+
+  circle(x, y, r) {
+    this.ctx.beginPath();
+    this.ctx.arc(x, y, r, 0, Math.PI * 2);
+    this.ctx.stroke();
+  }
+
+  drawFigure(cx, cy, { armAngle = 0.6, leanAngle = 0, stressed = false, relaxed = false } = {}) {
+    const ctx = this.ctx;
+    const s = Math.min(this.W, this.H) * 0.12;
+    ctx.strokeStyle = 'rgba(255,255,255,0.92)';
+    ctx.lineWidth = 2.2;
+    ctx.lineCap = 'round';
+
+    // Body (leaned)
+    const bx = cx + Math.sin(leanAngle) * s;
+    const by = cy - Math.cos(leanAngle) * s;
+    this.line(cx, cy, bx, by);
+
+    // Head
+    this.circle(bx, by - s * 0.28, s * 0.18);
+
+    // Arms (shoulder midpoint)
+    const shx = bx + Math.sin(leanAngle) * s * 0.5;
+    const shy = by - Math.cos(leanAngle) * s * 0.5;
+    // Left arm
+    const la = leanAngle - armAngle;
+    this.line(shx, shy, shx + Math.cos(la) * s * 0.55, shy + Math.sin(la) * s * 0.55);
+    // Right arm
+    const ra = leanAngle + armAngle;
+    this.line(shx, shy, shx + Math.cos(ra) * s * 0.55, shy + Math.sin(ra) * s * 0.55);
+
+    // Legs
+    if (relaxed) {
+      this.line(cx, cy, cx - s * 0.35, cy - s * 0.38);
+      this.line(cx, cy, cx + s * 0.05, cy - s * 0.42);
+    } else {
+      this.line(cx, cy, cx - s * 0.28, cy + s * 0.55);
+      this.line(cx, cy, cx + s * 0.28, cy + s * 0.55);
+    }
+
+    // Stress wavy lines above head
+    if (stressed) {
+      ctx.strokeStyle = 'rgba(255,255,255,0.35)';
+      ctx.lineWidth = 1.2;
+      for (let i = 0; i < 3; i++) {
+        const ox = (i - 1) * s * 0.28;
+        ctx.beginPath();
+        ctx.moveTo(bx + ox, by - s * 0.5);
+        ctx.bezierCurveTo(
+          bx + ox + s * 0.1, by - s * 0.65,
+          bx + ox - s * 0.1, by - s * 0.75,
+          bx + ox, by - s * 0.9
+        );
+        ctx.stroke();
+      }
+    }
+  }
+
+  drawDesk(cx, dy, dw) {
+    const ctx = this.ctx;
+    ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    this.line(cx - dw / 2, dy, cx + dw / 2, dy, 2);
+    this.line(cx - dw / 2 + 12, dy, cx - dw / 2 + 12, dy + 55, 1.5);
+    this.line(cx + dw / 2 - 12, dy, cx + dw / 2 - 12, dy + 55, 1.5);
+  }
+
+  drawTaskIcon(x, y, alpha) {
+    const ctx = this.ctx;
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.strokeStyle = 'rgba(255,255,255,0.6)';
+    ctx.lineWidth = 1.3;
+    ctx.lineCap = 'round';
+    ctx.strokeRect(x - 9, y - 11, 18, 22);
+    ctx.beginPath();
+    ctx.moveTo(x - 5, y - 4); ctx.lineTo(x + 5, y - 4);
+    ctx.moveTo(x - 5, y);     ctx.lineTo(x + 5, y);
+    ctx.moveTo(x - 5, y + 4); ctx.lineTo(x + 2, y + 4);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  drawAICircle(cx, cy, r, alpha, tRaw) {
+    const ctx = this.ctx;
+    ctx.save();
+    ctx.globalAlpha = alpha;
+
+    // Slow outer arc
+    ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+    ctx.lineWidth = 1;
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(tRaw * 0.5);
+    ctx.beginPath();
+    ctx.arc(0, 0, r + 18, 0, Math.PI * 1.5);
+    ctx.stroke();
+    ctx.restore();
+
+    // Main ring
+    ctx.strokeStyle = 'rgba(255,255,255,0.75)';
+    ctx.lineWidth = 1.8;
+    this.circle(cx, cy, r);
+
+    // AI text
+    ctx.fillStyle = 'rgba(255,255,255,0.9)';
+    ctx.font = `${Math.round(r * 0.5)}px Inter, system-ui, sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('AI', cx, cy);
+    ctx.restore();
+  }
+
+  draw() {
+    if (!this.isActive) return;
+    const ctx  = this.ctx;
+    const now  = performance.now();
+    const tRaw = now / 1000;
+    const phase = ((now - this.startTime) % this.CYCLE) / this.CYCLE;
+
+    const W = this.W, H = this.H;
+    ctx.clearRect(0, 0, W, H);
+
+    // Layout
+    const figX = W * 0.30;
+    const figY = H * 0.60;
+    const deskY = H * 0.60;
+    const deskW = W * 0.48;
+    const aiCX  = W * 0.72;
+    const aiCY  = H * 0.40;
+    const aiR   = Math.min(W, H) * 0.1;
+
+    // Figure state
+    let armAngle  = 0.65;
+    let leanAngle = 0;
+    let stressed  = false;
+    let relaxed   = false;
+    let aiAlpha   = 0;
+
+    if (phase < 0.48) {
+      // Working frantically
+      armAngle  = 0.5 + Math.sin(tRaw * 8) * 0.38;
+      leanAngle = 0.14;
+      stressed  = phase > 0.28;
+    } else if (phase < 0.62) {
+      const p = (phase - 0.48) / 0.14;
+      armAngle  = 0.65 - p * 0.3;
+      leanAngle = 0.14 - p * 0.14;
+      aiAlpha   = p;
+    } else {
+      const p = (phase - 0.62) / 0.38;
+      armAngle  = Math.max(0.08, 0.35 - p * 0.27);
+      leanAngle = -(p * 0.20);
+      relaxed   = p > 0.35;
+      aiAlpha   = 1;
+    }
+
+    // Spawn tasks (working phase only)
+    if (phase < 0.48 && Math.random() < 0.05 && this.tasks.length < 16) {
+      this.tasks.push({
+        x: figX + (Math.random() - 0.5) * deskW * 0.5,
+        y: deskY - 18 - Math.random() * 70,
+        alpha: 0, vx: (Math.random() - 0.5) * 0.3, vy: -Math.random() * 0.2,
+      });
+    }
+
+    // Move tasks toward AI (automated phase)
+    if (phase >= 0.62 && aiAlpha > 0.4) {
+      this.tasks.forEach(task => {
+        const dx = aiCX - task.x, dy = aiCY - task.y;
+        const d  = Math.hypot(dx, dy) || 1;
+        task.vx += (dx / d) * 1.5;
+        task.vy += (dy / d) * 1.5;
+      });
+      if (Math.random() < 0.018) {
+        this.checks.push({
+          x: aiCX + (Math.random() - 0.5) * 50,
+          y: aiCY,
+          alpha: 1, vy: -1 - Math.random() * 1.4, vx: (Math.random() - 0.5) * 2.5,
+        });
+      }
+    }
+
+    // Reset on cycle start
+    if (phase < 0.02) { this.tasks = []; this.checks = []; }
+
+    // Update tasks
+    this.tasks.forEach(task => {
+      task.alpha = Math.min(task.alpha + 0.05, 0.8);
+      task.x += task.vx; task.y += task.vy;
+      if (Math.hypot(task.x - aiCX, task.y - aiCY) < aiR + 8) {
+        task.alpha = Math.max(0, task.alpha - 0.15);
+      }
+    });
+    this.tasks = this.tasks.filter(t => t.alpha > 0.01 || t.alpha === 0);
+
+    this.checks.forEach(c => {
+      c.x += c.vx; c.y += c.vy; c.vy *= 0.94; c.alpha *= 0.97;
+    });
+    this.checks = this.checks.filter(c => c.alpha > 0.02);
+
+    // ─ Draw ─
+    this.drawDesk(figX + W * 0.08, deskY, deskW);
+    this.tasks.forEach(t => this.drawTaskIcon(t.x, t.y, t.alpha));
+    if (aiAlpha > 0.01) this.drawAICircle(aiCX, aiCY, aiR, aiAlpha, tRaw);
+    this.checks.forEach(c => {
+      ctx.save();
+      ctx.globalAlpha = c.alpha;
+      ctx.strokeStyle = 'rgba(255,255,255,0.9)';
+      ctx.lineWidth = 1.8;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(c.x - 7, c.y); ctx.lineTo(c.x - 2, c.y + 6); ctx.lineTo(c.x + 8, c.y - 6);
+      ctx.stroke();
+      ctx.restore();
+    });
+    this.drawFigure(figX, figY, { armAngle, leanAngle, stressed, relaxed });
+
+    // Tiny phase label
+    const labels = [[0, 0.48, 'Manual work'], [0.48, 0.62, 'AI takes over'], [0.62, 1, 'Automated ✓']];
+    const label  = labels.find(([s, e]) => phase >= s && phase < e);
+    if (label) {
+      ctx.font = '11px Inter, system-ui, sans-serif';
+      ctx.fillStyle = 'rgba(255,255,255,0.22)';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'alphabetic';
+      ctx.fillText(label[2], 20, H - 20);
+    }
+
+    this.animFrame = requestAnimationFrame(() => this.draw());
+  }
+
+  start() {
+    if (this.isActive) return;
+    this.isActive  = true;
+    this.startTime = performance.now();
+    this.draw();
+  }
+
+  stop() {
+    this.isActive = false;
+    if (this.animFrame) cancelAnimationFrame(this.animFrame);
+  }
+}
+
+const stickAnim = new StickFigureAnimation('stickCanvas');
+const stickObserver = new IntersectionObserver(
+  (entries) => entries.forEach(e => e.isIntersecting ? stickAnim.start() : stickAnim.stop()),
+  { threshold: 0.1 }
+);
+const stickHero = document.getElementById('hero');
+if (stickHero) stickObserver.observe(stickHero);
+
