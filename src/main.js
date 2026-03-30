@@ -37,8 +37,8 @@ document.querySelector('#app').innerHTML = `
     <!-- Left: headline + CTAs -->
     <div class="hero-content">
       <h1>
-        <span class="text-reveal"><span class="text-reveal-inner">Automate your business with</span></span><br/>
-        <span class="text-reveal"><span class="text-reveal-inner" style="animation-delay:0.35s">easy to use solutions</span></span>
+        <span class="text-reveal hero-title-setup"><span class="text-reveal-inner">Automate your business with</span></span><br/>
+        <span class="text-reveal hero-title-payoff"><span class="text-reveal-inner" style="animation-delay:0.35s">easy to use solutions</span></span>
       </h1>
       <div class="hero-actions">
         <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()" data-testid="hero-cta">Book Free Consultation</a>
@@ -460,13 +460,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ═══════════════════════════════════════════════════════════════
-// STICK FIGURE ANIMATION — right column of hero
+// STICK FIGURE ANIMATION — refined, editorial
 //
-// Scene: A figure at a desk doing manual work (stressed, frantic),
-// tasks pile up. Then an AI circle appears, tasks flow into it,
-// figure leans back relaxed while automation handles everything.
+// Scene: a figure at a desk with a laptop screen.
+// Tasks (small doc icons) queue up on the left, flow in a smooth
+// bezier arc toward the AI circle top-right, disappearing into it.
+// On automation: figure leans back, legs up, checkmarks emit
+// from the AI circle in arcs downward.
 //
-// Pure white lines on black. Loops every 6 seconds.
+// White lines only. Smooth easing throughout. Loops every 7s.
 // ═══════════════════════════════════════════════════════════════
 class StickFigureAnimation {
   constructor(canvasId) {
@@ -476,8 +478,8 @@ class StickFigureAnimation {
     this.isActive = false;
     this.animFrame = null;
     this.startTime = 0;
-    this.CYCLE = 6000; // ms per loop
-    this.tasks  = [];
+    this.CYCLE = 7000;
+    this.tasks = [];
     this.checks = [];
     this.resize();
     window.addEventListener('resize', () => this.resize());
@@ -485,258 +487,394 @@ class StickFigureAnimation {
 
   resize() {
     const p = this.canvas.parentElement;
-    this.W = p.clientWidth;
-    this.H = p.clientHeight;
-    this.canvas.width  = this.W * devicePixelRatio;
+    this.W = p.clientWidth || 600;
+    this.H = p.clientHeight || 700;
+    this.canvas.width = this.W * devicePixelRatio;
     this.canvas.height = this.H * devicePixelRatio;
     this.ctx.scale(devicePixelRatio, devicePixelRatio);
   }
 
-  line(x1, y1, x2, y2, w = 2) {
-    const ctx = this.ctx;
-    ctx.beginPath();
-    ctx.lineWidth = w;
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
-    ctx.stroke();
+  // ── Easing ───────────────────────────────────────────────────
+  easeInOut(t) { return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; }
+
+  // ── Bezier point at t along P0→CP→P1 ─────────────────────────
+  bezier(t, p0x, p0y, cpx, cpy, p1x, p1y) {
+    const u = 1 - t;
+    return {
+      x: u * u * p0x + 2 * u * t * cpx + t * t * p1x,
+      y: u * u * p0y + 2 * u * t * cpy + t * t * p1y
+    };
   }
 
-  circle(x, y, r) {
-    this.ctx.beginPath();
-    this.ctx.arc(x, y, r, 0, Math.PI * 2);
-    this.ctx.stroke();
-  }
-
-  drawFigure(cx, cy, { armAngle = 0.6, leanAngle = 0, stressed = false, relaxed = false } = {}) {
+  // ── Stroke helper ─────────────────────────────────────────────
+  stroke(fn, color = 'rgba(255,255,255,0.88)', lw = 2) {
     const ctx = this.ctx;
-    const s = Math.min(this.W, this.H) * 0.12;
-    ctx.strokeStyle = 'rgba(255,255,255,0.92)';
-    ctx.lineWidth = 2.2;
+    ctx.save();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = lw;
     ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    fn(ctx);
+    ctx.restore();
+  }
 
-    // Body (leaned)
-    const bx = cx + Math.sin(leanAngle) * s;
-    const by = cy - Math.cos(leanAngle) * s;
-    this.line(cx, cy, bx, by);
+  // ── Stick figure ─────────────────────────────────────────────
+  // hip = {x, y}, lean = radians forward, armL/R = angle from body-axis
+  drawFigure({ hipX, hipY, lean = 0, armL = 0.7, armR = 0.7, relaxed = false }) {
+    const S = Math.min(this.W, this.H) * 0.115; // scale unit
 
-    // Head
-    this.circle(bx, by - s * 0.28, s * 0.18);
+    // Spine direction
+    const spineX = hipX + Math.sin(lean) * S;
+    const spineY = hipY - Math.cos(lean) * S;
 
-    // Arms (shoulder midpoint)
-    const shx = bx + Math.sin(leanAngle) * s * 0.5;
-    const shy = by - Math.cos(leanAngle) * s * 0.5;
-    // Left arm
-    const la = leanAngle - armAngle;
-    this.line(shx, shy, shx + Math.cos(la) * s * 0.55, shy + Math.sin(la) * s * 0.55);
-    // Right arm
-    const ra = leanAngle + armAngle;
-    this.line(shx, shy, shx + Math.cos(ra) * s * 0.55, shy + Math.sin(ra) * s * 0.55);
+    // Shoulder midpoint (60% up spine)
+    const shX = hipX + Math.sin(lean) * S * 0.6;
+    const shY = hipY - Math.cos(lean) * S * 0.6;
 
-    // Legs
-    if (relaxed) {
-      this.line(cx, cy, cx - s * 0.35, cy - s * 0.38);
-      this.line(cx, cy, cx + s * 0.05, cy - s * 0.42);
-    } else {
-      this.line(cx, cy, cx - s * 0.28, cy + s * 0.55);
-      this.line(cx, cy, cx + s * 0.28, cy + s * 0.55);
-    }
+    // Head centre
+    const headX = spineX;
+    const headY = spineY - S * 0.24;
+    const headR = S * 0.16;
 
-    // Stress wavy lines above head
-    if (stressed) {
-      ctx.strokeStyle = 'rgba(255,255,255,0.35)';
-      ctx.lineWidth = 1.2;
-      for (let i = 0; i < 3; i++) {
-        const ox = (i - 1) * s * 0.28;
-        ctx.beginPath();
-        ctx.moveTo(bx + ox, by - s * 0.5);
-        ctx.bezierCurveTo(
-          bx + ox + s * 0.1, by - s * 0.65,
-          bx + ox - s * 0.1, by - s * 0.75,
-          bx + ox, by - s * 0.9
-        );
-        ctx.stroke();
+    this.stroke(ctx => {
+      // Spine
+      ctx.beginPath(); ctx.moveTo(hipX, hipY); ctx.lineTo(spineX, spineY); ctx.stroke();
+
+      // Head
+      ctx.beginPath(); ctx.arc(headX, headY, headR, 0, Math.PI * 2); ctx.stroke();
+
+      // Left arm
+      const laAngle = lean - armL;
+      ctx.beginPath();
+      ctx.moveTo(shX, shY);
+      ctx.lineTo(shX + Math.cos(laAngle) * S * 0.58, shY + Math.sin(laAngle) * S * 0.58);
+      ctx.stroke();
+
+      // Right arm
+      const raAngle = lean + armR;
+      ctx.beginPath();
+      ctx.moveTo(shX, shY);
+      ctx.lineTo(shX + Math.cos(raAngle) * S * 0.58, shY + Math.sin(raAngle) * S * 0.58);
+      ctx.stroke();
+
+      // Legs
+      if (relaxed) {
+        // Feet-up: legs extend forward at an angle
+        ctx.beginPath(); ctx.moveTo(hipX, hipY); ctx.lineTo(hipX - S * 0.4, hipY - S * 0.38); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(hipX, hipY); ctx.lineTo(hipX + S * 0.05, hipY - S * 0.44); ctx.stroke();
+      } else {
+        ctx.beginPath(); ctx.moveTo(hipX, hipY); ctx.lineTo(hipX - S * 0.25, hipY + S * 0.55); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(hipX, hipY); ctx.lineTo(hipX + S * 0.25, hipY + S * 0.55); ctx.stroke();
       }
+    });
+
+    // Stress marks (wavy lines above head) — drawn extra-faintly
+    if (!relaxed && lean > 0.08) {
+      this.stroke(ctx => {
+        for (let i = 0; i < 3; i++) {
+          const ox = (i - 1) * headR * 1.5;
+          ctx.beginPath();
+          ctx.moveTo(headX + ox, headY - headR - 4);
+          ctx.bezierCurveTo(
+            headX + ox + 5, headY - headR - 14,
+            headX + ox - 5, headY - headR - 22,
+            headX + ox, headY - headR - 30
+          );
+          ctx.stroke();
+        }
+      }, 'rgba(255,255,255,0.22)', 1.2);
     }
   }
 
-  drawDesk(cx, dy, dw) {
-    const ctx = this.ctx;
-    ctx.strokeStyle = 'rgba(255,255,255,0.4)';
-    ctx.lineWidth = 2;
-    ctx.lineCap = 'round';
-    this.line(cx - dw / 2, dy, cx + dw / 2, dy, 2);
-    this.line(cx - dw / 2 + 12, dy, cx - dw / 2 + 12, dy + 55, 1.5);
-    this.line(cx + dw / 2 - 12, dy, cx + dw / 2 - 12, dy + 55, 1.5);
+  // ── Desk ─────────────────────────────────────────────────────
+  drawDesk(cx, cy, w) {
+    this.stroke(ctx => {
+      // Surface
+      ctx.beginPath(); ctx.moveTo(cx - w / 2, cy); ctx.lineTo(cx + w / 2, cy); ctx.stroke();
+      // Legs
+      ctx.beginPath(); ctx.moveTo(cx - w / 2 + 14, cy); ctx.lineTo(cx - w / 2 + 14, cy + 52); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(cx + w / 2 - 14, cy); ctx.lineTo(cx + w / 2 - 14, cy + 52); ctx.stroke();
+    }, 'rgba(255,255,255,0.38)', 1.8);
   }
 
-  drawTaskIcon(x, y, alpha) {
+  // ── Laptop on desk ────────────────────────────────────────────
+  drawLaptop(cx, cy, alpha) {
     const ctx = this.ctx;
     ctx.save();
     ctx.globalAlpha = alpha;
-    ctx.strokeStyle = 'rgba(255,255,255,0.6)';
-    ctx.lineWidth = 1.3;
-    ctx.lineCap = 'round';
-    ctx.strokeRect(x - 9, y - 11, 18, 22);
+    this.stroke(c => {
+      // Screen (tilted rectangle)
+      c.beginPath();
+      c.moveTo(cx - 22, cy); c.lineTo(cx - 18, cy - 32);
+      c.lineTo(cx + 18, cy - 32); c.lineTo(cx + 22, cy);
+      c.closePath(); c.stroke();
+      // Base
+      c.beginPath(); c.moveTo(cx - 26, cy); c.lineTo(cx + 26, cy); c.stroke();
+    }, 'rgba(255,255,255,0.55)', 1.4);
+    ctx.restore();
+  }
+
+  // ── Result card — labeled automation output pill ─────────────
+  drawResultCard(cx, cy, label, alpha) {
+    const ctx = this.ctx;
+    const pad = 14;
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.font = 'bold 13px Inter, system-ui, sans-serif';
+    ctx.textBaseline = 'middle';
+    ctx.textAlign = 'left';
+    const tw = ctx.measureText(label).width;
+    const checkW = 20;
+    const totalW = checkW + tw + pad * 2 + 6;
+    const h = 36;
+    const x = cx - totalW / 2;
+    const y = cy - h / 2;
+
+    // Pill background — slightly less transparent so it reads clearly
+    ctx.fillStyle = 'rgba(0,0,0,0.82)';
     ctx.beginPath();
-    ctx.moveTo(x - 5, y - 4); ctx.lineTo(x + 5, y - 4);
-    ctx.moveTo(x - 5, y);     ctx.lineTo(x + 5, y);
-    ctx.moveTo(x - 5, y + 4); ctx.lineTo(x + 2, y + 4);
+    ctx.roundRect(x, y, totalW, h, h / 2);
+    ctx.fill();
+
+    // Pill border — more visible
+    ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+    ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    ctx.roundRect(x, y, totalW, h, h / 2);
+    ctx.stroke();
+
+    // Checkmark — bold, clearly visible
+    ctx.strokeStyle = 'rgba(255,255,255,0.95)';
+    ctx.lineWidth = 2.2;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    const ckX = x + pad;
+    const ckY = cy;
+    ctx.beginPath();
+    ctx.moveTo(ckX - 3, ckY + 2);
+    ctx.lineTo(ckX + 1, ckY + 6);
+    ctx.lineTo(ckX + 9, ckY - 4);
+    ctx.stroke();
+
+    // Label text
+    ctx.fillStyle = 'rgba(255,255,255,0.88)';
+    ctx.fillText(label, x + pad + checkW, cy + 0.5);
+
+    ctx.restore();
+  }
+
+  drawTask(x, y, alpha) {
+    const ctx = this.ctx;
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.strokeStyle = 'rgba(255,255,255,0.55)';
+    ctx.lineWidth = 1.2;
+    ctx.lineCap = 'round';
+    // Document outline
+    ctx.beginPath();
+    ctx.moveTo(x - 7, y - 10); ctx.lineTo(x + 4, y - 10);
+    ctx.lineTo(x + 7, y - 7); ctx.lineTo(x + 7, y + 10);
+    ctx.lineTo(x - 7, y + 10); ctx.closePath(); ctx.stroke();
+    // Corner fold
+    ctx.beginPath(); ctx.moveTo(x + 4, y - 10); ctx.lineTo(x + 4, y - 7); ctx.lineTo(x + 7, y - 7); ctx.stroke();
+    // Text lines
+    ctx.beginPath();
+    ctx.moveTo(x - 4, y - 2); ctx.lineTo(x + 4, y - 2);
+    ctx.moveTo(x - 4, y + 2); ctx.lineTo(x + 4, y + 2);
+    ctx.moveTo(x - 4, y + 6); ctx.lineTo(x + 1, y + 6);
     ctx.stroke();
     ctx.restore();
   }
 
-  drawAICircle(cx, cy, r, alpha, tRaw) {
+  // ── AI circle ─────────────────────────────────────────────────
+  drawAI(cx, cy, r, alpha, tRaw) {
     const ctx = this.ctx;
     ctx.save();
     ctx.globalAlpha = alpha;
 
-    // Slow outer arc
-    ctx.strokeStyle = 'rgba(255,255,255,0.2)';
-    ctx.lineWidth = 1;
+    // Rotating outer arc
     ctx.save();
-    ctx.translate(cx, cy);
-    ctx.rotate(tRaw * 0.5);
-    ctx.beginPath();
-    ctx.arc(0, 0, r + 18, 0, Math.PI * 1.5);
-    ctx.stroke();
+    ctx.translate(cx, cy); ctx.rotate(tRaw * 0.55);
+    ctx.strokeStyle = 'rgba(255,255,255,0.18)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(0, 0, r + 20, 0, Math.PI * 1.4); ctx.stroke();
+    ctx.restore();
+
+    // Counter-rotating second arc
+    ctx.save();
+    ctx.translate(cx, cy); ctx.rotate(-tRaw * 0.3);
+    ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(0, 0, r + 30, Math.PI * 0.2, Math.PI * 1.0); ctx.stroke();
     ctx.restore();
 
     // Main ring
-    ctx.strokeStyle = 'rgba(255,255,255,0.75)';
-    ctx.lineWidth = 1.8;
-    this.circle(cx, cy, r);
+    ctx.strokeStyle = 'rgba(255,255,255,0.72)';
+    ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
 
-    // AI text
+    // Text
     ctx.fillStyle = 'rgba(255,255,255,0.9)';
-    ctx.font = `${Math.round(r * 0.5)}px Inter, system-ui, sans-serif`;
+    ctx.font = `${Math.round(r * 0.48)}px Inter, system-ui, sans-serif`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText('AI', cx, cy);
+
     ctx.restore();
   }
 
+  // ── Main render ───────────────────────────────────────────────
   draw() {
     if (!this.isActive) return;
-    const ctx  = this.ctx;
-    const now  = performance.now();
+    const ctx = this.ctx;
+    const now = performance.now();
     const tRaw = now / 1000;
-    const phase = ((now - this.startTime) % this.CYCLE) / this.CYCLE;
+    const phase = ((now - this.startTime) % this.CYCLE) / this.CYCLE; // 0→1
 
     const W = this.W, H = this.H;
     ctx.clearRect(0, 0, W, H);
 
-    // Layout
-    const figX = W * 0.30;
-    const figY = H * 0.60;
+    // ── Scene layout ──────────────────────────────────────────
+    const figHipX = W * 0.30;
+    const figHipY = H * 0.60;
+    const deskCX = figHipX + W * 0.08;
     const deskY = H * 0.60;
-    const deskW = W * 0.48;
-    const aiCX  = W * 0.72;
-    const aiCY  = H * 0.40;
-    const aiR   = Math.min(W, H) * 0.1;
+    const deskW = W * 0.44;
+    const laptopX = figHipX + W * 0.12;
+    const laptopY = deskY;
+    const aiCX = W * 0.74;
+    const aiCY = H * 0.36;
+    const aiR = Math.min(W, H) * 0.095;
 
-    // Figure state
-    let armAngle  = 0.65;
-    let leanAngle = 0;
-    let stressed  = false;
-    let relaxed   = false;
-    let aiAlpha   = 0;
+    // Phase boundaries:
+    // 0.00–0.45 → manual work (frantic)
+    // 0.45–0.58 → AI appears, figure slows
+    // 0.58–1.00 → automated (figure relaxes)
 
-    if (phase < 0.48) {
-      // Working frantically
-      armAngle  = 0.5 + Math.sin(tRaw * 8) * 0.38;
-      leanAngle = 0.14;
-      stressed  = phase > 0.28;
-    } else if (phase < 0.62) {
-      const p = (phase - 0.48) / 0.14;
-      armAngle  = 0.65 - p * 0.3;
-      leanAngle = 0.14 - p * 0.14;
-      aiAlpha   = p;
+    // ── Figure state ──────────────────────────────────────────
+    let lean = 0;
+    let armL = 0.65;
+    let armR = 0.65;
+    let relaxed = false;
+    let stressed = false;
+    let aiAlpha = 0;
+
+    if (phase < 0.45) {
+      // Frantic typing: arms oscillate
+      const swing = Math.sin(tRaw * 9) * 0.4;
+      lean = 0.16;
+      armL = 0.55 + swing;
+      armR = 0.55 - swing;
+      stressed = phase > 0.25;
+    } else if (phase < 0.58) {
+      const p = (phase - 0.45) / 0.13;
+      const e = this.easeInOut(p);
+      lean = 0.16 - e * 0.16;
+      armL = 0.65 - e * 0.35;
+      armR = 0.65 - e * 0.35;
+      aiAlpha = e;
     } else {
-      const p = (phase - 0.62) / 0.38;
-      armAngle  = Math.max(0.08, 0.35 - p * 0.27);
-      leanAngle = -(p * 0.20);
-      relaxed   = p > 0.35;
-      aiAlpha   = 1;
+      const p = (phase - 0.58) / 0.42;
+      const e = this.easeInOut(p);
+      lean = -(e * 0.18);
+      armL = 0.3 - e * 0.22;
+      armR = 0.3 + e * 0.22;
+      relaxed = e > 0.4;
+      aiAlpha = 1;
     }
 
-    // Spawn tasks (working phase only)
-    if (phase < 0.48 && Math.random() < 0.05 && this.tasks.length < 16) {
-      this.tasks.push({
-        x: figX + (Math.random() - 0.5) * deskW * 0.5,
-        y: deskY - 18 - Math.random() * 70,
-        alpha: 0, vx: (Math.random() - 0.5) * 0.3, vy: -Math.random() * 0.2,
-      });
+    // ── Spawn tasks (manual phase only) ──────────────────────
+    if (phase < 0.45 && this.tasks.length < 12 && Math.random() < 0.06) {
+      // Stagger spawn position on and around desk
+      const col = this.tasks.length % 4;
+      const row = Math.floor(this.tasks.length / 4);
+      const spawnX = (figHipX - W * 0.05) + col * 32 + (Math.random() - 0.5) * 8;
+      const spawnY = deskY - 20 - row * 26 + (Math.random() - 0.5) * 6;
+      // Bezier control point (arc up and right toward AI)
+      const cpX = (spawnX + aiCX) / 2 + (Math.random() - 0.5) * 60;
+      const cpY = Math.min(spawnY, aiCY) - H * 0.18 - Math.random() * H * 0.06;
+      this.tasks.push({ spawnX, spawnY, cpX, cpY, alpha: 0, t: 0, flying: false });
     }
 
-    // Move tasks toward AI (automated phase)
-    if (phase >= 0.62 && aiAlpha > 0.4) {
-      this.tasks.forEach(task => {
-        const dx = aiCX - task.x, dy = aiCY - task.y;
-        const d  = Math.hypot(dx, dy) || 1;
-        task.vx += (dx / d) * 1.5;
-        task.vy += (dy / d) * 1.5;
-      });
-      if (Math.random() < 0.018) {
-        this.checks.push({
-          x: aiCX + (Math.random() - 0.5) * 50,
-          y: aiCY,
-          alpha: 1, vy: -1 - Math.random() * 1.4, vx: (Math.random() - 0.5) * 2.5,
-        });
-      }
+    // ── Move tasks toward AI (automated phase) ────────────────
+    if (phase >= 0.58 && aiAlpha > 0.3) {
+      this.tasks.forEach(task => { task.flying = true; });
     }
 
-    // Reset on cycle start
+    // ── Reset ──────────────────────────────────────────────────
     if (phase < 0.02) { this.tasks = []; this.checks = []; }
 
-    // Update tasks
+    // ── Update tasks ─────────────────────────────────────────
     this.tasks.forEach(task => {
-      task.alpha = Math.min(task.alpha + 0.05, 0.8);
-      task.x += task.vx; task.y += task.vy;
-      if (Math.hypot(task.x - aiCX, task.y - aiCY) < aiR + 8) {
-        task.alpha = Math.max(0, task.alpha - 0.15);
+      task.alpha = Math.min(task.alpha + 0.06, 0.85);
+      if (task.flying) {
+        task.t = Math.min(task.t + 0.018, 1);
+        const pos = this.bezier(task.t, task.spawnX, task.spawnY, task.cpX, task.cpY, aiCX, aiCY);
+        task.x = pos.x; task.y = pos.y;
+        if (task.t > 0.85) task.alpha = Math.max(0, (1 - task.t) / 0.15);
+      } else {
+        task.x = task.spawnX; task.y = task.spawnY;
       }
     });
-    this.tasks = this.tasks.filter(t => t.alpha > 0.01 || t.alpha === 0);
+    this.tasks = this.tasks.filter(t => !(t.flying && t.t >= 1));
 
-    this.checks.forEach(c => {
-      c.x += c.vx; c.y += c.vy; c.vy *= 0.94; c.alpha *= 0.97;
-    });
-    this.checks = this.checks.filter(c => c.alpha > 0.02);
+    // ── Draw scene ────────────────────────────────────────────
+    this.drawDesk(deskCX, deskY, deskW);
+    this.drawLaptop(laptopX, laptopY, 0.6);
 
-    // ─ Draw ─
-    this.drawDesk(figX + W * 0.08, deskY, deskW);
-    this.tasks.forEach(t => this.drawTaskIcon(t.x, t.y, t.alpha));
-    if (aiAlpha > 0.01) this.drawAICircle(aiCX, aiCY, aiR, aiAlpha, tRaw);
-    this.checks.forEach(c => {
-      ctx.save();
-      ctx.globalAlpha = c.alpha;
-      ctx.strokeStyle = 'rgba(255,255,255,0.9)';
-      ctx.lineWidth = 1.8;
-      ctx.lineCap = 'round';
-      ctx.beginPath();
-      ctx.moveTo(c.x - 7, c.y); ctx.lineTo(c.x - 2, c.y + 6); ctx.lineTo(c.x + 8, c.y - 6);
-      ctx.stroke();
-      ctx.restore();
-    });
-    this.drawFigure(figX, figY, { armAngle, leanAngle, stressed, relaxed });
+    // Tasks (manual phase documents)
+    this.tasks.forEach(t => this.drawTask(t.x, t.y, t.alpha));
 
-    // Tiny phase label
-    const labels = [[0, 0.48, 'Manual work'], [0.48, 0.62, 'AI takes over'], [0.62, 1, 'Automated ✓']];
-    const label  = labels.find(([s, e]) => phase >= s && phase < e);
-    if (label) {
-      ctx.font = '11px Inter, system-ui, sans-serif';
-      ctx.fillStyle = 'rgba(255,255,255,0.22)';
+    // AI circle
+    if (aiAlpha > 0.01) this.drawAI(aiCX, aiCY, aiR, aiAlpha, tRaw);
+
+    // ── Automation result cards (automated phase) ──────────────
+    // Three labeled outputs arc-in from the AI circle to fixed spots
+    const resultSlots = [
+      { label: 'Invoice Sent', ox: W * 0.10, oy: H * 0.15 },
+      { label: 'Report Ready', ox: W * 0.06, oy: -H * 0.03 },
+      { label: 'Task Done',    ox: W * 0.09, oy: -H * 0.20 },
+    ];
+    if (phase >= 0.58) {
+      const automPhase = (phase - 0.58) / 0.42;
+      resultSlots.forEach((slot, i) => {
+        const delay = i * 0.18;
+        const p = Math.max(0, Math.min(1, (automPhase - delay) / 0.28));
+        const e = p < 0.5 ? 2 * p * p : -1 + (4 - 2 * p) * p;
+        if (e <= 0) return;
+        const tx = aiCX + slot.ox;
+        const ty = aiCY + slot.oy;
+        const cpx = aiCX + slot.ox * 0.4 - 20;
+        const cpy = aiCY + slot.oy * 0.4 - 40;
+        const u = 1 - e;
+        const rx = u*u*aiCX + 2*u*e*cpx + e*e*tx;
+        const ry = u*u*aiCY + 2*u*e*cpy + e*e*ty;
+        const alpha = Math.min(1, e * 2.5);
+        this.drawResultCard(rx, ry, slot.label, alpha);
+      });
+    }
+
+    // Stick figure (drawn last, always on top)
+    this.drawFigure({ hipX: figHipX, hipY: figHipY, lean, armL, armR, relaxed });
+
+    // Phase label — very faint bottom
+    const labels = [[0, 0.45, 'Manual work'], [0.45, 0.58, 'AI takes over'], [0.58, 1, 'Automated ✓']];
+    const lbl = labels.find(([s, e]) => phase >= s && phase < e);
+    if (lbl) {
+      ctx.font = '10px Inter, system-ui, sans-serif';
+      ctx.fillStyle = 'rgba(255,255,255,0.18)';
       ctx.textAlign = 'left';
       ctx.textBaseline = 'alphabetic';
-      ctx.fillText(label[2], 20, H - 20);
+      ctx.fillText(lbl[2], 20, H - 20);
     }
+
 
     this.animFrame = requestAnimationFrame(() => this.draw());
   }
 
   start() {
     if (this.isActive) return;
-    this.isActive  = true;
+    this.isActive = true;
     this.startTime = performance.now();
     this.draw();
   }
@@ -749,7 +887,7 @@ class StickFigureAnimation {
 
 const stickAnim = new StickFigureAnimation('stickCanvas');
 const stickObserver = new IntersectionObserver(
-  (entries) => entries.forEach(e => e.isIntersecting ? stickAnim.start() : stickAnim.stop()),
+  entries => entries.forEach(e => e.isIntersecting ? stickAnim.start() : stickAnim.stop()),
   { threshold: 0.1 }
 );
 const stickHero = document.getElementById('hero');
