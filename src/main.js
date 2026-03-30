@@ -516,20 +516,48 @@ class StickFigureAnimation {
   // ── Stick figure ─────────────────────────────────────────────
   // hip = {x, y}, lean = radians forward, armL/R = angle from body-axis
   drawFigure({ hipX, hipY, lean = 0, armL = 0.7, armR = 0.7, relaxed = false }) {
-    const S = Math.min(this.W, this.H) * 0.115; // scale unit
+    const S = Math.min(this.W, this.H) * 0.115;
 
-    // Spine direction
-    const spineX = hipX + Math.sin(lean) * S;
-    const spineY = hipY - Math.cos(lean) * S;
+    // ── Chair (drawn first, behind figure) ───────────────────────
+    const seatY  = hipY + S * 0.07;
+    const seatL  = hipX - S * 0.26;
+    const seatR  = hipX + S * 0.26;
+    const legBot = seatY + S * 0.44;
+    this.stroke(ctx => {
+      // Seat surface
+      ctx.beginPath(); ctx.moveTo(seatL, seatY); ctx.lineTo(seatR, seatY); ctx.stroke();
+      // Back legs
+      ctx.beginPath(); ctx.moveTo(seatL, seatY); ctx.lineTo(seatL, legBot); ctx.stroke();
+      // Front leg
+      ctx.beginPath(); ctx.moveTo(seatR, seatY); ctx.lineTo(seatR, legBot); ctx.stroke();
+      // Chair back (vertical)
+      ctx.beginPath(); ctx.moveTo(seatL, seatY); ctx.lineTo(seatL, seatY - S * 0.52); ctx.stroke();
+      // Chair back rail (horizontal)
+      ctx.beginPath(); ctx.moveTo(seatL, seatY - S * 0.44); ctx.lineTo(seatL + S * 0.18, seatY - S * 0.44); ctx.stroke();
+    }, 'rgba(255,255,255,0.18)', 1.3);
 
-    // Shoulder midpoint (60% up spine)
-    const shX = hipX + Math.sin(lean) * S * 0.6;
-    const shY = hipY - Math.cos(lean) * S * 0.6;
+    // ── Figure anatomy ───────────────────────────────────────────
+    const spineLen = S * 0.7;
+    const spineX   = hipX + Math.sin(lean) * spineLen;
+    const spineY   = hipY - Math.cos(lean) * spineLen;
+    const shX      = hipX + Math.sin(lean) * spineLen * 0.58;
+    const shY      = hipY - Math.cos(lean) * spineLen * 0.58;
+    const headX    = spineX;
+    const headY    = spineY - S * 0.22;
+    const headR    = S * 0.155;
 
-    // Head centre
-    const headX = spineX;
-    const headY = spineY - S * 0.24;
-    const headR = S * 0.16;
+    // Seated legs — thigh forward, lower leg hanging
+    const thighLen = S * 0.50;
+    const kneeRX   = hipX + thighLen * 0.92;
+    const kneeRY   = hipY + thighLen * 0.22;
+    // Relaxed: feet lifted; working: feet flat on floor
+    const footRX   = relaxed ? kneeRX + S * 0.30 : kneeRX + S * 0.03;
+    const footRY   = relaxed ? kneeRY - S * 0.40 : kneeRY + thighLen * 0.62;
+    // Left leg slightly behind
+    const kneeLX   = hipX + thighLen * 0.74;
+    const kneeLY   = hipY + thighLen * 0.30;
+    const footLX   = relaxed ? kneeLX + S * 0.22 : kneeLX - S * 0.02;
+    const footLY   = relaxed ? kneeLY - S * 0.30 : kneeLY + thighLen * 0.55;
 
     this.stroke(ctx => {
       // Spine
@@ -542,43 +570,26 @@ class StickFigureAnimation {
       const laAngle = lean - armL;
       ctx.beginPath();
       ctx.moveTo(shX, shY);
-      ctx.lineTo(shX + Math.cos(laAngle) * S * 0.58, shY + Math.sin(laAngle) * S * 0.58);
+      ctx.lineTo(shX + Math.cos(laAngle) * S * 0.54, shY + Math.sin(laAngle) * S * 0.54);
       ctx.stroke();
 
       // Right arm
       const raAngle = lean + armR;
       ctx.beginPath();
       ctx.moveTo(shX, shY);
-      ctx.lineTo(shX + Math.cos(raAngle) * S * 0.58, shY + Math.sin(raAngle) * S * 0.58);
+      ctx.lineTo(shX + Math.cos(raAngle) * S * 0.54, shY + Math.sin(raAngle) * S * 0.54);
       ctx.stroke();
 
-      // Legs
-      if (relaxed) {
-        // Feet-up: legs extend forward at an angle
-        ctx.beginPath(); ctx.moveTo(hipX, hipY); ctx.lineTo(hipX - S * 0.4, hipY - S * 0.38); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(hipX, hipY); ctx.lineTo(hipX + S * 0.05, hipY - S * 0.44); ctx.stroke();
-      } else {
-        ctx.beginPath(); ctx.moveTo(hipX, hipY); ctx.lineTo(hipX - S * 0.25, hipY + S * 0.55); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(hipX, hipY); ctx.lineTo(hipX + S * 0.25, hipY + S * 0.55); ctx.stroke();
-      }
-    });
+      // Right thigh (hip → knee)
+      ctx.beginPath(); ctx.moveTo(hipX, hipY); ctx.lineTo(kneeRX, kneeRY); ctx.stroke();
+      // Right lower leg (knee → foot)
+      ctx.beginPath(); ctx.moveTo(kneeRX, kneeRY); ctx.lineTo(footRX, footRY); ctx.stroke();
 
-    // Stress marks (wavy lines above head) — drawn extra-faintly
-    if (!relaxed && lean > 0.08) {
-      this.stroke(ctx => {
-        for (let i = 0; i < 3; i++) {
-          const ox = (i - 1) * headR * 1.5;
-          ctx.beginPath();
-          ctx.moveTo(headX + ox, headY - headR - 4);
-          ctx.bezierCurveTo(
-            headX + ox + 5, headY - headR - 14,
-            headX + ox - 5, headY - headR - 22,
-            headX + ox, headY - headR - 30
-          );
-          ctx.stroke();
-        }
-      }, 'rgba(255,255,255,0.22)', 1.2);
-    }
+      // Left thigh (slightly behind)
+      ctx.beginPath(); ctx.moveTo(hipX, hipY); ctx.lineTo(kneeLX, kneeLY); ctx.stroke();
+      // Left lower leg
+      ctx.beginPath(); ctx.moveTo(kneeLX, kneeLY); ctx.lineTo(footLX, footLY); ctx.stroke();
+    });
   }
 
   // ── Desk ─────────────────────────────────────────────────────
@@ -747,34 +758,38 @@ class StickFigureAnimation {
     // 0.58–1.00 → automated (figure relaxes)
 
     // ── Figure state ──────────────────────────────────────────
-    let lean = 0;
-    let armL = 0.65;
-    let armR = 0.65;
+    // arm angles: laAngle = lean - armL, raAngle = lean + armR
+    // Toward keyboard: laAngle ≈ 0.28, raAngle ≈ 0.58
+    // Arms overhead:   laAngle ≈ -1.9,  raAngle ≈ -1.0
+    let lean    = 0;
+    let armL    = 0;
+    let armR    = 0;
     let relaxed = false;
-    let stressed = false;
     let aiAlpha = 0;
 
     if (phase < 0.45) {
-      // Frantic typing: arms oscillate
-      const swing = Math.sin(tRaw * 9) * 0.4;
-      lean = 0.16;
-      armL = 0.55 + swing;
-      armR = 0.55 - swing;
-      stressed = phase > 0.25;
+      // Calm, deliberate typing — slow alternating arm toward laptop
+      const swing = Math.sin(tRaw * 3.2) * 0.12;
+      lean = 0.08;                          // subtle forward lean only
+      armL = lean - (0.28 + swing);         // left hand toward keyboard, light oscillation
+      armR = (0.58 - swing) - lean;         // right hand alternates
     } else if (phase < 0.58) {
+      // AI appears — figure sits back gently, arms slow to rest
       const p = (phase - 0.45) / 0.13;
       const e = this.easeInOut(p);
-      lean = 0.16 - e * 0.16;
-      armL = 0.65 - e * 0.35;
-      armR = 0.65 - e * 0.35;
+      lean = 0.08 - e * 0.08;
+      armL = (lean - 0.28) * (1 - e);      // arms ease toward neutral
+      armR = (0.58 - lean)  * (1 - e) + 0.45 * e;
       aiAlpha = e;
     } else {
+      // Relaxed — leaned back, arms raised overhead (hands-behind-head stretch)
       const p = (phase - 0.58) / 0.42;
       const e = this.easeInOut(p);
-      lean = -(e * 0.18);
-      armL = 0.3 - e * 0.22;
-      armR = 0.3 + e * 0.22;
-      relaxed = e > 0.4;
+      lean = -(e * 0.14);                   // lean back into chair
+      // laAngle = -1.9 (overhead-left), raAngle = -1.0 (overhead-right)
+      armL = lean - (-1.9);                 // ≈ 1.76
+      armR = (-1.0) - lean;                 // ≈ -0.86 (still valid, points up-right)
+      relaxed = e > 0.38;
       aiAlpha = 1;
     }
 
