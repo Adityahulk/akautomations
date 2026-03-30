@@ -40,8 +40,9 @@ document.querySelector('#app').innerHTML = `
         <span class="text-reveal hero-title-setup"><span class="text-reveal-inner">Automate your business with</span></span><br/>
         <span class="text-reveal hero-title-payoff"><span class="text-reveal-inner" style="animation-delay:0.35s">easy to use solutions</span></span>
       </h1>
+      <p class="hero-sub">AI-powered systems built for how businesses actually work.</p>
       <div class="hero-actions">
-        <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()" data-testid="hero-cta">Book Free Consultation</a>
+        <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()" data-testid="hero-cta">Book a Free Call</a>
         <a href="#solutions" class="btn btn-secondary" data-testid="hero-solutions">Explore Solutions</a>
       </div>
     </div>
@@ -65,8 +66,8 @@ document.querySelector('#app').innerHTML = `
           <p>Software Products</p>
         </div>
         <div class="stat-item">
-          <h3><span>AI</span>-First</h3>
-          <p>Engineering</p>
+          <h3><span class="stat-number" data-target="98">0</span>%</h3>
+          <p>Client Satisfaction</p>
         </div>
         <div class="stat-item">
           <h3><span class="stat-number" data-target="100">0</span>%</h3>
@@ -113,7 +114,8 @@ document.querySelector('#app').innerHTML = `
   <section class="section solutions-section" id="solutions" data-testid="solutions-section">
     <div class="container">
       <div class="section-header">
-        <h2>Essential Systems for <span class="text-gradient">Modern Businesses</span></h2>
+        <h2>What We <span class="text-gradient">Build</span></h2>
+        <p>Ready-to-deploy systems tailored to your operations.</p>
       </div>
       <div class="solutions-grid">
         <div class="solution-card reveal">
@@ -149,6 +151,7 @@ document.querySelector('#app').innerHTML = `
     <div class="container">
       <div class="section-header">
         <h2>Built Different. <span class="text-gradient">Built Better.</span></h2>
+        <p>Five reasons businesses choose us over off-the-shelf software.</p>
       </div>
       <div class="why-grid why-grid-5">
         <div class="why-card reveal">
@@ -184,10 +187,6 @@ document.querySelector('#app').innerHTML = `
   <section class="section testimonials-section" data-testid="testimonials-section">
     <div class="container">
       <div class="section-header">
-        <div class="badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
-          Testimonials
-        </div>
         <h2>Trusted by <span class="text-gradient">500+ Businesses</span></h2>
         <p>From startups to enterprises.</p>
       </div>
@@ -244,8 +243,8 @@ document.querySelector('#app').innerHTML = `
   <section class="cta-section" id="contact" data-testid="cta-section">
     <div class="cta-glow"></div>
     <div class="container">
-      <h2>Ready to <span class="text-gradient">Automate</span>?</h2>
-      <p>Book a free consultation. Discover how we eliminate bottlenecks and unlock growth.</p>
+      <h2>Start automating <span class="text-gradient">today.</span></h2>
+      <p>Book a free consultation. We'll map your bottlenecks and show you exactly what's possible.</p>
       <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()" data-testid="cta-book">Book Free Meeting</a>
     </div>
   </section>
@@ -254,11 +253,7 @@ document.querySelector('#app').innerHTML = `
   <section class="section blog-section" id="blog" data-testid="blog-section">
     <div class="container">
       <div class="section-header">
-        <div class="badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></svg>
-          Insights
-        </div>
-        <h2>The Automation <span class="text-gradient">Journal</span></h2>
+        <h2>From the <span class="text-gradient">Journal</span></h2>
         <p>Perspectives on modern business automation.</p>
       </div>
       <div class="blog-grid">
@@ -833,7 +828,7 @@ class StickFigureAnimation {
     const resultSlots = [
       { label: 'Invoice Sent', ox: W * 0.10, oy: H * 0.15 },
       { label: 'Report Ready', ox: W * 0.06, oy: -H * 0.03 },
-      { label: 'Task Done',    ox: W * 0.09, oy: -H * 0.20 },
+      { label: 'Task Done', ox: W * 0.09, oy: -H * 0.20 },
     ];
     if (phase >= 0.58) {
       const automPhase = (phase - 0.58) / 0.42;
@@ -847,8 +842,8 @@ class StickFigureAnimation {
         const cpx = aiCX + slot.ox * 0.4 - 20;
         const cpy = aiCY + slot.oy * 0.4 - 40;
         const u = 1 - e;
-        const rx = u*u*aiCX + 2*u*e*cpx + e*e*tx;
-        const ry = u*u*aiCY + 2*u*e*cpy + e*e*ty;
+        const rx = u * u * aiCX + 2 * u * e * cpx + e * e * tx;
+        const ry = u * u * aiCY + 2 * u * e * cpy + e * e * ty;
         const alpha = Math.min(1, e * 2.5);
         this.drawResultCard(rx, ry, slot.label, alpha);
       });

@@ -94,11 +94,12 @@ img {
   padding: 0 24px;
 }
 
-/* Gradient Text — white for minimal mode */
+/* Gradient Text — emphasis highlight, brighter not dimmer */
 .text-gradient {
   color: var(--text-primary);
   -webkit-text-fill-color: var(--text-primary);
-  opacity: 0.55;
+  opacity: 0.78;
+  font-style: italic;
 }
 
 /* Badge — minimal white outline */
@@ -410,6 +411,16 @@ img {
   }
 }
 
+/* Hero sub-copy — short proposition anchor below h1 */
+.hero-sub {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.38);
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.65s;
+}
 
 .hero-content p {
   font-size: 0.95rem;
@@ -620,7 +631,7 @@ img {
 
 .section-header p {
   font-size: 1rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   max-width: 500px;
   margin: 0 auto;
 }
@@ -818,7 +829,7 @@ img {
 
 .solution-card h3 {
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 8px;
   position: relative;
   z-index: 1;
@@ -910,7 +921,8 @@ img {
   margin-bottom: 10px;
   position: relative;
   z-index: 1;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: -0.01em;
 }
 
 .why-card p {
@@ -988,10 +1000,12 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-weight: 600;
-  font-size: 0.8rem;
-  background: var(--accent);
+  color: rgba(255,255,255,0.9);
+  font-weight: 500;
+  font-size: 0.78rem;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  letter-spacing: 0.02em;
 }
 
 .testimonial-name {
