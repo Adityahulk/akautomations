@@ -740,6 +740,7 @@ img {
   transition: all 0.4s var(--ease);
   position: relative;
   overflow: hidden;
+  cursor: default;
 }
 
 .solution-card::before {
@@ -747,9 +748,9 @@ img {
 }
 
 .solution-card:hover {
-  border-color: rgba(255,255,255,0.14);
-  background: var(--bg-tertiary);
-  transform: translateY(-4px);
+  border-color: var(--border);
+  background: var(--bg-card);
+  transform: none;
   box-shadow: none;
 }
 
@@ -774,8 +775,8 @@ img {
 }
 
 .solution-card:hover .shine {
-  opacity: 1;
-  animation: shineMove 0.8s ease forwards;
+  opacity: 0;
+  animation: none;
 }
 
 @keyframes shineMove {
@@ -802,7 +803,7 @@ img {
 }
 
 .solution-card:hover::after {
-  opacity: 1;
+  opacity: 0;
 }
 
 .solution-icon {
@@ -822,9 +823,9 @@ img {
 }
 
 .solution-card:hover .solution-icon {
-  background: var(--accent);
-  color: white;
-  transform: scale(1.05);
+  background: var(--accent-subtle);
+  color: var(--accent-light);
+  transform: none;
 }
 
 .solution-card h3 {

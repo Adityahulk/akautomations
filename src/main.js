@@ -15,7 +15,7 @@ document.querySelector('#app').innerHTML = `
         <a href="#about">About</a>
         <a href="#solutions">Solutions</a>
         <a href="#why">Why Us</a>
-        <a href="/blog.html">Blog</a>
+        <a href="/blog">Blog</a>
         <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()" data-testid="nav-cta">Get Started</a>
       </div>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" data-testid="nav-toggle">
@@ -88,26 +88,26 @@ document.querySelector('#app').innerHTML = `
         <div class="solution-card reveal">
           <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/></svg></div>
-          <h3>Sales & Lead Optimization Platform</h3>
+          <h3>Sales & Lead Optimization</h3>
           <p>Organize pipelines and improve lead conversions.</p>
         </div>
         <div class="solution-card reveal reveal-delay-1">
           <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="10" x="3" y="11" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/></svg></div>
-          <h3>Financial Management Platform</h3>
-          <p>Manage finances with better visibility and control.</p>
+          <h3>Workflow Automation</h3>
+          <p>Automate approvals, repetitive tasks, and everyday business flows.</p>
         </div>
         <div class="solution-card reveal reveal-delay-2">
           <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
-          <h3>Analytics & Insights Platform</h3>
+          <h3>Analytics & Insights</h3>
           <p>Turn business data into clear reports and insights.</p>
         </div>
         <div class="solution-card reveal reveal-delay-3">
           <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div>
-          <h3>Inventory Management Platform</h3>
-          <p>Track stock and operations across locations.</p>
+          <h3>Operations Management Systems</h3>
+          <p>Track operations, coordination, and business activity across teams.</p>
         </div>
       </div>
     </div>
@@ -307,7 +307,7 @@ document.querySelector('#app').innerHTML = `
   ];
   const img = illustrations[i % illustrations.length];
   return `
-          <a href="/post.html?id=${post.id}" class="blog-card reveal ${i > 0 ? 'reveal-delay-' + i : ''}" data-testid="blog-${post.id}">
+          <a href="/post?id=${post.id}" class="blog-card reveal ${i > 0 ? 'reveal-delay-' + i : ''}" data-testid="blog-${post.id}">
             <div class="blog-card-img">${img}</div>
             <div class="blog-card-body">
               <div class="blog-card-date">${post.date}</div>
@@ -319,7 +319,7 @@ document.querySelector('#app').innerHTML = `
 }).join('')}
       </div>
       <div class="blog-view-all">
-        <a href="/blog.html" class="btn btn-secondary" data-testid="view-all">View All Articles</a>
+        <a href="/blog" class="btn btn-secondary" data-testid="view-all">View All Articles</a>
       </div>
     </div>
   </section>
@@ -338,17 +338,17 @@ document.querySelector('#app').innerHTML = `
         <div class="footer-col">
           <h4>Solutions</h4>
           <ul>
-            <li><span class="footer-static">Sales & Leads</span></li>
-            <li><span class="footer-static">Financial Management</span></li>
-            <li><span class="footer-static">Intelligent Analytics</span></li>
-            <li><span class="footer-static">Inventory</span></li>
+            <li><span class="footer-static">Sales & Lead Optimization</span></li>
+            <li><span class="footer-static">Workflow Automation</span></li>
+            <li><span class="footer-static">Analytics & Insights</span></li>
+            <li><span class="footer-static">Operations Management Systems</span></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
-            <li><a href="/blog.html">Blog</a></li>
-            <li><a href="/privacy.html">Privacy</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/privacy">Privacy</a></li>
           </ul>
         </div>
         <div class="footer-col">

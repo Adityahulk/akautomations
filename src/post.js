@@ -14,7 +14,7 @@ document.querySelector('#app').innerHTML = `
         <a href="/#about">About</a>
         <a href="/#solutions">Solutions</a>
         <a href="/#why">Why Us</a>
-        <a href="/blog.html">Blog</a>
+        <a href="/blog">Blog</a>
         <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()">Get Started</a>
       </div>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
@@ -24,7 +24,7 @@ document.querySelector('#app').innerHTML = `
   ${post ? `
     <section class="post-hero">
       <div class="container">
-        <a href="/blog.html" class="post-back">← Back to Journal</a>
+        <a href="/blog" class="post-back">← Back to Journal</a>
         <h1>${post.title}</h1>
         <div class="post-meta"><span>${post.date}</span><span class="tag">${post.tag}</span></div>
       </div>
@@ -35,7 +35,7 @@ document.querySelector('#app').innerHTML = `
       <div class="container">
         <h1>Post Not Found</h1>
         <p>The article doesn't exist.</p>
-        <a href="/blog.html" class="btn btn-primary" style="margin-top: 24px;">Back to Blog</a>
+        <a href="/blog" class="btn btn-primary" style="margin-top: 24px;">Back to Blog</a>
       </div>
     </section>
   `}
@@ -55,8 +55,8 @@ document.querySelector('#app').innerHTML = `
           <div class="footer-brand"><div class="logo-icon"><img src="/kalman-mark.svg" alt="Kalman Labs logo" /></div>Kalman Labs</div>
           <p>Automating the boring stuff.</p>
         </div>
-        <div class="footer-col"><h4>Solutions</h4><ul><li><span class="footer-static">Sales & Leads</span></li><li><span class="footer-static">Financial Management</span></li><li><span class="footer-static">Intelligent Analytics</span></li><li><span class="footer-static">Inventory</span></li></ul></div>
-        <div class="footer-col"><h4>Company</h4><ul><li><a href="/blog.html">Blog</a></li><li><a href="/privacy.html">Privacy</a></li></ul></div>
+        <div class="footer-col"><h4>Solutions</h4><ul><li><span class="footer-static">Sales & Lead Optimization</span></li><li><span class="footer-static">Workflow Automation</span></li><li><span class="footer-static">Analytics & Insights</span></li><li><span class="footer-static">Operations Management Systems</span></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="/blog">Blog</a></li><li><a href="/privacy">Privacy</a></li></ul></div>
         <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:+918000012306">+91 80000 12306</a></li><li><a href="mailto:contact@kalman-labs.com">contact@kalman-labs.com</a></li></ul></div>
       </div>
       <div class="footer-bottom"><span>© 2026 Kalman Labs</span><span class="powered-by">Powered by <strong>Tephily</strong></span></div>
