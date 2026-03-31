@@ -85,23 +85,23 @@ document.querySelector('#app').innerHTML = `
         <p>Ready-to-deploy systems tailored to your operations.</p>
       </div>
       <div class="solutions-grid">
-        <div class="solution-card reveal">
+         <div class="solution-card reveal">
+          <div class="shine"></div>
+          <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
+          <h3>Analytics & Insights</h3>
+          <p>Turn business data into clear reports and insights.</p>
+        </div>
+        <div class="solution-card reveal reveal-delay-1">
           <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/></svg></div>
           <h3>Sales & Lead Optimization</h3>
           <p>Organize pipelines and improve lead conversions.</p>
         </div>
-        <div class="solution-card reveal reveal-delay-1">
+        <div class="solution-card reveal reveal-delay-2">
           <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="10" x="3" y="11" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/></svg></div>
           <h3>Workflow Automation</h3>
           <p>Automate approvals, repetitive tasks, and everyday business flows.</p>
-        </div>
-        <div class="solution-card reveal reveal-delay-2">
-          <div class="shine"></div>
-          <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
-          <h3>Analytics & Insights</h3>
-          <p>Turn business data into clear reports and insights.</p>
         </div>
         <div class="solution-card reveal reveal-delay-3">
           <div class="shine"></div>
