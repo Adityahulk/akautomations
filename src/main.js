@@ -87,27 +87,27 @@ document.querySelector('#app').innerHTML = `
       <div class="solutions-grid">
         <div class="solution-card reveal">
           <div class="shine"></div>
-          <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div>
-          <h3>Inventory Management Platform</h3>
-          <p>Track stock and operations across locations.</p>
-        </div>
-        <div class="solution-card reveal reveal-delay-1">
-          <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/></svg></div>
           <h3>Sales & Lead Optimization Platform</h3>
           <p>Organize pipelines and improve lead conversions.</p>
         </div>
-        <div class="solution-card reveal reveal-delay-2">
+        <div class="solution-card reveal reveal-delay-1">
           <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="10" x="3" y="11" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/></svg></div>
           <h3>Financial Management Platform</h3>
           <p>Manage finances with better visibility and control.</p>
         </div>
-        <div class="solution-card reveal reveal-delay-3">
+        <div class="solution-card reveal reveal-delay-2">
           <div class="shine"></div>
           <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
-          <h3>Reporting Optimization Systems</h3>
+          <h3>Analytics & Insights Platform</h3>
           <p>Turn business data into clear reports and insights.</p>
+        </div>
+        <div class="solution-card reveal reveal-delay-3">
+          <div class="shine"></div>
+          <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div>
+          <h3>Inventory Management Platform</h3>
+          <p>Track stock and operations across locations.</p>
         </div>
       </div>
     </div>
@@ -338,28 +338,24 @@ document.querySelector('#app').innerHTML = `
         <div class="footer-col">
           <h4>Solutions</h4>
           <ul>
-            <li><a href="#solutions">Inventory</a></li>
-            <li><a href="#solutions">Sales & Leads</a></li>
-            <li><a href="#solutions">Financial Management</a></li>
-            <li><a href="#solutions">Reporting</a></li>
+            <li><span class="footer-static">Sales & Leads</span></li>
+            <li><span class="footer-static">Financial Management</span></li>
+            <li><span class="footer-static">Intelligent Analytics</span></li>
+            <li><span class="footer-static">Inventory</span></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
-            <li><a href="#about">About</a></li>
             <li><a href="/blog.html">Blog</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#">Careers</a></li>
+            <li><a href="/privacy.html">Privacy</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Resources</h4>
+          <h4>Contact</h4>
           <ul>
-            <li><a href="/blog.html">Journal</a></li>
-            <li><a href="#">Case Studies</a></li>
-            <li><a href="#">Docs</a></li>
-            <li><a href="#">Privacy</a></li>
+            <li><a href="tel:+918000012306">+91 80000 12306</a></li>
+            <li><a href="mailto:contact@kalman-labs.com">contact@kalman-labs.com</a></li>
           </ul>
         </div>
       </div>
@@ -383,6 +379,7 @@ document.querySelector('#app').innerHTML = `
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         +91 80000 12306
       </a>
+      <a href="mailto:contact@kalman-labs.com" class="modal-email-link">contact@kalman-labs.com</a>
     </div>
   </div>
 `;
@@ -951,4 +948,3 @@ const stickObserver = new IntersectionObserver(
 );
 const stickHero = document.getElementById('hero');
 if (stickHero) stickObserver.observe(stickHero);
-

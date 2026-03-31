@@ -65,9 +65,9 @@ document.querySelector('#app').innerHTML = `
           <div class="footer-brand"><div class="logo-icon"><img src="/kalman-mark.svg" alt="Kalman Labs logo" /></div>Kalman Labs</div>
           <p>Automating the boring stuff so you can focus on growth.</p>
         </div>
-        <div class="footer-col"><h4>Solutions</h4><ul><li><a href="/#solutions">Inventory</a></li><li><a href="/#solutions">Sales & Leads</a></li><li><a href="/#solutions">Financial Management</a></li><li><a href="/#solutions">Reporting</a></li></ul></div>
-        <div class="footer-col"><h4>Company</h4><ul><li><a href="/#about">About</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/#contact">Contact</a></li><li><a href="#">Careers</a></li></ul></div>
-        <div class="footer-col"><h4>Resources</h4><ul><li><a href="/blog.html">Journal</a></li><li><a href="#">Case Studies</a></li><li><a href="#">Docs</a></li><li><a href="#">Privacy</a></li></ul></div>
+        <div class="footer-col"><h4>Solutions</h4><ul><li><span class="footer-static">Sales & Leads</span></li><li><span class="footer-static">Financial Management</span></li><li><span class="footer-static">Intelligent Analytics</span></li><li><span class="footer-static">Inventory</span></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="/blog.html">Blog</a></li><li><a href="/privacy.html">Privacy</a></li></ul></div>
+        <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:+918000012306">+91 80000 12306</a></li><li><a href="mailto:contact@kalman-labs.com">contact@kalman-labs.com</a></li></ul></div>
       </div>
       <div class="footer-bottom"><span>© 2026 Kalman Labs</span><span class="powered-by">Powered by <strong>Tephily</strong></span></div>
     </div>
@@ -80,6 +80,7 @@ document.querySelector('#app').innerHTML = `
       <h3>Let's Talk</h3>
       <p>Call us to discuss automation for your business.</p>
       <a href="tel:+918000012306" class="modal-phone-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91 80000 12306</a>
+      <a href="mailto:contact@kalman-labs.com" class="modal-email-link">contact@kalman-labs.com</a>
     </div>
   </div>
 `;

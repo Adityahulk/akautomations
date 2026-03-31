@@ -7,7 +7,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         blog: resolve(__dirname, 'blog.html'),
-        post: resolve(__dirname, 'post.html')
+        post: resolve(__dirname, 'post.html'),
+        privacy: resolve(__dirname, 'privacy.html')
       }
     }
   }
