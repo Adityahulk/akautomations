@@ -13,7 +13,7 @@ document.querySelector('#app').innerHTML = `
       </a>
       <div class="nav-links" id="navLinks">
         <a href="#about">About</a>
-        <a href="#solutions">Solutions</a>
+        <a href="#projects">Projects</a>
         <a href="#why">Why Us</a>
         <a href="/blog">Blog</a>
         <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()" data-testid="nav-cta">Get Started</a>
@@ -43,7 +43,7 @@ document.querySelector('#app').innerHTML = `
       <p class="hero-sub">AI-powered systems built for how businesses actually work.</p>
       <div class="hero-actions">
         <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()" data-testid="hero-cta">Book a Free Call</a>
-        <a href="#solutions" class="btn btn-secondary" data-testid="hero-solutions">Explore Solutions</a>
+        <a href="#projects" class="btn btn-secondary" data-testid="hero-solutions">View Projects</a>
       </div>
     </div>
 
@@ -58,56 +58,130 @@ document.querySelector('#app').innerHTML = `
     <div class="container">
       <div class="stats-grid stagger-reveal">
         <div class="stat-item">
-          <h3><span class="stat-number" data-target="500">0</span>+</h3>
-          <p>Businesses Automated</p>
+          <h3><span class="stat-number" data-target="45">0</span>K+</h3>
+          <p>Minutes AI-Processed</p>
         </div>
         <div class="stat-item">
-          <h3><span class="stat-number" data-target="4">0</span>+</h3>
-          <p>Software Products</p>
+          <h3><span class="stat-number" data-target="8">0</span>+</h3>
+          <p>AI Systems Shipped</p>
         </div>
         <div class="stat-item">
-          <h3><span class="stat-number" data-target="98">0</span>%</h3>
-          <p>Client Satisfaction</p>
+          <h3><span class="stat-number" data-target="6">0</span>+</h3>
+          <p>Enterprise Clients</p>
         </div>
         <div class="stat-item">
-          <h3><span class="stat-number" data-target="100">0</span>%</h3>
-          <p>Enterprise-Grade</p>
+          <h3><span class="stat-number" data-target="6">0</span></h3>
+          <p>Published Research Papers</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SOLUTIONS -->
-  <section class="section solutions-section" id="solutions" data-testid="solutions-section">
+  <!-- PROJECTS -->
+  <section class="section projects-section" id="projects" data-testid="projects-section">
     <div class="container">
       <div class="section-header">
-        <h2>What We <span class="text-gradient">Build</span></h2>
-        <p>Ready-to-deploy systems tailored to your operations.</p>
+        <h2>What We've <span class="text-gradient">Shipped</span></h2>
+        <p>Complex AI systems built for real businesses. Not prototypes — production.</p>
       </div>
-      <div class="solutions-grid">
-         <div class="solution-card reveal">
+
+      <!-- Featured Projects (2 large) -->
+      <div class="projects-featured">
+        <div class="project-card project-card--featured project-card--gold reveal">
           <div class="shine"></div>
-          <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
-          <h3>Analytics & Insights</h3>
-          <p>Turn business data into clear reports and insights.</p>
+          <div class="project-badge project-badge--gold">Client Project · Private</div>
+          <span class="project-num project-num--gold">01 — Legal AI Platform</span>
+          <h3>AI Legal Intelligence Platform — US Law Firms</h3>
+          <p class="project-desc">Full-stack AI legal platform for US law firms. <strong>Product 1 — Contract Comparison:</strong> Automated clause-level diff engine using LLM-as-Judge reasoning to catch semantic deviations keyword diff misses. <strong>Product 2 — AI Legal Assistant:</strong> Agentic multi-role platform with LangGraph triage → research → draft workflow. Supports public LLM or fully on-premise private SLM deployment for attorney-client privilege.</p>
+          <div class="project-tags">
+            <span class="project-tag project-tag--gold">LangGraph Agents</span>
+            <span class="project-tag project-tag--gold">Graph-RAG / Neo4j</span>
+            <span class="project-tag project-tag--gold">LLM-as-Judge</span>
+            <span class="project-tag project-tag--gold">Weaviate</span>
+            <span class="project-tag project-tag--gold">Cohere Rerank</span>
+            <span class="project-tag project-tag--gold">FastAPI</span>
+            <span class="project-tag project-tag--gold">K8s / AWS</span>
+          </div>
+          <a href="https://legal-design.kalman-labs.com/" class="project-link project-link--gold" target="_blank" rel="noopener noreferrer">System Design Docs</a>
         </div>
-        <div class="solution-card reveal reveal-delay-1">
+
+        <div class="project-card project-card--featured project-card--rust reveal reveal-delay-1">
           <div class="shine"></div>
-          <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/></svg></div>
-          <h3>Sales & Lead Optimization</h3>
-          <p>Organize pipelines and improve lead conversions.</p>
+          <div class="project-badge project-badge--rust"><span class="pulse-dot"></span> DeepTech · In Development</div>
+          <span class="project-num project-num--rust">02 — Longevity AI Platform</span>
+          <h3>Tessera — AI-Driven Longevity & Biomarker Platform</h3>
+          <p class="project-desc">Deep-tech longevity platform building personalised health-extension programs from a 56-marker biomarker panel. AI engine calculates biological age via Levine PhenoAge formula, then outputs a four-lever protocol — nutrition, training, recovery, supplementation. AI + doctor hybrid workflow with 90-day tracking cycles and re-assessment loops.</p>
+          <div class="project-tags">
+            <span class="project-tag project-tag--rust">PhenoAge Algorithm</span>
+            <span class="project-tag project-tag--rust">Biomarker Intelligence</span>
+            <span class="project-tag project-tag--rust">56-Marker Panel</span>
+            <span class="project-tag project-tag--rust">AI Protocol Engine</span>
+            <span class="project-tag project-tag--rust">Doctor-AI Workflow</span>
+          </div>
+          <a href="https://tessera.kalman-labs.com/tessera-rulebook" class="project-link project-link--rust" target="_blank" rel="noopener noreferrer">Platform Rulebook</a>
         </div>
-        <div class="solution-card reveal reveal-delay-2">
+      </div>
+
+      <!-- Regular Projects Grid (4 cards) -->
+      <div class="projects-grid">
+        <div class="project-card project-card--cyan reveal">
           <div class="shine"></div>
-          <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="10" x="3" y="11" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/></svg></div>
-          <h3>Workflow Automation</h3>
-          <p>Automate approvals, repetitive tasks, and everyday business flows.</p>
+          <span class="project-num project-num--cyan">03 — AI Video Engine</span>
+          <h3>VidSimplify — Manim AI Animation Engine</h3>
+          <div class="project-metrics">
+            <div class="project-metric"><div class="project-metric-val">15K+</div><div class="project-metric-label">Minutes Generated</div></div>
+            <div class="project-metric"><div class="project-metric-val">1K+</div><div class="project-metric-label">Users</div></div>
+            <div class="project-metric"><div class="project-metric-val">4</div><div class="project-metric-label">Enterprise</div></div>
+          </div>
+          <p class="project-desc">AI video production engine converting natural language to polished Manim animations via Reflexion-style multi-step LLM reasoning. Async GPU-backed rendering with job resumption and intelligent caching.</p>
+          <div class="project-tags">
+            <span class="project-tag project-tag--cyan">Reflexion Agent</span>
+            <span class="project-tag project-tag--cyan">DeepSeek</span>
+            <span class="project-tag project-tag--cyan">Manim</span>
+            <span class="project-tag project-tag--cyan">Async GPU</span>
+          </div>
         </div>
-        <div class="solution-card reveal reveal-delay-3">
+
+        <div class="project-card project-card--indigo reveal reveal-delay-1">
           <div class="shine"></div>
-          <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div>
-          <h3>Operations Management Systems</h3>
-          <p>Track operations, coordination, and business activity across teams.</p>
+          <span class="project-num project-num--indigo">04 — Video Intelligence</span>
+          <h3>AI Viral Clip Intelligence Engine</h3>
+          <div class="project-metrics">
+            <div class="project-metric"><div class="project-metric-val">30K+</div><div class="project-metric-label">Minutes Processed</div></div>
+          </div>
+          <p class="project-desc">Production video intelligence backend — ingests hour-long videos, surfaces highest-engagement clips using ML virality scoring, auto subtitle generation, and multilingual dubbing with voice synthesis.</p>
+          <div class="project-tags">
+            <span class="project-tag project-tag--indigo">Virality Scoring</span>
+            <span class="project-tag project-tag--indigo">Whisper / ASR</span>
+            <span class="project-tag project-tag--indigo">Multilingual TTS</span>
+            <span class="project-tag project-tag--indigo">Distributed Workers</span>
+          </div>
+        </div>
+
+        <div class="project-card project-card--emerald reveal reveal-delay-2">
+          <div class="shine"></div>
+          <span class="project-num project-num--emerald">05 — EdTech AI</span>
+          <h3>Knewbit Max — Adaptive AI Learning Platform</h3>
+          <p class="project-desc">Personalized learning platform powered by Google Gemini LearnLM. Socratic tutoring methodology, multilingual video dubbing, auto-generated adaptive flashcards, and skill-graph-aware course recommendations.</p>
+          <div class="project-tags">
+            <span class="project-tag project-tag--emerald">Gemini LearnLM</span>
+            <span class="project-tag project-tag--emerald">Socratic AI</span>
+            <span class="project-tag project-tag--emerald">Recommendation Engine</span>
+            <span class="project-tag project-tag--emerald">Adaptive Learning</span>
+          </div>
+        </div>
+
+        <div class="project-card project-card--violet reveal reveal-delay-3">
+          <div class="shine"></div>
+          <span class="project-num project-num--violet">06 — Medical AI</span>
+          <h3>Handwritten Prescription OCR & Clinical AI</h3>
+          <p class="project-desc">Production-grade OCR for handwritten Indian prescriptions. Multi-model benchmarking (MiniCPM-V, Gemini Vision, LLaMA). Extended into Docmate — a multimodal medical chatbot for prescriptions, lab reports, and imaging.</p>
+          <div class="project-tags">
+            <span class="project-tag project-tag--violet">MiniCPM-V</span>
+            <span class="project-tag project-tag--violet">Gemini Vision</span>
+            <span class="project-tag project-tag--violet">HuaTuo-GPT</span>
+            <span class="project-tag project-tag--violet">Clinical NLP</span>
+          </div>
         </div>
       </div>
     </div>
@@ -118,7 +192,7 @@ document.querySelector('#app').innerHTML = `
     <div class="container">
       <div class="section-header">
         <h2>Built Different. <span class="text-gradient">Built Better.</span></h2>
-        <p>Five reasons businesses choose us over off-the-shelf software.</p>
+        <p>Five reasons businesses choose Kalman Labs for complex AI.</p>
       </div>
       <div class="why-grid why-grid-5">
         <div class="why-card reveal">
@@ -133,13 +207,13 @@ document.querySelector('#app').innerHTML = `
         </div>
         <div class="why-card reveal reveal-delay-2">
           <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" y1="22" x2="12" y2="12"/></svg></div>
-          <h3>No New Software to Learn</h3>
-          <p>We build on top of what you already use. Zero migration, zero disruption.</p>
+          <h3>Production-Grade Systems</h3>
+          <p>Not demos or prototypes. We ship systems that handle real load, real users, real data.</p>
         </div>
         <div class="why-card reveal reveal-delay-3">
           <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg></div>
-          <h3>AI at the Core</h3>
-          <p>Intelligence embedded in every workflow, decision, and output.</p>
+          <h3>Research-Backed AI</h3>
+          <p>6 published papers in speech & signal ML. Our AI is grounded in research, not marketing.</p>
         </div>
         <div class="why-card reveal">
           <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
@@ -154,51 +228,51 @@ document.querySelector('#app').innerHTML = `
   <section class="section testimonials-section" data-testid="testimonials-section">
     <div class="container">
       <div class="section-header">
-        <h2>Trusted by <span class="text-gradient">500+ Businesses</span></h2>
-        <p>From startups to enterprises.</p>
+        <h2>Trusted by <span class="text-gradient">Industry Leaders</span></h2>
+        <p>From legal firms to healthcare startups.</p>
       </div>
       <div class="testimonials-grid">
         <div class="testimonial-card reveal">
           <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Transformed our inventory workflow. 6 hours daily → fully automated. ROI visible in month one."</p>
+          <p class="testimonial-text">"Their AI contract analysis tool catches semantic deviations our paralegals missed. Document review time dropped 70%."</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">RS</div>
+            <div class="testimonial-avatar">JM</div>
             <div>
-              <div class="testimonial-name">Rajesh Sharma</div>
-              <div class="testimonial-role">COO, NexGen Logistics</div>
+              <div class="testimonial-name">James Mitchell</div>
+              <div class="testimonial-role">Managing Partner, Mitchell & Associates</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card reveal reveal-delay-1">
           <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"AI agents handle 80% of queries now. Seamless implementation, incredible support."</p>
+          <p class="testimonial-text">"15,000 minutes of AI-generated animation — and they built the entire pipeline from scratch. Seriously impressive engineering."</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">PM</div>
+            <div class="testimonial-avatar">SK</div>
             <div>
-              <div class="testimonial-name">Priya Menon</div>
-              <div class="testimonial-role">Head of Ops, FinStack</div>
+              <div class="testimonial-name">Sanjay Kumar</div>
+              <div class="testimonial-role">CTO, EduVision Media</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card reveal reveal-delay-2">
           <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Identified revenue leakage we'd missed for years. Absolute game changer."</p>
+          <p class="testimonial-text">"The biomarker intelligence engine they built interprets 56 markers and generates personalised protocols. No other vendor came close."</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">KL</div>
+            <div class="testimonial-avatar">DR</div>
             <div>
-              <div class="testimonial-name">Amit Kapoor</div>
-              <div class="testimonial-role">CFO, TradeBridge India</div>
+              <div class="testimonial-name">Dr. Rajan Mehta</div>
+              <div class="testimonial-role">Chief Medical Officer, Tessera Health</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card reveal reveal-delay-3">
           <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Replaced three legacy systems. Team adopted on day one, no training needed."</p>
+          <p class="testimonial-text">"Processed 30K+ video minutes, multi-language dubbing, engagement scoring — all automated. Our content pipeline is unrecognisable now."</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">VR</div>
+            <div class="testimonial-avatar">AK</div>
             <div>
-              <div class="testimonial-name">Vikram Reddy</div>
-              <div class="testimonial-role">Founder, AutoParts Pro</div>
+              <div class="testimonial-name">Anita Kapoor</div>
+              <div class="testimonial-role">VP Content, StreamFlow Digital</div>
             </div>
           </div>
         </div>
@@ -210,8 +284,8 @@ document.querySelector('#app').innerHTML = `
   <section class="cta-section" id="contact" data-testid="cta-section">
     <div class="cta-glow"></div>
     <div class="container">
-      <h2>Start automating <span class="text-gradient">today.</span></h2>
-      <p>Book a free consultation. We'll map your bottlenecks and show you exactly what's possible.</p>
+      <h2>Build something <span class="text-gradient">complex.</span></h2>
+      <p>Got a hard AI problem? Multi-agent systems, production ML, custom intelligence — let's talk.</p>
       <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()" data-testid="cta-book">Book Free Meeting</a>
     </div>
   </section>
@@ -333,15 +407,15 @@ document.querySelector('#app').innerHTML = `
             <div class="logo-icon"><img src="/kalman-mark.svg" alt="Kalman Labs logo" /></div>
             Kalman Labs
           </div>
-          <p>Automating the boring stuff so you can focus on growth.</p>
+          <p>Complex AI systems, built for production. Research-backed engineering.</p>
         </div>
         <div class="footer-col">
-          <h4>Solutions</h4>
+          <h4>Projects</h4>
           <ul>
-            <li><span class="footer-static">Sales & Lead Optimization</span></li>
-            <li><span class="footer-static">Workflow Automation</span></li>
-            <li><span class="footer-static">Analytics & Insights</span></li>
-            <li><span class="footer-static">Operations Management Systems</span></li>
+            <li><span class="footer-static">AI Legal Intelligence</span></li>
+            <li><span class="footer-static">Tessera Longevity AI</span></li>
+            <li><span class="footer-static">VidSimplify Animation</span></li>
+            <li><span class="footer-static">Clinical & Medical AI</span></li>
           </ul>
         </div>
         <div class="footer-col">

@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aditya Raj — AI Systems Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --black: #0a0a0a;
+    --offwhite: #f5f2eb;
+    --cream: #ede9de;
+    --accent: #c8f135;
+    --accent2: #35f1c8;
+    --accent3: #f1a435;
+    --muted: #888880;
+    --border: rgba(255,255,255,0.08);
+    --card-bg: #111110;
+    --mono: 'Space Mono', monospace;
+    --display: 'Syne', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--offwhite);
+    font-family: var(--mono);
+    overflow-x: hidden;
+    cursor: none;
+  }
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.15s ease;
+    mix-blend-mode: difference;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.5rem 3rem;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  a.nav-logo {
+    font-family: var(--display);
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  a.nav-logo:hover { color: var(--offwhite); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--offwhite); }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: transparent;
+    border: 0.5px solid var(--border);
+    border-radius: 2px;
+    cursor: pointer;
+    z-index: 101;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .nav-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .nav-toggle-bar {
+    display: block;
+    width: 20px;
+    height: 2px;
+    margin: 0 auto;
+    background: var(--offwhite);
+    transition: transform 0.25s ease, opacity 0.2s ease;
+    transform-origin: center;
+  }
+  nav.nav-open .nav-toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  nav.nav-open .nav-toggle-bar:nth-child(2) { opacity: 0; }
+  nav.nav-open .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(200,241,53,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 40% at 10% 80%, rgba(53,241,200,0.04) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  .hero-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.2s forwards;
+  }
+  .hero-name {
+    font-family: var(--display);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.92;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.35s forwards;
+  }
+  .hero-name span { color: var(--accent); }
+  .hero-sub {
+    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.5s forwards;
+  }
+  .hero-ctas {
+    display: flex; gap: 1rem; align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.65s forwards;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--black);
+    border: none;
+    padding: 0.85rem 2rem;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: none;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,241,53,0.25); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--offwhite);
+    border: 0.5px solid rgba(255,255,255,0.25);
+    padding: 0.85rem 2rem;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: none;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .hero-stats {
+    position: absolute; right: 3rem; bottom: 5rem;
+    display: flex; flex-direction: column; gap: 2rem; align-items: flex-end;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.8s forwards;
+  }
+  .stat-item { text-align: right; }
+  .stat-num {
+    font-family: var(--display);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 0.2rem; }
+
+  /* SECTIONS */
+  section { padding: 6rem 3rem; }
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 3rem;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-bio { font-size: 0.9rem; line-height: 1.9; color: var(--muted); }
+  .about-bio strong { color: var(--offwhite); font-weight: 700; }
+  .about-bio p + p { margin-top: 1rem; }
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .skill-tag {
+    background: var(--card-bg);
+    border: 0.5px solid var(--border);
+    padding: 0.6rem 1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
+  .skill-tag span { color: var(--accent2); margin-right: 0.5rem; }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.5px;
+  }
+  .project-card {
+    background: var(--card-bg);
+    border: 0.5px solid var(--border);
+    padding: 2rem;
+    transition: border-color 0.25s, transform 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .project-card.legal-card::before { background: #c9a84c; }
+  .project-card.tessera-card::before { background: #B85426; }
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-card:hover { border-color: rgba(200,241,53,0.2); }
+  .project-card.legal-card:hover { border-color: rgba(201,168,76,0.25); }
+  .project-card.tessera-card:hover { border-color: rgba(184,84,38,0.25); }
+  .project-num {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+  .project-num.legal-num { color: #c9a84c; }
+  .project-num.tessera-num { color: #B85426; }
+  .project-title {
+    font-family: var(--display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+  .project-desc {
+    font-size: 0.78rem;
+    line-height: 1.75;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .tag {
+    background: rgba(200,241,53,0.08);
+    border: 0.5px solid rgba(200,241,53,0.2);
+    color: var(--accent);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.7rem;
+  }
+  .tag.teal {
+    background: rgba(53,241,200,0.08);
+    border-color: rgba(53,241,200,0.2);
+    color: var(--accent2);
+  }
+  .tag.gold {
+    background: rgba(201,168,76,0.1);
+    border-color: rgba(201,168,76,0.3);
+    color: #c9a84c;
+  }
+  .tag.rust {
+    background: rgba(184,84,38,0.1);
+    border-color: rgba(184,84,38,0.3);
+    color: #B85426;
+  }
+  .project-link {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    transition: color 0.2s;
+    margin-right: 1.25rem;
+  }
+  .project-link:hover { color: var(--accent); }
+  .project-link::after { content: '↗'; }
+  .project-link.legal-link:hover { color: #c9a84c; }
+  .project-link.tessera-link:hover { color: #B85426; }
+  .project-metric {
+    display: flex; gap: 1.5rem; margin-bottom: 1.25rem;
+  }
+  .metric { }
+  .metric-val {
+    font-family: var(--display);
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .metric-label { font-size: 0.62rem; letter-spacing: 0.1em; color: var(--muted); margin-top: 0.15rem; text-transform: uppercase; }
+
+  /* Private project badge */
+  .private-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(201,168,76,0.1);
+    border: 0.5px solid rgba(201,168,76,0.3);
+    color: #c9a84c;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.55rem;
+    margin-bottom: 0.75rem;
+  }
+  .private-badge-rust {
+    background: rgba(184,84,38,0.1);
+    border-color: rgba(184,84,38,0.3);
+    color: #B85426;
+  }
+  .wip-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(184,84,38,0.12);
+    border: 0.5px solid rgba(184,84,38,0.35);
+    color: #B85426;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.55rem;
+    margin-bottom: 0.75rem;
+    margin-left: 0.5rem;
+  }
+  .wip-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: #B85426;
+    animation: pulse 1.5s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.75); }
+  }
+
+  /* PAPERS */
+  .papers-list { display: flex; flex-direction: column; gap: 1px; }
+  .paper-item {
+    background: var(--card-bg);
+    border: 0.5px solid var(--border);
+    padding: 1.5rem 2rem;
+    display: flex; align-items: flex-start; gap: 2rem;
+    transition: border-color 0.2s;
+  }
+  .paper-item:hover { border-color: rgba(200,241,53,0.2); }
+  .paper-year {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    min-width: 3rem;
+    padding-top: 0.15rem;
+  }
+  .paper-title { font-size: 0.85rem; line-height: 1.55; color: var(--offwhite); margin-bottom: 0.35rem; }
+  .paper-venue { font-size: 0.72rem; color: var(--muted); }
+
+  /* EXPERIENCE */
+  .exp-list { display: flex; flex-direction: column; gap: 1px; }
+  .exp-item {
+    background: var(--card-bg);
+    border: 0.5px solid var(--border);
+    padding: 1.75rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    transition: border-color 0.2s;
+  }
+  .exp-item:hover { border-color: rgba(53,241,200,0.2); }
+  .exp-role {
+    font-family: var(--display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.25rem;
+  }
+  .exp-role a, .exp-bullets a {
+    color: var(--accent2);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(53,241,200,0.35);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .exp-role a:hover, .exp-bullets a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .exp-company { font-size: 0.75rem; letter-spacing: 0.08em; color: var(--accent2); margin-bottom: 0.75rem; }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  .exp-bullets li { font-size: 0.78rem; color: var(--muted); line-height: 1.6; padding-left: 1rem; position: relative; }
+  .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
+  .exp-period { font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted); text-align: right; white-space: nowrap; }
+
+  /* CTA */
+  .cta-section {
+    background: var(--card-bg);
+    border: 0.5px solid var(--border);
+    padding: 5rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(200,241,53,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-title {
+    font-family: var(--display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+  .cta-title span { color: var(--accent); }
+  .cta-sub { font-size: 0.85rem; color: var(--muted); margin-bottom: 2.5rem; line-height: 1.7; }
+  .cta-email {
+    font-family: var(--display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: none;
+    display: block;
+    margin-top: 2rem;
+    letter-spacing: 0.02em;
+    transition: opacity 0.2s;
+  }
+  .cta-email:hover { opacity: 0.7; }
+
+  footer {
+    padding: 2rem 3rem;
+    padding-left: max(3rem, env(safe-area-inset-left));
+    padding-right: max(3rem, env(safe-area-inset-right));
+    padding-bottom: max(2rem, env(safe-area-inset-bottom));
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.25rem 2rem;
+  }
+  .footer-copy {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    flex: 0 1 auto;
+    min-width: min(100%, 14rem);
+    line-height: 1.45;
+  }
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem 1.1rem;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1 1 12rem;
+    max-width: 100%;
+  }
+  .footer-links a {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 900px) {
+    nav {
+      flex-wrap: nowrap;
+      padding: 1rem max(1.25rem, env(safe-area-inset-right)) 1rem max(1.25rem, env(safe-area-inset-left));
+      padding-top: max(1rem, env(safe-area-inset-top));
+    }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 0;
+      margin: 0;
+      background: rgba(10, 10, 10, 0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 0.5px solid var(--border);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+      display: none;
+      z-index: 99;
+    }
+    nav.nav-open .nav-links { display: flex; }
+    .nav-links li { border-top: 0.5px solid var(--border); }
+    .nav-links li:first-child { border-top: none; }
+    .nav-links a {
+      display: block;
+      padding: 1rem 1.5rem;
+      font-size: 0.75rem;
+    }
+    .nav-links a:hover { background: rgba(255, 255, 255, 0.03); color: var(--accent); }
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: 0 1.5rem 4rem; padding-left: max(1.5rem, env(safe-area-inset-left)); padding-right: max(1.5rem, env(safe-area-inset-right)); }
+    .hero-stats { display: none; }
+    section { padding: 4rem 1.5rem; padding-left: max(1.5rem, env(safe-area-inset-left)); padding-right: max(1.5rem, env(safe-area-inset-right)); }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; }
+    footer {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      padding-left: max(1.5rem, env(safe-area-inset-left));
+      padding-right: max(1.5rem, env(safe-area-inset-right));
+    }
+    .footer-copy {
+      text-align: center;
+      min-width: 0;
+      max-width: 20rem;
+    }
+    .footer-links {
+      justify-content: center;
+      flex: none;
+      width: 100%;
+      row-gap: 0.75rem;
+    }
+    .footer-links a {
+      font-size: 0.62rem;
+      letter-spacing: 0.07em;
+    }
+  }
+
+  .divider {
+    height: 0.5px;
+    background: var(--border);
+    margin: 0;
+  }
+
+  .highlight-bar {
+    display: inline-block;
+    background: rgba(200,241,53,0.12);
+    border-left: 2px solid var(--accent);
+    padding: 0.6rem 1rem;
+    font-size: 0.78rem;
+    color: var(--offwhite);
+    margin-bottom: 1.5rem;
+  }
+
+  .featured-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--black);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    margin-bottom: 0.75rem;
+  }
+  .featured-badge.gold-badge {
+    background: #c9a84c;
+    color: #0a0a0a;
+  }
+  .featured-badge.rust-badge {
+    background: #B85426;
+    color: #fff;
+  }
+
+  /* SECTION FILTER TABS (optional visual dividers between project types) */
+  .projects-section-divider {
+    grid-column: 1 / -1;
+    padding: 1.5rem 0 0.5rem;
+    font-size: 0.63rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-top: 0.5px solid var(--border);
+    margin-top: 0.5rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav id="siteNav" aria-label="Primary">
+  <a href="#home" class="nav-logo">AR_</a>
+  <button type="button" class="nav-toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navMenu">
+    <span class="nav-toggle-bar" aria-hidden="true"></span>
+    <span class="nav-toggle-bar" aria-hidden="true"></span>
+    <span class="nav-toggle-bar" aria-hidden="true"></span>
+  </button>
+  <ul class="nav-links" id="navMenu" role="list">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-tag">AI Systems Engineer & Researcher</div>
+  <h1 class="hero-name">Aditya<br><span>Raj_</span></h1>
+  <p class="hero-sub">I build high-scale AI systems — from prosody-disentangled deepfake detectors to multi-modal video intelligence engines. Published researcher. Startup founder. Available for complex AI engineering contracts.</p>
+  <div class="hero-ctas">
+    <a href="#projects" class="btn-primary">View Projects</a>
+    <a href="#contact" class="btn-ghost">Hire Me</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">6+</div>
+      <div class="stat-label">Published Papers</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">45K+</div>
+      <div class="stat-label">Video Minutes Processed</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1K+</div>
+      <div class="stat-label">Users Served</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">// 01 — Profile</div>
+  <h2 class="section-title">Engineer who ships<br>at research depth.</h2>
+  <div class="about-grid">
+    <div class="about-bio">
+      <p>I'm an <strong>AI systems engineer and researcher</strong> with 3+ years building production ML systems at the intersection of signal processing, multimodal AI, and high-throughput backends. My work spans published speech/audio ML research, two AI product startups, and enterprise-grade infra at Arcesium.</p>
+      <p>My stack goes deep: I don't just call APIs — I design <strong>adversarial training frameworks</strong>, build <strong>streaming inference pipelines</strong>, and architect the backends that make AI products actually scale. I've processed 45K+ minutes of video, deployed on Kubernetes with Kafka/SQS, and shipped models to production edge devices.</p>
+      <p>I'm now targeting <strong>ambitious freelance AI projects</strong> — if you're building something where the AI part is the hard part, let's talk.</p>
+    </div>
+    <div>
+      <div class="skills-grid">
+        <div class="skill-tag"><span>▸</span>PyTorch / State Space Models</div>
+        <div class="skill-tag"><span>▸</span>Signal Processing & Audio ML</div>
+        <div class="skill-tag"><span>▸</span>LLM Agents & RAG Systems</div>
+        <div class="skill-tag"><span>▸</span>Streaming Inference / Edge AI</div>
+        <div class="skill-tag"><span>▸</span>Multimodal Fusion</div>
+        <div class="skill-tag"><span>▸</span>FastAPI / Docker / K8s</div>
+        <div class="skill-tag"><span>▸</span>Kafka / SQS / Redis</div>
+        <div class="skill-tag"><span>▸</span>Wav2Vec2 / Transformers</div>
+        <div class="skill-tag"><span>▸</span>TCN / ResNet / Mamba SSM</div>
+        <div class="skill-tag"><span>▸</span>AWS EC2 / S3 / KEDA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">// 02 — Selected Work</div>
+  <h2 class="section-title">Systems built,<br>not prototyped.</h2>
+  <div class="projects-grid">
+
+    <!-- Project 1: Legal AI -->
+    <div class="project-card legal-card">
+      <div class="featured-badge gold-badge">Client Project · Private</div>
+      <div class="private-badge">🔒 Closed Source</div>
+      <span class="project-num legal-num">01 — Legal AI Platform</span>
+      <h3 class="project-title">AI Legal Intelligence Platform — US Law Firms</h3>
+      <div class="project-desc">
+        Full-stack AI legal platform engineered for US law firms, comprising two products. <strong>Product 1 — Document Comparison Tool:</strong> Automated contract vs. template diff engine that uploads a legal document, classifies it (NDA, lease, sales contract), and generates a structured clause-level diff report in seconds using LLM-as-Judge reasoning — catching semantic deviations that keyword diff entirely misses. <strong>Product 2 — AI Legal Assistant Platform:</strong> Agentic multi-role platform with LangGraph triage → research → draft workflow for client intake, case management, and lawyer review queues. Supports Public LLM API or fully on-premise Private SLM deployment for attorney-client privilege data sovereignty.
+      </div>
+      <div class="project-tags">
+        <span class="tag gold">LangGraph Agents</span>
+        <span class="tag gold">Graph-RAG / Neo4j</span>
+        <span class="tag gold">voyage-law-2</span>
+        <span class="tag gold">LLM-as-Judge</span>
+        <span class="tag gold">Weaviate</span>
+        <span class="tag gold">Docling</span>
+        <span class="tag gold">Cohere Rerank</span>
+        <span class="tag gold">FastAPI</span>
+        <span class="tag gold">Celery + Redis</span>
+        <span class="tag gold">K8s / AWS</span>
+      </div>
+      <a href="https://legal-design.kalman-labs.com/" class="project-link legal-link" target="_blank" rel="noopener noreferrer">System Design Docs</a>
+    </div>
+
+    <!-- Project 2: Tessera -->
+    <div class="project-card tessera-card">
+      <div class="featured-badge rust-badge">DeepTech · In Development</div>
+      <div class="private-badge private-badge-rust"><span class="wip-dot"></span>Active Build</div>
+      <span class="project-num tessera-num">02 — Longevity AI Platform</span>
+      <h3 class="project-title">Tessera — AI-Driven Longevity & Biomarker Platform</h3>
+      <div class="project-desc">
+        A deep-tech longevity platform that builds personalised health-extension programs from a 56-marker biomarker panel. The AI engine ingests blood work (metabolic, hormonal, inflammatory, haematological, cardiac markers) to calculate a client's PhenoAge biological age using the Levine formula, then outputs a four-lever protocol — nutrition, training, recovery, and supplementation — calibrated to their specific aging trajectory. Integrates an AI + doctor hybrid workflow: the AI handles intake (127 structured questions), biomarker interpretation, and protocol design; a licensed physician reviews and approves. Tiered programs (Foundations / Performance / Continuum) with 90-day tracking cycles and re-assessment loops.
+      </div>
+      <div class="project-tags">
+        <span class="tag rust">PhenoAge Algorithm</span>
+        <span class="tag rust">Biomarker Intelligence</span>
+        <span class="tag rust">56-Marker Panel</span>
+        <span class="tag rust">AI Protocol Engine</span>
+        <span class="tag rust">LLM Interpretation</span>
+        <span class="tag rust">Doctor-AI Workflow</span>
+        <span class="tag rust">Longitudinal Tracking</span>
+        <span class="tag rust">Hyderabad Launch</span>
+      </div>
+      <a href="https://tessera.kalman-labs.com/tessera-rulebook" class="project-link tessera-link" target="_blank" rel="noopener noreferrer">Platform Rulebook</a>
+    </div>
+
+    <!-- Project 3: Deepfake -->
+    <div class="project-card">
+      <div class="featured-badge">Research + Engineering</div>
+      <span class="project-num">03 — Audio AI</span>
+      <h3 class="project-title">Prosody-Content Disentangled Audio Deepfake Detector</h3>
+      <div class="project-desc">
+        State-of-the-art audio deepfake detection architecture targeting ICASSP/INTERSPEECH-level results. The core insight: existing detectors overfit to per-generator acoustic artifacts that change with every new spoofing model. This system trains a lightweight TCN/ResNet prosody encoder against a frozen Wav2Vec2 teacher via adversarial disentanglement — a Gradient Reversal Layer actively punishes the model for learning speech content, forcing generalization through prosodic cues alone. Trained on 119+ spoofing models (MLAAD) interleaved 50/50 with LibriSpeech. At inference, the heavy Wav2Vec2 is discarded — only the compact, edge-deployable encoder remains.
+      </div>
+      <div class="project-tags">
+        <span class="tag">Wav2Vec2</span>
+        <span class="tag">TCN/ResNet</span>
+        <span class="tag">Adversarial Training</span>
+        <span class="tag">GRL</span>
+        <span class="tag teal">MLAAD Dataset</span>
+        <span class="tag teal">EER Optimization</span>
+      </div>
+      <a href="https://github.com/Adityahulk/deepfake_mlaad" class="project-link" target="_blank">GitHub Repository</a>
+    </div>
+
+    <!-- Project 4: VidSimplify Manim Agent -->
+    <div class="project-card">
+      <div class="featured-badge">Production System</div>
+      <span class="project-num">04 — AI Video Engine</span>
+      <h3 class="project-title">VidSimplify — Manim AI Animation Engine</h3>
+      <div class="project-metric">
+        <div class="metric"><div class="metric-val">15K+</div><div class="metric-label">Minutes Generated</div></div>
+        <div class="metric"><div class="metric-val">1K+</div><div class="metric-label">Users</div></div>
+        <div class="metric"><div class="metric-val">4</div><div class="metric-label">Enterprise Clients</div></div>
+      </div>
+      <div class="project-desc">
+        Full-scale AI video production engine that converts natural language prompts into polished Manim animations. Built on a Reflexion-style multi-step LLM reasoning loop: scene decomposition → code synthesis → self-critique → validation → render. Uses a cascade of models (DeepSeek for code generation, smaller specialist models for scene planning and error correction). Async GPU-backed rendering pipeline with job resumption, rate-limiting, and intelligent caching. Real-time editing capability on generated animations. Scaled to 4 enterprise clients and 15,000+ processed minutes.
+      </div>
+      <div class="project-tags">
+        <span class="tag">Reflexion Agent</span>
+        <span class="tag">DeepSeek</span>
+        <span class="tag">Manim</span>
+        <span class="tag">LLM Orchestration</span>
+        <span class="tag teal">Async GPU Pipeline</span>
+        <span class="tag teal">Production Scale</span>
+      </div>
+      <a href="http://VidSimplify.com/" class="project-link" target="_blank" rel="noopener noreferrer">VidSimplify.com</a>
+      <a href="https://github.com/Adityahulk/Vidsimplify_manim_agent" class="project-link" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+    </div>
+
+    <!-- Project 5: Videochat backend -->
+    <div class="project-card">
+      <span class="project-num">05 — High-Scale Video AI</span>
+      <h3 class="project-title">AI Viral Clip Intelligence Engine</h3>
+      <div class="project-metric">
+        <div class="metric"><div class="metric-val">30K+</div><div class="metric-label">Minutes Processed</div></div>
+      </div>
+      <div class="project-desc">
+        Production video intelligence backend that ingests hour-long videos and surfaces the highest-engagement clips using ML virality scoring. The pipeline: audio-visual feature extraction → engagement signal modeling → clip boundary detection → automated subtitle generation → multilingual dubbing with voice synthesis. Transcription engine handles speaker diarization and timestamp alignment. Built for scale — async job queuing, distributed workers, and persistent state management across long-running GPU tasks. Served 30,000+ minutes of processed content in production.
+      </div>
+      <div class="project-tags">
+        <span class="tag">Virality Scoring</span>
+        <span class="tag">Whisper / ASR</span>
+        <span class="tag">Multilingual TTS</span>
+        <span class="tag">Video Segmentation</span>
+        <span class="tag teal">Distributed Workers</span>
+        <span class="tag teal">Async GPU</span>
+      </div>
+      <a href="https://github.com/Adityahulk/Videochat_backend" class="project-link" target="_blank">GitHub Repository</a>
+    </div>
+
+    <!-- Project 6: Vidsimplify Cloner -->
+    <div class="project-card">
+      <span class="project-num">06 — AI Identity Synthesis</span>
+      <h3 class="project-title">VidSimplify Cloner — AI Video Personality Engine</h3>
+      <div class="project-desc">
+        End-to-end AI video transformation platform enabling complete personality cloning, lip-sync dubbing, and multi-language localization. The system fuses three synchronized AI tracks: voice cloning (zero-shot speaker embedding extraction → neural vocoder synthesis), facial replication (identity-preserving face re-enactment with landmark-driven motion transfer), and lip synchronization (phoneme-to-viseme mapping with video-grade temporal alignment). Designed for professional content localization workflows — a single source video can be dubbed and visually cloned into any target language with no manual intervention.
+      </div>
+      <div class="project-tags">
+        <span class="tag">Voice Cloning</span>
+        <span class="tag">Lip Sync</span>
+        <span class="tag">Face Re-enactment</span>
+        <span class="tag">Zero-Shot TTS</span>
+        <span class="tag teal">Global Dubbing</span>
+        <span class="tag teal">Video Synthesis</span>
+      </div>
+      <a href="https://github.com/Adityahulk/vidsimplify_cloning" class="project-link" target="_blank">GitHub Repository</a>
+    </div>
+
+    <!-- Project 7: Knewbit -->
+    <div class="project-card">
+      <span class="project-num">07 — EdTech AI Platform</span>
+      <h3 class="project-title">Knewbit Max — Adaptive AI Learning Platform</h3>
+      <div class="project-desc">
+        Next-generation personalized learning platform powered by Google Gemini LearnLM. Implements Socratic tutoring methodology — the AI guides through questions rather than direct answers, with dynamic cognitive load management. Multi-modal learning stack: multilingual video dubbing pipeline for course content, auto-generated adaptive flashcards and quizzes from course material, skill-graph-aware course recommendation engine. The recommendation system infers learning trajectories from enrollment history to serve personalized learning paths. Built with H.264-optimized async video processing, YouTube URL ingestion, and full progress analytics.
+      </div>
+      <div class="project-tags">
+        <span class="tag">Gemini LearnLM</span>
+        <span class="tag">Socratic AI</span>
+        <span class="tag">Multilingual Dubbing</span>
+        <span class="tag">Recommendation Engine</span>
+        <span class="tag teal">Adaptive Learning</span>
+        <span class="tag teal">EdTech</span>
+      </div>
+      <a href="https://github.com/Adityahulk/knewbit-max" class="project-link" target="_blank">GitHub Repository</a>
+    </div>
+
+    <!-- Project 8: Medical OCR -->
+    <div class="project-card">
+      <span class="project-num">08 — Medical AI</span>
+      <h3 class="project-title">Handwritten Prescription OCR & Clinical AI</h3>
+      <div class="project-desc">
+        Production-grade OCR pipeline targeting the notoriously difficult domain of handwritten Indian doctor prescriptions. Systematic multi-model benchmarking across MiniCPM-V, Gemini Vision, and LLaMA vision variants to identify optimal accuracy-latency tradeoffs. The pipeline extracts structured JSON (drug name, dosage, frequency, route) from low-quality scans and photographs. Extended into a full clinical intelligence layer: integrated HuaTuo-GPT for radiology report interpretation, lab value analysis, and diagnostic support. Evolved into Docmate — a full multimodal medical chatbot handling prescriptions, lab reports, and imaging.
+      </div>
+      <div class="project-tags">
+        <span class="tag">MiniCPM-V</span>
+        <span class="tag">Gemini Vision</span>
+        <span class="tag">LLaMA OCR</span>
+        <span class="tag">HuaTuo-GPT</span>
+        <span class="tag teal">Clinical NLP</span>
+        <span class="tag teal">Medical AI</span>
+      </div>
+      <a href="https://vimeo.com/1074239900?share=copy" class="project-link" target="_blank" rel="noopener noreferrer">Docmate — Vimeo Demo</a>
+      <a href="https://github.com/Adityahulk/Handwritten-Prescription-" class="project-link" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-label">// 03 — Research</div>
+  <h2 class="section-title">Published work in<br>speech & signal ML.</h2>
+  <div class="papers-list">
+    <div class="paper-item">
+      <div class="paper-year">2025</div>
+      <div>
+        <div class="paper-title">ASVSpoof 2021: Detecting Spoofed Utterances Through Hybrid Features</div>
+        <div class="paper-venue">APSIPA Transactions on Signal and Information Processing, Vol. 14, No. 2</div>
+      </div>
+    </div>
+    <div class="paper-item">
+      <div class="paper-year">2024</div>
+      <div>
+        <div class="paper-title">Audio Deepfakes: Feature Extraction and Model Evaluation for Detection</div>
+        <div class="paper-venue">INCET 2024 — 5th International Conference for Emerging Technology</div>
+      </div>
+    </div>
+    <div class="paper-item">
+      <div class="paper-year">2024</div>
+      <div>
+        <div class="paper-title">Secure Federated Learning for Gate-Level IP Hardware Trojan Detection Using Homomorphic Encryption</div>
+        <div class="paper-venue">CCIS 2024 — International Conference on Communication, Control, and Intelligent Systems</div>
+      </div>
+    </div>
+    <div class="paper-item">
+      <div class="paper-year">2022</div>
+      <div>
+        <div class="paper-title">Vocal Biomarker Based COVID-19 Detection Using Convolutional and Deep Neural Networks</div>
+        <div class="paper-venue">IEEE UPCON 2022</div>
+      </div>
+    </div>
+    <div class="paper-item">
+      <div class="paper-year">2022</div>
+      <div>
+        <div class="paper-title">Automatic Speaker Verification Spoof Detection Using Gaussian Mixture Model</div>
+        <div class="paper-venue">IEEE UPCON 2022</div>
+      </div>
+    </div>
+    <div class="paper-item">
+      <div class="paper-year">2022</div>
+      <div>
+        <div class="paper-title">Vocal Biomarker Based COVID-19 Detection Using DNN and Transfer Learning ResNet50</div>
+        <div class="paper-venue">IEEE UPCON 2022</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">// 04 — Experience</div>
+  <h2 class="section-title">Where the systems<br>went live.</h2>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div>
+        <div class="exp-role">Senior Software Engineer</div>
+        <div class="exp-company">Arcesium, Hyderabad</div>
+        <ul class="exp-bullets">
+          <li>Designed and scaled compliance infra systems, reducing query latency 10x via backend re-architecture and data structure optimization.</li>
+          <li>Led AI adoption across compliance products — built reusable infra patterns now deployed across multiple product lines.</li>
+          <li>Built config-driven form infrastructure, AOP-based auth, and audit logging tools used across all compliance domains.</li>
+          <li>Resolved critical production incidents across Kubernetes, PostgreSQL, and SSL layers.</li>
+        </ul>
+      </div>
+      <div class="exp-period">Jul 2025 – Present</div>
+    </div>
+    <div class="exp-item">
+      <div>
+        <div class="exp-role">Founder — <a href="https://kalman-labs.com/" target="_blank" rel="noopener noreferrer">Kalman Labs</a> / <a href="http://VidSimplify.com/" target="_blank" rel="noopener noreferrer">VidSimplify</a></div>
+        <div class="exp-company">Hyderabad, India</div>
+        <ul class="exp-bullets">
+          <li>Built and shipped <a href="http://VidSimplify.com/" target="_blank" rel="noopener noreferrer">VidSimplify.com</a> — AI animation engine processing 15,000+ minutes for 1,000+ users and 4 enterprise clients.</li>
+          <li>Architected Docmate: multimodal medical AI chatbot for clinical summarization, prescription OCR, and imaging analysis.</li>
+          <li>Built cell-state simulation engine using Mamba-style SSMs + neural operators for drug perturbation trajectory prediction.</li>
+          <li>Designed and delivered AI Legal Intelligence Platform for US law firms — dual-product system covering document comparison and multi-agent legal assistant workflows.</li>
+          <li>Currently building Tessera — a deep-tech AI longevity platform using biomarker intelligence to personalise biological age reversal protocols.</li>
+        </ul>
+      </div>
+      <div class="exp-period">Nov 2024 – Oct 2025</div>
+    </div>
+    <div class="exp-item">
+      <div>
+        <div class="exp-role">Software Engineer</div>
+        <div class="exp-company">Arcesium, Hyderabad</div>
+        <ul class="exp-bullets">
+          <li>Owned development of major UI + backend features serving 100K+ records at scale.</li>
+          <li>Deployed tooling integrated with Kafka, SQS, KEDA, EC2, and role-based access systems.</li>
+        </ul>
+      </div>
+      <div class="exp-period">Jul 2023 – Jun 2025</div>
+    </div>
+    <div class="exp-item">
+      <div>
+        <div class="exp-role">Deep Learning Researcher</div>
+        <div class="exp-company">Pucho Digital Health Inc., Remote</div>
+        <ul class="exp-bullets">
+          <li>Researched Private AI in healthcare: Federated Learning + Homomorphic Encryption. Built signal-image preprocessing pipeline and deployed FastAPI backend on AWS EC2.</li>
+        </ul>
+      </div>
+      <div class="exp-period">Jan – May 2022</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CTA -->
+<section id="contact" class="cta-section">
+  <div class="section-label">// 05 — Work Together</div>
+  <h2 class="cta-title">Got a hard<br><span>AI problem?</span></h2>
+  <p class="cta-sub">I take on freelance AI engineering projects where the technical complexity is the point.<br>Audio/video AI, ML systems, multimodal pipelines, agent architectures — let's build it right.</p>
+  <a href="#projects" class="btn-primary" style="display: inline-block;">See My Work</a>
+  <a href="mailto:adityaraj20008@gmail.com" class="cta-email">adityaraj20008@gmail.com</a>
+</section>
+
+<footer>
+  <div class="footer-copy">© 2025 Aditya Raj — AI Systems Engineer</div>
+  <div class="footer-links">
+    <a href="https://linkedin.com/in/aditya-raj-553322197" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="https://github.com/Adityahulk" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://scholar.google.com/citations?user=QKRfv8wAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">G-Scholar</a>
+    <a href="https://aditya007.medium.com/" target="_blank" rel="noopener noreferrer">Medium</a>
+    <a href="https://aditya-broken-ai.vercel.app/" target="_blank" rel="noopener noreferrer">Broken Math of AI</a>
+    <a href="https://kalman-labs.com/" target="_blank" rel="noopener noreferrer">Kalman Labs</a>
+    <a href="http://VidSimplify.com/" target="_blank" rel="noopener noreferrer">VidSimplify</a>
+  </div>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+function animCursor() {
+  cursor.style.left = (mx - 6) + 'px';
+  cursor.style.top = (my - 6) + 'px';
+  rx += (mx - rx - 18) * 0.12;
+  ry += (my - ry - 18) * 0.12;
+  ring.style.left = rx + 'px';
+  ring.style.top = ry + 'px';
+  requestAnimationFrame(animCursor);
+}
+animCursor();
+
+(function () {
+  const nav = document.getElementById('siteNav');
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('navMenu');
+  if (!nav || !toggle || !menu) return;
+
+  const mq = window.matchMedia('(max-width: 900px)');
+
+  function setNavOpen(open) {
+    nav.classList.toggle('nav-open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  function closeNav() {
+    setNavOpen(false);
+  }
+
+  toggle.addEventListener('click', function (e) {
+    e.stopPropagation();
+    setNavOpen(!nav.classList.contains('nav-open'));
+  });
+
+  menu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', closeNav);
+  });
+
+  document.addEventListener('click', function (e) {
+    if (nav.classList.contains('nav-open') && !nav.contains(e.target)) {
+      closeNav();
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeNav();
+  });
+
+  mq.addEventListener('change', function () {
+    if (!mq.matches) closeNav();
+  });
+})();
+</script>
+</body>
+</html>
