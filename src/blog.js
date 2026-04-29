@@ -10,7 +10,7 @@ document.querySelector('#app').innerHTML = `
         <a href="/#solutions">Solutions</a>
         <a href="/#why">Why Us</a>
         <a href="/blog">Blog</a>
-        <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()">Get Started</a>
+        <a href="https://calendly.com/company-kalman-labs/30min" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Get Started</a>
       </div>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     </div>
@@ -54,7 +54,7 @@ document.querySelector('#app').innerHTML = `
     <div class="container">
       <h2>Got a Problem to <span class="text-gradient">Solve</span>?</h2>
       <p>Let us show you how automation transforms operations.</p>
-      <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()">Book Free Meeting</a>
+      <a href="https://calendly.com/company-kalman-labs/30min" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Book Free Meeting</a>
     </div>
   </section>
 
@@ -67,7 +67,7 @@ document.querySelector('#app').innerHTML = `
         </div>
         <div class="footer-col"><h4>Solutions</h4><ul><li><span class="footer-static">Sales & Lead Optimization</span></li><li><span class="footer-static">Workflow Automation</span></li><li><span class="footer-static">Analytics & Insights</span></li><li><span class="footer-static">Operations Management Systems</span></li></ul></div>
         <div class="footer-col"><h4>Company</h4><ul><li><a href="/blog">Blog</a></li><li><a href="/privacy">Privacy</a></li></ul></div>
-        <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:+918000012306">+91 80000 12306</a></li><li><a href="mailto:contact@kalman-labs.com">contact@kalman-labs.com</a></li></ul></div>
+        <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:+919390754255">+91 93907 54255</a></li><li><a href="mailto:contact@kalman-labs.com">contact@kalman-labs.com</a></li></ul></div>
       </div>
       <div class="footer-bottom"><span>© 2026 Kalman Labs</span><span class="powered-by">Powered by <strong>Tephily</strong></span></div>
     </div>
@@ -79,7 +79,7 @@ document.querySelector('#app').innerHTML = `
       <div class="modal-icon-wrapper"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
       <h3>Let's Talk</h3>
       <p>Call us to discuss automation for your business.</p>
-      <a href="tel:+918000012306" class="modal-phone-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91 80000 12306</a>
+      <a href="tel:+919390754255" class="modal-phone-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91 93907 54255</a>
       <a href="mailto:contact@kalman-labs.com" class="modal-email-link">contact@kalman-labs.com</a>
     </div>
   </div>

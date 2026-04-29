@@ -16,7 +16,7 @@ document.querySelector('#app').innerHTML = `
         <a href="#projects">Projects</a>
         <a href="#why">Why Us</a>
         <a href="/blog">Blog</a>
-        <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()" data-testid="nav-cta">Get Started</a>
+        <a href="https://calendly.com/company-kalman-labs/30min" class="btn btn-primary" target="_blank" rel="noopener noreferrer" data-testid="nav-cta">Get Started</a>
       </div>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" data-testid="nav-toggle">
         <span></span><span></span><span></span>
@@ -42,7 +42,7 @@ document.querySelector('#app').innerHTML = `
       </h1>
       <p class="hero-sub">Research-backed engineering — multi-agent platforms, RAG pipelines, and biomarker intelligence built for real businesses.</p>
       <div class="hero-actions">
-        <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()" data-testid="hero-cta">Book a Free Call</a>
+        <a href="https://calendly.com/company-kalman-labs/30min" class="btn btn-primary" target="_blank" rel="noopener noreferrer" data-testid="hero-cta">Book a Free Call</a>
         <a href="#projects" class="btn btn-secondary" data-testid="hero-solutions">View Projects</a>
       </div>
     </div>
@@ -286,7 +286,7 @@ document.querySelector('#app').innerHTML = `
     <div class="container">
       <h2>Build something <span class="text-gradient">complex.</span></h2>
       <p>Got a hard AI problem? Multi-agent systems, production ML, custom intelligence — let's talk.</p>
-      <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()" data-testid="cta-book">Book Free Meeting</a>
+      <a href="https://calendly.com/company-kalman-labs/30min" class="btn btn-primary" target="_blank" rel="noopener noreferrer" data-testid="cta-book">Book Free Meeting</a>
     </div>
   </section>
 
@@ -428,7 +428,7 @@ document.querySelector('#app').innerHTML = `
         <div class="footer-col">
           <h4>Contact</h4>
           <ul>
-            <li><a href="tel:+918000012306">+91 80000 12306</a></li>
+            <li><a href="tel:+919390754255">+91 93907 54255</a></li>
             <li><a href="mailto:contact@kalman-labs.com">contact@kalman-labs.com</a></li>
           </ul>
         </div>
@@ -449,9 +449,9 @@ document.querySelector('#app').innerHTML = `
       </div>
       <h3>Let's Talk</h3>
       <p>Call us to discuss how we can help automate your business.</p>
-      <a href="tel:+918000012306" class="modal-phone-btn" data-testid="modal-phone">
+      <a href="tel:+919390754255" class="modal-phone-btn" data-testid="modal-phone">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        +91 80000 12306
+        +91 93907 54255
       </a>
       <a href="mailto:contact@kalman-labs.com" class="modal-email-link">contact@kalman-labs.com</a>
     </div>
