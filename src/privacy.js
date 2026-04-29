@@ -64,7 +64,7 @@ document.querySelector('#app').innerHTML = `
         <div class="footer-col"><h4>Company</h4><ul><li><a href="/blog">Blog</a></li><li><a href="/privacy">Privacy</a></li></ul></div>
         <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:+918000012306">+91 80000 12306</a></li><li><a href="mailto:contact@kalman-labs.com">contact@kalman-labs.com</a></li></ul></div>
       </div>
-      <div class="footer-bottom"><span>© 2026 Kalman Labs</span><span class="powered-by">Powered by <strong>Tephily Pvt Ltd</strong></span></div>
+      <div class="footer-bottom"><span>© 2026 Kalman Labs</span><span class="powered-by">Powered by <strong>Kalman Labs Pvt Ltd</strong></span></div>
     </div>
   </footer>
 

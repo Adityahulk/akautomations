@@ -435,7 +435,7 @@ document.querySelector('#app').innerHTML = `
       </div>
       <div class="footer-bottom">
         <span>© 2026 Kalman Labs</span>
-        <span class="powered-by">Powered by <strong>Tephily Pvt Ltd</strong></span>
+        <span class="powered-by">Powered by <strong>Kalman Labs Pvt Ltd</strong></span>
       </div>
     </div>
   </footer>
