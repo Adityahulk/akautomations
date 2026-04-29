@@ -12,7 +12,7 @@ document.querySelector('#app').innerHTML = `
         Kalman Labs
       </a>
       <div class="nav-links" id="navLinks">
-        <a href="#about">About</a>
+        <a href="#why">About</a>
         <a href="#projects">Projects</a>
         <a href="#why">Why Us</a>
         <a href="/blog">Blog</a>
@@ -37,10 +37,10 @@ document.querySelector('#app').innerHTML = `
     <!-- Left: headline + CTAs -->
     <div class="hero-content">
       <h1>
-        <span class="text-reveal hero-title-setup"><span class="text-reveal-inner">Automate your business with</span></span><br/>
-        <span class="text-reveal hero-title-payoff"><span class="text-reveal-inner" style="animation-delay:0.35s">easy to use solutions</span></span>
+        <span class="text-reveal hero-title-setup"><span class="text-reveal-inner">Complex AI systems,</span></span><br/>
+        <span class="text-reveal hero-title-payoff"><span class="text-reveal-inner" style="animation-delay:0.35s">shipped to production.</span></span>
       </h1>
-      <p class="hero-sub">AI-powered systems built for how businesses actually work.</p>
+      <p class="hero-sub">Research-backed engineering — multi-agent platforms, RAG pipelines, and biomarker intelligence built for real businesses.</p>
       <div class="hero-actions">
         <a href="#" class="btn btn-primary btn-book" onclick="event.preventDefault()" data-testid="hero-cta">Book a Free Call</a>
         <a href="#projects" class="btn btn-secondary" data-testid="hero-solutions">View Projects</a>
