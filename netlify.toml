@@ -19,3 +19,8 @@
   from = "/post"
   to = "/post.html"
   status = 200
+
+[[redirects]]
+  from = "/tracker"
+  to = "/tracker.html"
+  status = 200
