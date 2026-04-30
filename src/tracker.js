@@ -3,6 +3,9 @@ import './style.css';
 const LEGACY_STORAGE_KEY = 'kalman-tracker-state-v1';
 const STORE_KEY = 'kalman-tracker-store-v2';
 const SESSION_KEY = 'kalman-tracker-session-email-v2';
+const PASSWORD_SESSION_KEY = 'kalman-tracker-session-password-v2';
+const API_ENDPOINT = '/api/tracker';
+const SYNC_DEBOUNCE_MS = 450;
 
 const starterProjects = [
   { id: 'startup', name: 'Startup', tone: 'Founder', icon: 'rocket' },
@@ -40,6 +43,7 @@ const icons = {
 };
 
 let state = loadState();
+let syncTimer;
 
 document.querySelector('#app').innerHTML = `
   <div class="tracker-shell">
@@ -95,7 +99,7 @@ function render() {
           <button class="tracker-data-btn" id="exportDataBtn" type="button">${icon('download')} Export</button>
           <label class="tracker-data-btn" for="importDataInput">${icon('upload')} Import</label>
           <input id="importDataInput" type="file" accept="application/json,.json" />
-          <p>Auto-saved to this browser under ${escapeHtml(state.user.email)}.</p>
+          <p>Auto-saved locally and synced to Supabase under ${escapeHtml(state.user.email)}.</p>
         </div>
 
         <div class="tracker-lanes" role="list">
@@ -200,20 +204,35 @@ function renderLogin() {
         <input id="name" name="name" type="text" placeholder="Aryan" autocomplete="name" required />
         <label for="email">Email</label>
         <input id="email" name="email" type="email" placeholder="you@company.com" autocomplete="email" required />
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="At least 6 characters" autocomplete="current-password" minlength="6" required />
+        <p class="tracker-login-note" id="loginNote">New email creates a workspace. Existing email opens only with the same password.</p>
         <button class="btn btn-primary" type="submit">Enter workspace</button>
       </form>
     </section>
   `;
 
-  document.querySelector('#loginForm').addEventListener('submit', event => {
+  document.querySelector('#loginForm').addEventListener('submit', async event => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    loginUser({
-      name: String(formData.get('name')).trim() || 'Builder',
-      email: String(formData.get('email')).trim(),
-    });
-    saveState();
-    render();
+    const submitButton = event.currentTarget.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Opening...';
+
+    try {
+      await loginUser({
+        name: String(formData.get('name')).trim() || 'Builder',
+        email: String(formData.get('email')).trim(),
+        password: String(formData.get('password')),
+      });
+
+      render();
+    } catch (error) {
+      const note = document.querySelector('#loginNote');
+      if (note) note.textContent = error.message || 'Could not open this workspace.';
+      submitButton.disabled = false;
+      submitButton.textContent = 'Enter workspace';
+    }
   });
 }
 
@@ -301,6 +320,7 @@ function bindAppEvents() {
 document.querySelector('#logoutBtn').addEventListener('click', () => {
   saveState();
   localStorage.removeItem(SESSION_KEY);
+  sessionStorage.removeItem(PASSWORD_SESSION_KEY);
   state = signedOutState();
   render();
 });
@@ -404,21 +424,29 @@ function loadState() {
   migrateLegacyState();
   const store = loadStore();
   const sessionEmail = localStorage.getItem(SESSION_KEY);
-  if (sessionEmail && store.accounts[sessionEmail]) {
+  const sessionPassword = sessionStorage.getItem(PASSWORD_SESSION_KEY);
+  if (sessionEmail && sessionPassword && store.accounts[sessionEmail]) {
     return normalizeWorkspace(store.accounts[sessionEmail], sessionEmail);
   }
 
   return signedOutState();
 }
 
-function loginUser(user) {
+async function loginUser(user) {
   const email = normalizeEmail(user.email);
   if (!email) return;
+  if (!user.password || user.password.length < 6) {
+    throw new Error('Password must be at least 6 characters.');
+  }
   const store = loadStore();
-  const existing = store.accounts[email];
+  const localWorkspace = store.accounts[email];
+  const remoteWorkspace = await openRemoteWorkspace(email, user.password, user.name);
+  const existing = remoteWorkspace || localWorkspace;
+
   state = normalizeWorkspace(existing || createWorkspace(user), email);
   state.user = { name: user.name || state.user.name || 'Builder', email };
   localStorage.setItem(SESSION_KEY, email);
+  sessionStorage.setItem(PASSWORD_SESSION_KEY, user.password);
   saveState();
 }
 
@@ -481,6 +509,11 @@ function loadStore() {
 
 function saveState() {
   if (!state.user || !state.accountKey) return;
+  saveLocalWorkspace();
+  queueRemoteSave();
+}
+
+function saveLocalWorkspace() {
   const store = loadStore();
   store.accounts[state.accountKey] = {
     user: state.user,
@@ -551,6 +584,68 @@ async function importWorkspace(file) {
 
 function normalizeEmail(email) {
   return String(email || '').trim().toLowerCase();
+}
+
+function queueRemoteSave() {
+  clearTimeout(syncTimer);
+  syncTimer = setTimeout(() => {
+    saveRemoteWorkspace().catch(error => console.warn('Supabase sync skipped', error));
+  }, SYNC_DEBOUNCE_MS);
+}
+
+async function openRemoteWorkspace(email, password, name) {
+  try {
+    const response = await fetch(API_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({ email, password, name }),
+    });
+
+    if (response.status === 401) {
+      throw new Error('Incorrect email or password.');
+    }
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const payload = await response.json();
+    return payload.workspace?.workspace || null;
+  } catch (error) {
+    if (error.message === 'Incorrect email or password.') throw error;
+    console.warn('Supabase load skipped', error);
+    return null;
+  }
+}
+
+async function saveRemoteWorkspace() {
+  if (!state.user || !state.accountKey) return;
+
+  const workspace = loadStore().accounts[state.accountKey];
+  const password = sessionStorage.getItem(PASSWORD_SESSION_KEY);
+  if (!workspace) return;
+  if (!password) return;
+
+  const response = await fetch(API_ENDPOINT, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({
+      email: state.accountKey,
+      password,
+      name: state.user.name,
+      workspace,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Supabase sync failed: ${response.status}`);
+  }
 }
 
 function cloneStarterProjects() {

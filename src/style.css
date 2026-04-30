@@ -2038,6 +2038,13 @@ img {
   line-height: 1.65;
 }
 
+.tracker-login-card .tracker-login-note {
+  min-height: 22px;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
 .tracker-kicker {
   color: rgba(255, 255, 255, 0.38);
   display: inline-flex;
