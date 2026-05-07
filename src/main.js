@@ -545,10 +545,28 @@ document.querySelectorAll('.btn-magnetic').forEach(btn => {
   });
 });
 
-// Mobile nav
+// Mobile nav — toggle menu + animate hamburger
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
-navToggle?.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+const closeMobileNav = () => {
+  navLinks?.classList.remove('active');
+  navToggle?.classList.remove('active');
+  document.body.classList.remove('nav-open');
+};
+
+navToggle?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  navLinks.classList.toggle('active');
+  navToggle.classList.toggle('active');
+  document.body.classList.toggle('nav-open', navLinks.classList.contains('active'));
+});
+
+// Close mobile nav on link click + outside click
+navLinks?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileNav));
+document.addEventListener('click', (e) => {
+  if (!navLinks?.contains(e.target) && !navToggle?.contains(e.target)) closeMobileNav();
+});
 
 // Modal
 const modal = document.getElementById('bookingModal');
@@ -569,7 +587,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     if (target) {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      navLinks.classList.remove('active');
+      closeMobileNav();
     }
   });
 });

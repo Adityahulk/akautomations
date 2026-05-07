@@ -64,6 +64,11 @@ body {
   overflow-x: hidden;
 }
 
+/* Lock body scroll when mobile nav is open */
+body.nav-open {
+  overflow: hidden;
+}
+
 h1,
 h2,
 h3,
@@ -286,6 +291,21 @@ img {
   background: var(--text-primary);
   border-radius: 2px;
   transition: all 0.3s var(--ease);
+  transform-origin: center;
+}
+
+/* Hamburger → X when menu open */
+.nav-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* ═══ HERO ═══ */
@@ -1806,11 +1826,33 @@ img {
   }
 }
 
+/* ═══════════════════════════════════════════════
+   TABLET / MOBILE — 768px
+   ═══════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  .section {
-    padding: 80px 0;
+  /* Container — tighter padding on mobile */
+  .container {
+    padding: 0 20px;
   }
 
+  /* Sections — reduced vertical rhythm */
+  .section {
+    padding: 72px 0;
+  }
+
+  .section-header {
+    margin-bottom: 44px;
+  }
+
+  .section-header h2 {
+    font-size: clamp(1.7rem, 6.5vw, 2.4rem);
+  }
+
+  .section-header p {
+    font-size: 0.95rem;
+  }
+
+  /* ── NAV ── */
   .nav-links {
     display: none;
   }
@@ -1826,114 +1868,403 @@ img {
     top: var(--nav-height);
     left: 0;
     right: 0;
-    background: var(--bg-secondary);
+    background: rgba(10, 10, 11, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     padding: 24px;
-    gap: 20px;
+    gap: 18px;
     border-bottom: 1px solid var(--border);
+    align-items: stretch;
   }
 
+  .nav-links.active a:not(.btn) {
+    padding: 8px 0;
+    font-size: 1rem;
+  }
+
+  .nav-links.active .btn {
+    margin-top: 8px;
+    padding: 14px 20px;
+    width: 100%;
+  }
+
+  /* ── HERO — single column, content first ── */
   .hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
     min-height: auto;
-    padding: calc(var(--nav-height) + 60px) 24px 60px;
+    padding: calc(var(--nav-height) + 36px) 0 0;
+    gap: 0;
+  }
+
+  .hero-content {
+    order: 1;
+    padding: 0 20px 32px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: left;
   }
 
   .hero-content h1 {
-    font-size: 2.2rem;
+    font-size: clamp(2rem, 8.5vw, 3rem);
+    margin-bottom: 24px;
+    line-height: 1.08;
+  }
+
+  .hero-sub {
+    font-size: 0.92rem;
+    margin-bottom: 28px;
+    max-width: 100%;
   }
 
   .hero-actions {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 
   .hero-actions .btn {
+    flex: 1 1 auto;
+    min-width: 140px;
+    max-width: none;
+    padding: 14px 22px;
+    font-size: 0.88rem;
+  }
+
+  .hero-canvas-col {
+    order: 2;
+    height: 56vw;
+    min-height: 280px;
+    max-height: 380px;
     width: 100%;
-    max-width: 280px;
+  }
+
+  /* ── STATS — 2 × 2 ── */
+  .stats-bar {
+    padding: 36px 0;
   }
 
   .stats-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
 
+  .stat-item {
+    padding: 18px 12px;
+  }
+
+  .stat-item h3 {
+    font-size: 1.6rem;
+    margin-bottom: 2px;
+  }
+
+  .stat-item p {
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── PROJECTS — single column, tighter padding ── */
   .projects-featured {
     grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
   }
 
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
 
+  .project-card {
+    padding: 24px 22px;
+  }
+
+  .project-card--featured h3 {
+    font-size: 1.15rem;
+  }
+
+  .project-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .project-desc {
+    font-size: 0.86rem;
+    line-height: 1.6;
+  }
+
+  .project-tags {
+    gap: 5px;
+  }
+
+  /* ── WHY — single column ── */
   .why-grid,
   .why-grid-5 {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
 
+  .why-card {
+    padding: 24px 22px;
+  }
+
+  .why-grid-5 .why-card:nth-child(5) {
+    grid-column: auto;
+    max-width: none;
+    justify-self: stretch;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .testimonial-card {
+    padding: 24px 22px;
+  }
+
+  .testimonial-text {
+    font-size: 0.92rem;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    padding: 80px 0;
+  }
+
+  .cta-section h2 {
+    font-size: clamp(1.8rem, 7vw, 2.6rem);
+  }
+
+  .cta-section p {
+    font-size: 0.95rem;
+  }
+
+  /* ── BLOG ── */
   .blog-grid,
   .blog-archive-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 40px 0 60px;
   }
 
-  .testimonials-grid {
-    grid-template-columns: 1fr;
+  .blog-card-img {
+    height: 160px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 56px 0 32px;
   }
 
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 32px;
+    margin-bottom: 32px;
   }
 
   .footer-bottom {
     flex-direction: column;
     text-align: center;
+    gap: 8px;
+    font-size: 0.78rem;
   }
 
   .about-pillars {
     grid-template-columns: 1fr;
   }
 
-  .cta-section {
-    padding: 100px 0;
+  /* ── MODAL ── */
+  .modal-content {
+    padding: 32px 24px;
+    width: calc(100% - 32px);
+    max-width: 380px;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   SMALL MOBILE — 480px
+   ═══════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
   }
 
-  /* ── Hero mobile layout ── */
-  .hero {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    min-height: auto;
-    padding-top: calc(var(--nav-height) + 48px);
-    padding-bottom: 0;
+  .section {
+    padding: 60px 0;
   }
 
+  .section-header {
+    margin-bottom: 36px;
+  }
+
+  .section-header h2 {
+    font-size: clamp(1.5rem, 7.5vw, 2rem);
+  }
+
+  /* Nav */
+  .nav-brand {
+    font-size: 1.05rem;
+  }
+
+  .nav-brand .logo-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Hero */
   .hero-content {
-    padding: 0 24px 40px;
-    text-align: left;
-    order: 1;
+    padding: 0 16px 28px;
   }
 
   .hero-content h1 {
-    font-size: clamp(2rem, 8vw, 2.8rem);
-    margin-bottom: 32px;
+    font-size: clamp(1.85rem, 9vw, 2.4rem);
+    margin-bottom: 20px;
+  }
+
+  .hero-sub {
+    font-size: 0.86rem;
+    margin-bottom: 22px;
   }
 
   .hero-actions {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 12px;
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .hero-actions .btn {
-    flex: 1;
-    min-width: 140px;
-    max-width: none;
+    width: 100%;
+    flex: none;
   }
 
   .hero-canvas-col {
-    order: 2;
-    height: 55vw;
-    min-height: 280px;
-    max-height: 380px;
-    width: 100%;
+    height: 62vw;
+    min-height: 240px;
+  }
+
+  /* Stats */
+  .stats-bar {
+    padding: 28px 0;
+  }
+
+  .stats-grid {
+    gap: 10px;
+  }
+
+  .stat-item {
+    padding: 14px 8px;
+  }
+
+  .stat-item h3 {
+    font-size: 1.35rem;
+  }
+
+  .stat-item p {
+    font-size: 0.66rem;
+    line-height: 1.35;
+  }
+
+  /* Projects */
+  .project-card {
+    padding: 20px 18px;
+  }
+
+  .project-card h3,
+  .project-card--featured h3 {
+    font-size: 1rem;
+  }
+
+  .project-desc {
+    font-size: 0.82rem;
+  }
+
+  .project-metric-val {
+    font-size: 1.1rem;
+  }
+
+  .project-metrics {
+    gap: 14px;
+  }
+
+  /* Why */
+  .why-card {
+    padding: 22px 18px;
+  }
+
+  .why-card h3 {
+    font-size: 1rem;
+  }
+
+  /* Testimonials */
+  .testimonial-card {
+    padding: 22px 18px;
+  }
+
+  .testimonial-text {
+    font-size: 0.88rem;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 64px 0;
+  }
+
+  /* Blog */
+  .blog-card-img {
+    height: 140px;
+  }
+
+  .blog-card-body {
+    padding: 18px;
+  }
+
+  .blog-card-body h3 {
+    font-size: 1.05rem;
+  }
+
+  /* Modal */
+  .modal-content {
+    padding: 28px 20px;
+  }
+
+  .modal-content h3 {
+    font-size: 1.15rem;
+  }
+
+  .modal-phone-btn {
+    padding: 14px 18px;
+    font-size: 0.95rem;
+  }
+
+  /* Disable cursor-glow on touch devices */
+  .cursor-glow {
+    display: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   TOUCH DEVICES — disable hover-dependent effects
+   ═══════════════════════════════════════════════ */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-glow {
+    display: none;
+  }
+
+  .project-card:hover {
+    transform: none;
+  }
+
+  .why-card:hover {
+    transform: none;
+  }
+
+  .stat-item:hover {
+    transform: none;
+  }
+
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    transform: none;
   }
 }
 
